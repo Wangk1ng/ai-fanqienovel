@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,19 +15,25 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Plus, Sparkles, Loader2, CheckCircle2, XCircle, AlertTriangle } from "lucide-react";
+import { Plus, Sparkles, Loader2, CheckCircle2, XCircle, AlertTriangle, X } from "lucide-react";
 import { useAlertDialog } from "@/hooks/use-alert-dialog";
+
+interface TaskStatus {
+  taskId: string;
+  status: "pending" | "running" | "completed" | "failed";
+  currentStep: string;
+  stepProgress: number;
+  completedChapters: number;
+  targetChapters: number;
+  genre?: string;
+  title?: string;
+  projectId?: string;
+  errorMessage?: string;
+}
 
 interface CreateProjectDialogProps {
   onSuccess?: () => void;
 }
-
-type ProjectStatus = {
-  id: string;
-  title: string;
-  status: "pending" | "generating" | "completed" | "failed";
-  error?: string;
-};
 
 export function CreateProjectDialog({ onSuccess }: CreateProjectDialogProps) {
   const { alert } = useAlertDialog();
@@ -36,18 +42,11 @@ export function CreateProjectDialog({ onSuccess }: CreateProjectDialogProps) {
   const [isCreating, setIsCreating] = useState(false);
   const [hasAiConfig, setHasAiConfig] = useState<boolean | null>(null);
 
-  // 批量创建配置
-  const [threadCount, setThreadCount] = useState(3);
-  const [projectCount, setProjectCount] = useState(5);
   const [targetChapters, setTargetChapters] = useState(15);
   const [wordCount, setWordCount] = useState(1000);
 
-  // 批量创建状态
-  const [batchStatus, setBatchStatus] = useState<"idle" | "creating" | "completed">("idle");
-  const [projects, setProjects] = useState<ProjectStatus[]>([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [completedCount, setCompletedCount] = useState(0);
-  const [failedCount, setFailedCount] = useState(0);
+  const [task, setTask] = useState<TaskStatus | null>(null);
+  const [tasks, setTasks] = useState<TaskStatus[]>([]);
 
   useEffect(() => {
     if (open) {
@@ -61,129 +60,95 @@ export function CreateProjectDialog({ onSuccess }: CreateProjectDialogProps) {
     }
   }, [open]);
 
-  const resetAll = () => {
-    setBatchStatus("idle");
-    setProjects([]);
-    setCurrentIndex(0);
-    setCompletedCount(0);
-    setFailedCount(0);
-  };
+  const pollTaskStatus = useCallback(async (taskId: string) => {
+    try {
+      const response = await fetch(`/api/tasks/status?taskId=${taskId}`);
+      if (!response.ok) return null;
+      const data = await response.json();
+      return data as TaskStatus;
+    } catch {
+      return null;
+    }
+  }, []);
 
-  const handleBatchCreate = async () => {
-    if (threadCount < 1 || threadCount > 10) {
-      alert("线程数必须在 1-10 之间", "warning");
+  const handleCreate = async () => {
+    if (targetChapters < 10 || targetChapters > 1000) {
+      alert("章节数必须在 10-1000 之间", "warning");
       return;
     }
-    if (projectCount < 1 || projectCount > 50) {
-      alert("项目数必须在 1-50 之间", "warning");
+    if (wordCount < 500 || wordCount > 5000) {
+      alert("每章字数必须在 500-5000 之间", "warning");
       return;
     }
 
     setIsCreating(true);
-    setBatchStatus("creating");
-    setProjects([]);
-    setCompletedCount(0);
-    setFailedCount(0);
 
     try {
-      // 初始化项目列表
-      const projectList: ProjectStatus[] = [];
-      for (let i = 0; i < projectCount; i++) {
-        projectList.push({
-          id: `temp_${i}`,
-          title: `项目 ${i + 1}`,
-          status: "pending",
-        });
+      const response = await fetch("/api/projects/batch-create", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          targetChapters,
+          wordCount,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data.error || "创建失败");
       }
-      setProjects(projectList);
 
-      // 使用 Promise 控制并发
-      let currentIdx = 0;
-      const results: ProjectStatus[] = [];
-
-      const createProjectWorker = async (): Promise<void> => {
-        while (true) {
-          const idx = currentIdx++;
-          if (idx >= projectCount) break;
-
-          setCurrentIndex(idx);
-
-          // 更新状态为生成中
-          setProjects((prev) => {
-            const updated = [...prev];
-            updated[idx] = { ...updated[idx], status: "generating" };
-            return updated;
-          });
-
-          try {
-            // 调用批量创建API
-            const response = await fetch("/api/projects/batch-create", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                targetChapters,
-                wordCount,
-              }),
-            });
-
-            if (!response.ok) {
-              const data = await response.json().catch(() => ({}));
-              throw new Error(data.error || "创建失败");
-            }
-
-            const data = await response.json();
-
-            results[idx] = {
-              id: data.projectId,
-              title: data.title || `项目 ${idx + 1}`,
-              status: "completed",
-            };
-          } catch (error) {
-            results[idx] = {
-              id: `failed_${idx}`,
-              title: `项目 ${idx + 1}`,
-              status: "failed",
-              error: error instanceof Error ? error.message : "创建失败",
-            };
-          }
-
-          // 更新单个项目的状态
-          setProjects((prev) => {
-            const updated = [...prev];
-            updated[idx] = results[idx];
-            return updated;
-          });
-
-          // 更新计数
-          if (results[idx].status === "completed") {
-            setCompletedCount((c) => c + 1);
-          } else {
-            setFailedCount((c) => c + 1);
-          }
-        }
+      const data = await response.json();
+      const newTask: TaskStatus = {
+        taskId: data.taskId,
+        status: "pending",
+        currentStep: "等待开始",
+        stepProgress: 0,
+        completedChapters: 0,
+        targetChapters,
       };
+      
+      setTask(newTask);
+      setTasks((prev) => [newTask, ...prev]);
 
-      // 启动指定数量的并发 worker
-      const workers = [];
-      for (let i = 0; i < threadCount; i++) {
-        workers.push(createProjectWorker());
-      }
-
-      await Promise.all(workers);
-
-      setBatchStatus("completed");
-      setIsCreating(false);
-      onSuccess?.();
-      router.refresh();
     } catch (error) {
-      console.error("批量创建失败:", error);
-      alert(error instanceof Error ? error.message : "批量创建失败", "error");
+      alert(error instanceof Error ? error.message : "创建失败", "error");
       setIsCreating(false);
-      setBatchStatus("idle");
     }
   };
 
-  const progress = projectCount > 0 ? ((completedCount + failedCount) / projectCount) * 100 : 0;
+  useEffect(() => {
+    if (!task || task.status === "completed" || task.status === "failed") {
+      if (task?.status === "completed") {
+        setIsCreating(false);
+        onSuccess?.();
+        router.refresh();
+      }
+      return;
+    }
+
+    const interval = setInterval(async () => {
+      const updatedTask = await pollTaskStatus(task.taskId);
+      if (updatedTask) {
+        setTask(updatedTask);
+        setTasks((prev) =>
+          prev.map((t) => (t.taskId === task.taskId ? updatedTask : t))
+        );
+
+        if (updatedTask.status === "completed" || updatedTask.status === "failed") {
+          clearInterval(interval);
+        }
+      }
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [task, pollTaskStatus, onSuccess, router]);
+
+  const resetAll = () => {
+    setTask(null);
+    setTasks([]);
+    setIsCreating(false);
+  };
 
   return (
     <Dialog open={open} onOpenChange={(v) => { setOpen(v); if (!v) resetAll(); }}>
@@ -195,9 +160,9 @@ export function CreateProjectDialog({ onSuccess }: CreateProjectDialogProps) {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
-          <DialogTitle>批量创建项目</DialogTitle>
+          <DialogTitle>一键全自动创建小说</DialogTitle>
           <DialogDescription>
-            一键全自动批量创建小说项目，AI自动生成类型和创作需求
+            AI 自动生成类型、创作需求、大纲和所有章节内容
           </DialogDescription>
         </DialogHeader>
 
@@ -214,37 +179,8 @@ export function CreateProjectDialog({ onSuccess }: CreateProjectDialogProps) {
           </div>
         )}
 
-        {batchStatus === "idle" && (
+        {!task && (
           <div className="space-y-4 py-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="threadCount">并发线程数</Label>
-                <Input
-                  id="threadCount"
-                  type="number"
-                  min={1}
-                  max={10}
-                  value={threadCount}
-                  onChange={(e) => setThreadCount(Number(e.target.value))}
-                  disabled={isCreating}
-                />
-                <p className="text-xs text-muted-foreground">同时创建的项目数量 (1-10)</p>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="projectCount">项目数量</Label>
-                <Input
-                  id="projectCount"
-                  type="number"
-                  min={1}
-                  max={50}
-                  value={projectCount}
-                  onChange={(e) => setProjectCount(Number(e.target.value))}
-                  disabled={isCreating}
-                />
-                <p className="text-xs text-muted-foreground">要创建的项目总数 (1-50)</p>
-              </div>
-            </div>
-
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="targetChapters">目标章节数</Label>
@@ -257,21 +193,21 @@ export function CreateProjectDialog({ onSuccess }: CreateProjectDialogProps) {
                   onChange={(e) => setTargetChapters(Number(e.target.value))}
                   disabled={isCreating}
                 />
-                <p className="text-xs text-muted-foreground">每个项目的章节数</p>
+                <p className="text-xs text-muted-foreground">默认 15 章</p>
               </div>
               <div className="space-y-2">
                 <Label htmlFor="wordCount">每章字数</Label>
                 <Input
                   id="wordCount"
                   type="number"
-                  min={1000}
+                  min={500}
                   max={5000}
                   step={100}
                   value={wordCount}
                   onChange={(e) => setWordCount(Number(e.target.value))}
                   disabled={isCreating}
                 />
-                <p className="text-xs text-muted-foreground">每章目标字数</p>
+                <p className="text-xs text-muted-foreground">默认 1000 字</p>
               </div>
             </div>
 
@@ -288,68 +224,69 @@ export function CreateProjectDialog({ onSuccess }: CreateProjectDialogProps) {
           </div>
         )}
 
-        {batchStatus === "creating" && (
+        {task && (
           <div className="space-y-4 py-4">
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span>创建进度</span>
-                <span>{completedCount + failedCount} / {projectCount}</span>
+                <span>{task.currentStep}</span>
+                <span>{task.stepProgress}%</span>
               </div>
-              <Progress value={progress} className="h-2" />
+              <Progress value={task.stepProgress} className="h-3" />
             </div>
 
-            <div className="space-y-2 max-h-[200px] overflow-y-auto">
-              {projects.map((project, index) => (
-                <div
-                  key={project.id}
-                  className="flex items-center gap-2 p-2 rounded border text-sm"
+            {task.genre && (
+              <div className="text-sm">
+                <span className="text-muted-foreground">类型：</span>
+                <span className="font-medium">{task.genre}</span>
+              </div>
+            )}
+
+            {task.title && (
+              <div className="text-sm">
+                <span className="text-muted-foreground">标题：</span>
+                <span className="font-medium">{task.title}</span>
+              </div>
+            )}
+
+            <div className="text-sm">
+              <span className="text-muted-foreground">章节进度：</span>
+              <span className="font-medium">
+                {task.completedChapters} / {task.targetChapters}
+              </span>
+            </div>
+
+            {task.status === "failed" && task.errorMessage && (
+              <div className="p-3 bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-800 rounded-lg text-sm text-red-600 dark:text-red-400">
+                {task.errorMessage}
+              </div>
+            )}
+
+            {task.projectId && task.status === "completed" && (
+              <div className="p-3 bg-green-50 dark:bg-green-950 border border-green-200 dark:border-green-800 rounded-lg">
+                <p className="text-sm text-green-600 dark:text-green-400 font-medium">
+                  项目创建成功！
+                </p>
+                <a
+                  href={`/projects/${task.projectId}`}
+                  className="text-sm text-green-600 dark:text-green-400 underline"
                 >
-                  {project.status === "pending" && (
-                    <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
-                  )}
-                  {project.status === "generating" && (
-                    <Loader2 className="h-4 w-4 animate-spin text-blue-500" />
-                  )}
-                  {project.status === "completed" && (
-                    <CheckCircle2 className="h-4 w-4 text-green-500" />
-                  )}
-                  {project.status === "failed" && (
-                    <XCircle className="h-4 w-4 text-red-500" />
-                  )}
-                  <span className="flex-1 truncate">
-                    {project.title}
-                    {project.status === "generating" && (
-                      <span className="text-blue-500 ml-2">创建中...</span>
-                    )}
-                    {project.status === "failed" && project.error && (
-                      <span className="text-red-500 ml-2 text-xs">{project.error}</span>
-                    )}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {batchStatus === "completed" && (
-          <div className="space-y-4 py-4">
-            <div className="text-center">
-              <CheckCircle2 className="h-12 w-12 text-green-500 mx-auto mb-2" />
-              <h3 className="text-lg font-semibold">批量创建完成</h3>
-              <p className="text-muted-foreground">
-                成功: {completedCount} | 失败: {failedCount}
-              </p>
-            </div>
+                  查看项目
+                </a>
+              </div>
+            )}
           </div>
         )}
 
         <DialogFooter>
-          {batchStatus === "idle" && (
+          {!task && (
             <>
               <Button variant="outline" onClick={() => setOpen(false)} disabled={isCreating}>
                 取消
               </Button>
-              <Button onClick={handleBatchCreate} disabled={isCreating || hasAiConfig === false}>
+              <Button
+                onClick={handleCreate}
+                disabled={isCreating || hasAiConfig === false}
+              >
                 {isCreating ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -358,27 +295,38 @@ export function CreateProjectDialog({ onSuccess }: CreateProjectDialogProps) {
                 ) : (
                   <>
                     <Sparkles className="mr-2 h-4 w-4" />
-                    开始批量创建
+                    开始创建
                   </>
                 )}
               </Button>
             </>
           )}
 
-          {batchStatus === "creating" && (
+          {task && task.status === "running" && (
             <Button variant="outline" onClick={() => { resetAll(); }}>
-              取消
+              关闭
             </Button>
           )}
 
-          {batchStatus === "completed" && (
+          {task && task.status === "completed" && (
             <>
               <Button variant="outline" onClick={() => setOpen(false)}>
                 关闭
               </Button>
-              <Button onClick={() => { resetAll(); }}>
+              <Button onClick={resetAll}>
                 <Sparkles className="mr-2 h-4 w-4" />
                 继续创建
+              </Button>
+            </>
+          )}
+
+          {task && task.status === "failed" && (
+            <>
+              <Button variant="outline" onClick={() => setOpen(false)}>
+                关闭
+              </Button>
+              <Button onClick={resetAll}>
+                重试
               </Button>
             </>
           )}

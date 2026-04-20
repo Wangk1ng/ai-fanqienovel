@@ -64,6 +64,7 @@ model Project {
   characters      Character[]
   outline         Outline?
   chapters        Chapter[]
+  sceneImages     SceneImage[]
 }
 
 model ProjectSettings {
@@ -165,5 +166,26 @@ model SceneImage {
 
   @@unique([projectId, sceneName])
   @@index([projectId])
+}
+
+model GenerationTask {
+  id            String   @id @default(cuid())
+  userId        String
+  projectId     String?
+  status        String   @default("pending") // pending, running, completed, failed
+  currentStep   String   @default("初始化")   // 当前步骤
+  stepProgress  Int      @default(0)          // 当前步骤进度 0-100
+  totalSteps    Int      @default(5)          // 总步骤数
+  targetChapters Int     @default(15)         // 目标章节数
+  wordCount     Int      @default(1000)       // 每章字数
+  completedChapters Int  @default(0)          // 已完成章节数
+  genre         String?                     // 小说类型
+  title         String?                     // 小说标题
+  errorMessage  String?                     // 错误信息
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([userId])
+  @@index([status])
 }
 
