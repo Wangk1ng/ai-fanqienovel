@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/select";
 import { Save } from "lucide-react";
 import { useAlertDialog } from "@/hooks/use-alert-dialog";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export default function UserSettingsPage() {
   const { alert } = useAlertDialog();
@@ -29,6 +30,13 @@ export default function UserSettingsPage() {
   const [imageModel, setImageModel] = useState("");
   const [imageApiKey, setImageApiKey] = useState("");
   const [imageBaseUrl, setImageBaseUrl] = useState("");
+
+  // 批量生成配置
+  const [defaultTargetChapters, setDefaultTargetChapters] = useState(100);
+  const [defaultCharacterCount, setDefaultCharacterCount] = useState(8);
+  const [defaultWordCount, setDefaultWordCount] = useState(2300);
+  const [defaultActsCount, setDefaultActsCount] = useState(3);
+  const [autoGenerateChapters, setAutoGenerateChapters] = useState(false);
 
   useEffect(() => {
     fetchSettings();
@@ -48,6 +56,11 @@ export default function UserSettingsPage() {
         setImageModel(s.imageModel || "");
         setImageApiKey(s.imageApiKey || "");
         setImageBaseUrl(s.imageBaseUrl || "");
+        setDefaultTargetChapters(s.defaultTargetChapters || 100);
+        setDefaultCharacterCount(s.defaultCharacterCount || 8);
+        setDefaultWordCount(s.defaultWordCount || 2300);
+        setDefaultActsCount(s.defaultActsCount || 3);
+        setAutoGenerateChapters(s.autoGenerateChapters || false);
       }
     } catch (error) {
       console.error("获取设置失败:", error);
@@ -71,6 +84,11 @@ export default function UserSettingsPage() {
           imageModel: imageModel || null,
           imageApiKey: imageApiKey || null,
           imageBaseUrl: imageBaseUrl || null,
+          defaultTargetChapters,
+          defaultCharacterCount,
+          defaultWordCount,
+          defaultActsCount,
+          autoGenerateChapters,
         }),
       });
 
@@ -304,6 +322,93 @@ export default function UserSettingsPage() {
               <p className="text-xs text-muted-foreground">
                 图像模型专用 API Key，留空使用系统环境变量
               </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* 批量生成默认配置 */}
+        <Card>
+          <CardHeader>
+            <CardTitle>批量生成默认配置</CardTitle>
+            <CardDescription>
+              配置一键生成项目时的默认参数
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="defaultTargetChapters">默认目标章节数</Label>
+              <Input
+                id="defaultTargetChapters"
+                type="number"
+                min={10}
+                max={10000}
+                value={defaultTargetChapters}
+                onChange={(e) => setDefaultTargetChapters(Number(e.target.value))}
+                placeholder="100"
+              />
+              <p className="text-xs text-muted-foreground">
+                一键生成时默认的大纲章节数（可覆盖）
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="defaultCharacterCount">默认角色数量</Label>
+              <Input
+                id="defaultCharacterCount"
+                type="number"
+                min={3}
+                max={20}
+                value={defaultCharacterCount}
+                onChange={(e) => setDefaultCharacterCount(Number(e.target.value))}
+                placeholder="8"
+              />
+              <p className="text-xs text-muted-foreground">
+                批量生成角色时的默认数量（建议 6-10 个）
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="defaultWordCount">默认每章字数</Label>
+              <Input
+                id="defaultWordCount"
+                type="number"
+                min={1000}
+                max={5000}
+                step={100}
+                value={defaultWordCount}
+                onChange={(e) => setDefaultWordCount(Number(e.target.value))}
+                placeholder="2300"
+              />
+              <p className="text-xs text-muted-foreground">
+                自动生成章节时的目标字数（建议 1500-3000）
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="defaultActsCount">默认幕数</Label>
+              <Input
+                id="defaultActsCount"
+                type="number"
+                min={1}
+                max={10}
+                value={defaultActsCount}
+                onChange={(e) => setDefaultActsCount(Number(e.target.value))}
+                placeholder="3"
+              />
+              <p className="text-xs text-muted-foreground">
+                大纲的幕数结构数量
+              </p>
+            </div>
+
+            <div className="flex items-center gap-2 rounded-md border p-3">
+              <Checkbox
+                id="autoGenerateChapters"
+                checked={autoGenerateChapters}
+                onCheckedChange={(checked) => setAutoGenerateChapters(checked === true)}
+              />
+              <Label htmlFor="autoGenerateChapters" className="cursor-pointer text-sm">
+                创建项目后自动生成章节（可选）
+              </Label>
             </div>
           </CardContent>
         </Card>

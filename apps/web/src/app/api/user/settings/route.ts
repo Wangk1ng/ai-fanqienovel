@@ -12,6 +12,11 @@ const userSettingsSchema = z.object({
   imageModel: z.string().optional().nullable(),
   imageApiKey: z.string().optional().nullable(),
   imageBaseUrl: z.string().optional().nullable(),
+  defaultTargetChapters: z.number().optional().nullable(),
+  defaultCharacterCount: z.number().optional().nullable(),
+  defaultWordCount: z.number().optional().nullable(),
+  defaultActsCount: z.number().optional().nullable(),
+  autoGenerateChapters: z.boolean().optional().nullable(),
 });
 
 // 获取用户 AI 配置
@@ -33,6 +38,11 @@ export async function GET() {
         imageModel: true,
         imageApiKey: true,
         imageBaseUrl: true,
+        defaultTargetChapters: true,
+        defaultCharacterCount: true,
+        defaultWordCount: true,
+        defaultActsCount: true,
+        autoGenerateChapters: true,
       },
     });
 
@@ -68,6 +78,11 @@ export async function PATCH(req: Request) {
         imageModel: data.imageModel || null,
         imageApiKey: data.imageApiKey || null,
         imageBaseUrl: data.imageBaseUrl || null,
+        defaultTargetChapters: data.defaultTargetChapters ?? 100,
+        defaultCharacterCount: data.defaultCharacterCount ?? 8,
+        defaultWordCount: data.defaultWordCount ?? 2300,
+        defaultActsCount: data.defaultActsCount ?? 3,
+        autoGenerateChapters: data.autoGenerateChapters ?? false,
       },
       select: {
         aiProvider: true,
@@ -78,6 +93,11 @@ export async function PATCH(req: Request) {
         imageModel: true,
         imageApiKey: true,
         imageBaseUrl: true,
+        defaultTargetChapters: true,
+        defaultCharacterCount: true,
+        defaultWordCount: true,
+        defaultActsCount: true,
+        autoGenerateChapters: true,
       },
     });
 

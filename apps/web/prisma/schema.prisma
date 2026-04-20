@@ -26,6 +26,11 @@ model User {
   tomatoAuthorAvatar String?
   tomatoBoundAt DateTime?
   tomatoBookId String?
+  defaultTargetChapters Int @default(100)
+  defaultCharacterCount Int @default(8)
+  defaultWordCount Int @default(2300)
+  defaultActsCount Int @default(3)
+  autoGenerateChapters Boolean @default(false)
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   projects  Project[]
@@ -64,6 +69,7 @@ model Project {
   characters      Character[]
   outline         Outline?
   chapters        Chapter[]
+  sceneImages     SceneImage[]
 }
 
 model ProjectSettings {

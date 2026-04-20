@@ -72,6 +72,28 @@ export function CreateProjectDialog({ onSuccess }: CreateProjectDialogProps) {
   const [aiStep, setAiStep] = useState<"input" | "select">("input");
   const [hasAiConfig, setHasAiConfig] = useState<boolean | null>(null);
 
+  // 一键生成状态
+  const [enableQuickGenerate, setEnableQuickGenerate] = useState(false);
+  const [quickGenerateKeywords, setQuickGenerateKeywords] = useState("");
+  const [quickGenerateChapters, setQuickGenerateChapters] = useState(100);
+  const [quickGenerateWordCount, setQuickGenerateWordCount] = useState(2300);
+  const [isQuickGenerating, setIsQuickGenerating] = useState(false);
+  const [quickGenerateTaskId, setQuickGenerateTaskId] = useState<string | null>(null);
+  const [quickGenerateProgress, setQuickGenerateProgress] = useState<{
+    currentStep: number;
+    totalSteps: number;
+    currentStepName: string;
+    currentChapter: number;
+    totalChapters: number;
+    successCount: number;
+    status: string;
+  } | null>(null);
+  const [quickGenerateResult, setQuickGenerateResult] = useState<{
+    projectId: string;
+    status: string;
+    message: string;
+  } | null>(null);
+
   // 检查用户是否配置了 AI
   useEffect(() => {
     if (open && tab === "ai") {
@@ -107,7 +129,60 @@ export function CreateProjectDialog({ onSuccess }: CreateProjectDialogProps) {
     setEnableRefineRequirements(true);
     setAiStep("input");
     setTab("ai");
+    setEnableQuickGenerate(false);
+    setQuickGenerateKeywords("");
+    setQuickGenerateChapters(100);
+    setQuickGenerateWordCount(2300);
+    setQuickGenerateTaskId(null);
+    setQuickGenerateProgress(null);
+    setQuickGenerateResult(null);
   };
+
+  // 轮询一键生成进度
+  useEffect(() => {
+    if (!quickGenerateTaskId) return;
+
+    const pollInterval = setInterval(async () => {
+      try {
+        const res = await fetch(`/api/projects/quick-generate/status?taskId=${encodeURIComponent(quickGenerateTaskId)}`);
+        if (!res.ok) return;
+        const data = await res.json();
+        const task = data.task;
+
+        setQuickGenerateProgress({
+          currentStep: task.currentStep,
+          totalSteps: task.totalSteps,
+          currentStepName: task.currentStepName,
+          currentChapter: task.currentChapter,
+          totalChapters: task.totalChapters,
+          successCount: task.successCount,
+          status: task.status,
+        });
+
+        if (task.status === "completed") {
+          clearInterval(pollInterval);
+          setIsQuickGenerating(false);
+          setQuickGenerateResult({
+            projectId: task.projectId,
+            status: "completed",
+            message: `生成完成！已成功生成 ${task.successCount} 个章节`,
+          });
+        } else if (task.status === "failed") {
+          clearInterval(pollInterval);
+          setIsQuickGenerating(false);
+          setQuickGenerateResult({
+            projectId: task.projectId,
+            status: "failed",
+            message: task.error || "生成失败",
+          });
+        }
+      } catch (err) {
+        console.error("获取进度失败:", err);
+      }
+    }, 2000);
+
+    return () => clearInterval(pollInterval);
+  }, [quickGenerateTaskId]);
 
   // 手动创建
   const onManualSubmit = async (data: ManualInput) => {
@@ -202,15 +277,69 @@ export function CreateProjectDialog({ onSuccess }: CreateProjectDialogProps) {
         throw new Error(result.error || "创建失败");
       }
 
+      const data = await response.json();
+      const projectId = data.project.id;
+
       setOpen(false);
       resetAll();
       onSuccess?.();
       router.refresh();
+
+      // 如果启用了一键生成，立即开始
+      if (enableQuickGenerate) {
+        startQuickGenerate(projectId);
+      }
     } catch (error) {
       console.error("创建项目失败:", error);
       alert(error instanceof Error ? error.message : "创建失败", "error");
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  // 开始一键生成
+  const startQuickGenerate = async (projectId: string) => {
+    setIsQuickGenerating(true);
+    setQuickGenerateProgress({
+      currentStep: 0,
+      totalSteps: 3 + quickGenerateChapters,
+      currentStepName: "等待开始",
+      currentChapter: 0,
+      totalChapters: quickGenerateChapters,
+      successCount: 0,
+      status: "pending",
+    });
+
+    try {
+      const response = await fetch(`/api/projects/${projectId}/quick-generate`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          genre: aiGenre,
+          requirements: refinedRequirements || aiRequirements,
+          enableRefineRequirements,
+          titleOption: titleOptions[selectedTitleIndex],
+          generatedDescription,
+          keywords: quickGenerateKeywords,
+          enableRefineKeywords: true,
+          targetChapters: quickGenerateChapters,
+          characterCount: 8,
+          wordCount: quickGenerateWordCount,
+          autoGenerateChapters: true,
+        }),
+      });
+
+      if (!response.ok) {
+        const result = await response.json();
+        throw new Error(result.error || "一键生成启动失败");
+      }
+
+      const data = await response.json();
+      setQuickGenerateTaskId(data.taskId);
+    } catch (error) {
+      console.error("一键生成启动失败:", error);
+      setIsQuickGenerating(false);
+      alert(error instanceof Error ? error.message : "一键生成启动失败", "error");
     }
   };
 
@@ -365,6 +494,110 @@ export function CreateProjectDialog({ onSuccess }: CreateProjectDialogProps) {
                     可以直接编辑修改简介内容
                   </p>
                 </div>
+
+                {/* 一键生成选项 */}
+                <div className="border rounded-lg p-4 space-y-4">
+                  <div className="flex items-center gap-2">
+                    <Checkbox
+                      id="enable-quick-generate"
+                      checked={enableQuickGenerate}
+                      onCheckedChange={(checked) => setEnableQuickGenerate(checked === true)}
+                      disabled={isLoading || isQuickGenerating}
+                    />
+                    <Label htmlFor="enable-quick-generate" className="cursor-pointer font-medium">
+                      启用一键全自动生成
+                    </Label>
+                  </div>
+
+                  {enableQuickGenerate && (
+                    <div className="space-y-3 pl-6 border-l-2 border-muted">
+                      <div className="grid grid-cols-2 gap-3">
+                        <div className="space-y-1">
+                          <Label className="text-xs">目标章节数</Label>
+                          <Input
+                            type="number"
+                            min={10}
+                            max={1000}
+                            value={quickGenerateChapters}
+                            onChange={(e) => setQuickGenerateChapters(Number(e.target.value))}
+                            disabled={isQuickGenerating}
+                          />
+                        </div>
+                        <div className="space-y-1">
+                          <Label className="text-xs">每章字数</Label>
+                          <Input
+                            type="number"
+                            min={1000}
+                            max={5000}
+                            step={100}
+                            value={quickGenerateWordCount}
+                            onChange={(e) => setQuickGenerateWordCount(Number(e.target.value))}
+                            disabled={isQuickGenerating}
+                          />
+                        </div>
+                      </div>
+                      <div className="space-y-1">
+                        <Label className="text-xs">设定关键词（可选）</Label>
+                        <Input
+                          placeholder="如：修仙、废柴逆袭、宗门争斗..."
+                          value={quickGenerateKeywords}
+                          onChange={(e) => setQuickGenerateKeywords(e.target.value)}
+                          disabled={isQuickGenerating}
+                        />
+                        <p className="text-xs text-muted-foreground">
+                          提供关键词可让核心设定更精准
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* 进度显示 */}
+                {isQuickGenerating && quickGenerateProgress && (
+                  <div className="border rounded-lg p-4 bg-muted/50">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-sm font-medium">
+                        {quickGenerateProgress.currentStepName}
+                      </span>
+                      <span className="text-xs text-muted-foreground">
+                        {quickGenerateProgress.status === "running" ? "进行中" : quickGenerateProgress.status}
+                      </span>
+                    </div>
+                    <div className="w-full bg-secondary rounded-full h-2 mb-2">
+                      <div
+                        className="bg-primary rounded-full h-2 transition-all"
+                        style={{
+                          width: `${(quickGenerateProgress.currentStep / quickGenerateProgress.totalSteps) * 100}%`,
+                        }}
+                      />
+                    </div>
+                    <div className="flex justify-between text-xs text-muted-foreground">
+                      <span>步骤 {quickGenerateProgress.currentStep} / {quickGenerateProgress.totalSteps}</span>
+                      {quickGenerateProgress.currentChapter > 0 && (
+                        <span>
+                          第 {quickGenerateProgress.currentChapter} 章 ({quickGenerateProgress.successCount} 已完成)
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {/* 生成结果 */}
+                {quickGenerateResult && (
+                  <div className={`border rounded-lg p-4 ${quickGenerateResult.status === "completed" ? "bg-green-50 border-green-200" : "bg-red-50 border-red-200"}`}>
+                    <p className={`text-sm font-medium ${quickGenerateResult.status === "completed" ? "text-green-700" : "text-red-700"}`}>
+                      {quickGenerateResult.message}
+                    </p>
+                    {quickGenerateResult.projectId && (
+                      <Button asChild variant="link" className="mt-2 h-auto p-0">
+                        <Link href={`/projects/${quickGenerateResult.projectId}`}>
+                          打开项目查看
+                        </Link>
+                      </Button>
+                    )}
+                  </div>
+                )}
+
                 <DialogFooter className="flex justify-between sm:justify-between">
                   <Button
                     type="button"
@@ -375,7 +608,7 @@ export function CreateProjectDialog({ onSuccess }: CreateProjectDialogProps) {
                       setSelectedTitleIndex(-1);
                       setGeneratedDescription("");
                     }}
-                    disabled={isLoading || isGenerating}
+                    disabled={isLoading || isGenerating || isQuickGenerating}
                   >
                     <RefreshCw className="mr-2 h-4 w-4" />
                     重新生成
@@ -385,15 +618,15 @@ export function CreateProjectDialog({ onSuccess }: CreateProjectDialogProps) {
                       type="button"
                       variant="outline"
                       onClick={() => setOpen(false)}
-                      disabled={isLoading}
+                      disabled={isLoading || isQuickGenerating}
                     >
                       取消
                     </Button>
                     <Button
                       onClick={handleAiCreate}
-                      disabled={isLoading || selectedTitleIndex < 0}
+                      disabled={isLoading || selectedTitleIndex < 0 || isQuickGenerating}
                     >
-                      {isLoading ? "创建中..." : "确认创建"}
+                      {isLoading ? "创建中..." : enableQuickGenerate ? "创建并一键生成" : "确认创建"}
                     </Button>
                   </div>
                 </DialogFooter>

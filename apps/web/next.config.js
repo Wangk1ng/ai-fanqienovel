@@ -9,10 +9,13 @@ const nextConfig = {
     ],
   },
   experimental: {
-    instrumentationHook: true,
     serverActions: {
       bodySizeLimit: '2mb',
     },
+  },
+  serverExternalPackages: ['@prisma/client', 'bcryptjs'],
+  env: {
+    AUTH_TRUST_HOST: 'true',
   },
 };
 
