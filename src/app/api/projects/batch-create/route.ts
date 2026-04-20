@@ -3,13 +3,8 @@ import { logger } from "@/lib/logger";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { generateObject, generateText, resolveAIConfig } from "@/lib/ai";
-import { buildSettingsPrompt, buildRefineSettingsKeywordsPrompt } from "@/lib/prompts";
-import { buildCharacterPlanPrompt } from "@/lib/prompts";
-import { buildOutlinePrompt } from "@/lib/prompts";
-import { buildChapterSystemPrompt, buildChapterUserPrompt } from "@/lib/prompts";
-import { settingsSchema, characterPlanSchema, outlineSchema, chapterSchema, projectGenerateSchema } from "@/lib/schemas";
-import { generateObjectFromMessages, inferModelContextLimit } from "@/lib/ai";
-import { buildChapterContext, contextToConversationMessages } from "@/lib/context-manager";
+import { buildRefineRequirementsPrompt, buildProjectPrompt } from "@/lib/prompts";
+import { projectGenerateSchema } from "@/lib/schemas";
 import { z } from "zod";
 
 const batchCreateSchema = z.object({
@@ -29,50 +24,87 @@ async function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function fetchWithRetry<T>(
-  url: string,
-  options: RequestInit,
+function getBaseUrl(req: Request): string {
+  const origin = req.headers.get("origin") || new URL(req.url).origin;
+  return origin;
+}
+
+async function apiFetch(
+  req: Request,
+  path: string,
+  body: any,
   maxRetries = 3,
   baseDelay = 30000
-): Promise<T> {
+): Promise<{ ok: boolean; data: any }> {
+  const baseUrl = getBaseUrl(req);
+  const url = `${baseUrl}${path}`;
+
   for (let attempt = 0; attempt < maxRetries; attempt++) {
     try {
-      const response = await fetch(url, options);
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          cookie: req.headers.get("cookie") || "",
+        },
+        body: JSON.stringify(body),
+      });
+
+      const data = await response.json().catch(() => ({}));
+
       if (response.ok) {
-        return await response.json();
+        return { ok: true, data };
       }
-      
-      const errorData = await response.json().catch(() => ({}));
-      const errorMessage = errorData.error || `HTTP ${response.status}`;
-      
+
+      const errorMsg = data.error || `HTTP ${response.status}`;
+
       if (response.status >= 500 || response.status === 429) {
         if (attempt < maxRetries - 1) {
           const delay = baseDelay * Math.pow(2, attempt);
-          logger.info(`API 请求失败，${delay/1000}秒后重试 (${attempt + 1}/${maxRetries})`, { errorMessage });
+          logger.info(`API ${path} 失败，${delay/1000}秒后重试 (${attempt + 1}/${maxRetries})`, { errorMsg });
           await sleep(delay);
           continue;
         }
       }
-      
-      throw new Error(errorMessage);
+
+      throw new Error(errorMsg);
     } catch (error) {
       if (attempt === maxRetries - 1) throw error;
       const delay = baseDelay * Math.pow(2, attempt);
-      logger.info(`请求异常，${delay/1000}秒后重试 (${attempt + 1}/${maxRetries})`, { error });
+      logger.info(`API ${path} 异常，${delay/1000}秒后重试 (${attempt + 1}/${maxRetries})`, { error });
       await sleep(delay);
     }
   }
   throw new Error("达到最大重试次数");
 }
 
-function normalizeAge(age: unknown): number | null {
-  if (age === null || age === undefined || age === "") return null;
-  if (typeof age === "number" && Number.isInteger(age)) return age;
-  if (typeof age === "string") {
-    const parsed = Number.parseInt(age, 10);
-    return Number.isInteger(parsed) ? parsed : null;
+async function generateWithRetry<T>(
+  generateFn: () => Promise<T>,
+  maxRetries = 3,
+  baseDelay = 30000
+): Promise<T> {
+  for (let attempt = 0; attempt < maxRetries; attempt++) {
+    try {
+      return await generateFn();
+    } catch (error) {
+      const errorMsg = error instanceof Error ? error.message : String(error);
+      const isRetryable =
+        errorMsg.includes("429") ||
+        errorMsg.includes("500") ||
+        errorMsg.includes("rate limit") ||
+        errorMsg.includes("timeout") ||
+        errorMsg.includes("ECONNRESET");
+
+      if (isRetryable && attempt < maxRetries - 1) {
+        const delay = baseDelay * Math.pow(2, attempt);
+        logger.info(`AI 生成失败，${delay / 1000}秒后重试 (${attempt + 1}/${maxRetries})`, { errorMsg });
+        await sleep(delay);
+      } else {
+        throw error;
+      }
+    }
   }
-  return null;
+  throw new Error("达到最大重试次数");
 }
 
 export async function POST(req: Request) {
@@ -83,7 +115,7 @@ export async function POST(req: Request) {
     }
 
     const body = await req.json();
-    const { targetChapters = 50, wordCount = 2300 } = batchCreateSchema.parse(body);
+    const { targetChapters = 15, wordCount = 1000 } = batchCreateSchema.parse(body);
 
     const user = await prisma.user.findUnique({ where: { id: session.user.id } });
     if (!user) {
@@ -94,40 +126,40 @@ export async function POST(req: Request) {
 
     logger.info("开始自动生成项目", { userId: session.user.id });
 
-    // 1. 随机选择热门类型并生成创作需求
     const randomGenre = HOT_GENRES[Math.floor(Math.random() * HOT_GENRES.length)];
-    
-    let generatedData: {
-      titles?: Array<{ title: string; reason?: string }>;
-      description?: string;
-      refinedRequirements?: string;
-      usedRequirements?: string;
-    };
+    const requirementsPrompt = `从以下热门类型中随机选择创作一个吸引人且大胆的脑洞：${HOT_GENRES.join("、")}。角色姓名不要带有：${EXCLUDED_NAMES.join("、")}`;
+
+    logger.info("随机类型已选择", { randomGenre });
+
+    let refinedRequirements = "";
+    let title = "";
+    let description = "";
 
     try {
-      generatedData = await fetchWithRetry(
-        "/api/projects/generate",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            genre: randomGenre,
-            requirements: `从以下热门类型中随机选择创作一个吸引人且大胆的脑洞：${HOT_GENRES.join("、")}。角色姓名不要带有：${EXCLUDED_NAMES.join("、")}`,
-            enableRefineRequirements: true,
-          }),
-        },
-        3,
-        30000
-      );
+      refinedRequirements = await generateWithRetry(async () => {
+        const prompt = buildRefineRequirementsPrompt({ genre: randomGenre, requirements: requirementsPrompt });
+        return generateText(prompt, { ...aiConfig, temperature: 0.7 });
+      }, 3, 30000);
+      logger.info("创作需求优化完成", { refinedLength: refinedRequirements.length });
     } catch (error) {
-      logger.error("生成创作方案失败", { error });
+      logger.error("优化创作需求失败", { error });
       return NextResponse.json({ error: "生成创作方案失败，请重试" }, { status: 500 });
     }
 
-    const title = generatedData.titles?.[0]?.title || `${randomGenre}小说`;
-    const description = generatedData.description || "";
+    try {
+      const parsed = await generateWithRetry(async () => {
+        const prompt = buildProjectPrompt({ genre: randomGenre, requirements: refinedRequirements });
+        return generateObject(prompt, projectGenerateSchema, { ...aiConfig, temperature: 0.9 });
+      }, 3, 30000);
+      title = parsed.titles?.[0]?.title || `${randomGenre}小说`;
+      description = parsed.description || "";
+      logger.info("标题和简介生成成功", { title, descriptionLength: description.length });
+    } catch (error) {
+      logger.error("生成标题和简介失败", { error });
+      title = `${randomGenre}小说_${Date.now()}`;
+      description = "";
+    }
 
-    // 2. 创建项目
     const project = await prisma.project.create({
       data: {
         title,
@@ -139,59 +171,32 @@ export async function POST(req: Request) {
 
     logger.info("项目创建成功", { projectId: project.id, title });
 
-    // 3. 生成核心设定
     try {
-      await fetchWithRetry(
-        `/api/projects/${project.id}/settings`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            keywords: generatedData.refinedRequirements || generatedData.usedRequirements || "",
-            enableRefineKeywords: true,
-          }),
-        },
-        3,
-        30000
-      );
+      const result = await apiFetch(req, `/api/projects/${project.id}/settings`, {
+        keywords: refinedRequirements,
+        enableRefineKeywords: true,
+      }, 3, 30000);
+      logger.info("核心设定生成成功");
     } catch (error) {
       logger.error("生成核心设定失败", { projectId: project.id, error });
       await prisma.project.delete({ where: { id: project.id } });
       return NextResponse.json({ error: "生成核心设定失败" }, { status: 500 });
     }
 
-    // 4. 批量生成角色
     try {
-      await fetchWithRetry(
-        `/api/projects/${project.id}/characters/batch-generate`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            characterCount: 8,
-            clearExisting: false,
-          }),
-        },
-        3,
-        30000
-      );
+      await apiFetch(req, `/api/projects/${project.id}/characters/batch-generate`, {
+        characterCount: 8,
+        clearExisting: false,
+      }, 3, 30000);
+      logger.info("角色生成成功");
     } catch (error) {
       logger.warn("生成角色失败，继续执行", { projectId: project.id, error });
     }
 
-    // 5. 生成大纲
-    let outlineData: { outline?: { structure: any[]; plotPoints?: any[] } };
+    let outlineData: { outline?: { structure: any[]; plotPoints?: any[] } } = {};
     try {
-      outlineData = await fetchWithRetry(
-        `/api/projects/${project.id}/outline`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ targetChapters }),
-        },
-        3,
-        45000
-      );
+      const result = await apiFetch(req, `/api/projects/${project.id}/outline`, { targetChapters }, 3, 45000);
+      outlineData = result.data;
     } catch (error) {
       logger.error("生成大纲失败", { projectId: project.id, error });
       await prisma.project.delete({ where: { id: project.id } });
@@ -205,14 +210,12 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "生成大纲结构为空" }, { status: 500 });
     }
 
-    // 6. 生成章节
     const acts = outline.structure;
     let chapterIndex = 0;
-    const maxRetries = 2;
 
     for (const act of acts) {
       if (!act.chapterRange) continue;
-      
+
       const rangeMatch = act.chapterRange.match(/第(\d+)-(\d+)章/);
       if (!rangeMatch) continue;
 
@@ -221,44 +224,33 @@ export async function POST(req: Request) {
 
       for (let chapterNumber = startChapter; chapterNumber <= endChapter; chapterNumber++) {
         chapterIndex++;
-        
+
         let success = false;
-        for (let retry = 0; retry <= maxRetries; retry++) {
+        for (let retry = 0; retry <= 2; retry++) {
           try {
-            const chapterResponse = await fetch(`/api/projects/${project.id}/chapters`, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
+            const result = await apiFetch(
+              req,
+              `/api/projects/${project.id}/chapters`,
+              {
                 actNumber: act.actNumber,
                 chapterNumber,
                 wordCount,
                 versionCount: 1,
                 autoSelectBest: false,
                 scoreThreshold: 70,
-              }),
-            });
-
-            if (chapterResponse.ok) {
-              success = true;
-              break;
-            }
-
-            const errorData = await chapterResponse.json().catch(() => ({}));
-            const errorMsg = errorData.error || `HTTP ${chapterResponse.status}`;
-            
-            if (chapterResponse.status >= 500 || chapterResponse.status === 429) {
-              if (retry < maxRetries) {
-                const delay = 60000 * Math.pow(2, retry);
-                logger.info(`生成章节 ${chapterNumber} 失败，${delay/1000}秒后重试`, { retry });
-                await sleep(delay);
-                continue;
-              }
-            }
-            
-            throw new Error(errorMsg);
+              },
+              3,
+              60000
+            );
+            success = true;
+            break;
           } catch (error) {
-            if (retry === maxRetries) {
+            if (retry === 2) {
               logger.error(`生成章节 ${chapterNumber} 最终失败`, { error });
+            } else {
+              const delay = 60000 * Math.pow(2, retry);
+              logger.info(`生成章节 ${chapterNumber} 失败，${delay / 1000}秒后重试`, { retry });
+              await sleep(delay);
             }
           }
         }

@@ -39,8 +39,8 @@ export function CreateProjectDialog({ onSuccess }: CreateProjectDialogProps) {
   // 批量创建配置
   const [threadCount, setThreadCount] = useState(3);
   const [projectCount, setProjectCount] = useState(5);
-  const [targetChapters, setTargetChapters] = useState(50);
-  const [wordCount, setWordCount] = useState(2300);
+  const [targetChapters, setTargetChapters] = useState(15);
+  const [wordCount, setWordCount] = useState(1000);
 
   // 批量创建状态
   const [batchStatus, setBatchStatus] = useState<"idle" | "creating" | "completed">("idle");
