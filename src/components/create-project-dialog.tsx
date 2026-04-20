@@ -42,10 +42,10 @@ export function CreateProjectDialog({ onSuccess }: CreateProjectDialogProps) {
   const [isCreating, setIsCreating] = useState(false);
   const [hasAiConfig, setHasAiConfig] = useState<boolean | null>(null);
 
-  const [targetChapters, setTargetChapters] = useState(100);
   const [firstBatchChapters, setFirstBatchChapters] = useState(15);
   const [wordCount, setWordCount] = useState(1000);
   const [projectCount, setProjectCount] = useState(1);
+  const [threadCount, setThreadCount] = useState(3);
 
   const [tasks, setTasks] = useState<TaskStatus[]>([]);
 
@@ -72,16 +72,20 @@ export function CreateProjectDialog({ onSuccess }: CreateProjectDialogProps) {
   }, []);
 
   const handleCreate = async () => {
-    if (targetChapters < 10 || targetChapters > 1000) {
-      alert("章节数必须在 10-1000 之间", "warning");
+    if (firstBatchChapters < 5 || firstBatchChapters > 50) {
+      alert("首批章节数必须在 5-50 之间", "warning");
       return;
     }
     if (wordCount < 500 || wordCount > 5000) {
       alert("每章字数必须在 500-5000 之间", "warning");
       return;
     }
-    if (projectCount < 1 || projectCount > 10) {
-      alert("项目数必须在 1-10 之间", "warning");
+    if (projectCount < 1 || projectCount > 100) {
+      alert("项目数必须在 1-100 之间", "warning");
+      return;
+    }
+    if (threadCount < 1 || threadCount > 10) {
+      alert("并发线程数必须在 1-10 之间", "warning");
       return;
     }
 
@@ -89,47 +93,70 @@ export function CreateProjectDialog({ onSuccess }: CreateProjectDialogProps) {
     setTasks([]);
 
     try {
-      const newTasks: TaskStatus[] = [];
-      
-      for (let i = 0; i < projectCount; i++) {
-        try {
-          const response = await fetch("/api/projects/batch-create", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              targetChapters,
-              wordCount,
-            }),
-          });
+      let taskIndex = 0;
+      const results: TaskStatus[] = [];
+      const lock = new Set<number>();
 
-          if (!response.ok) {
-            const data = await response.json().catch(() => ({}));
-            throw new Error(data.error || "创建失败");
+      const createTask = async (): Promise<void> => {
+        while (true) {
+          if (lock.size >= threadCount) {
+            await new Promise((resolve) => setTimeout(resolve, 1000));
+            continue;
           }
+          
+          const currentIndex = taskIndex++;
+          if (currentIndex >= projectCount) break;
+          
+          lock.add(currentIndex);
+          
+          try {
+            const response = await fetch("/api/projects/batch-create", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                firstBatchChapters,
+                wordCount,
+              }),
+            });
 
-          const data = await response.json();
-          newTasks.push({
-            taskId: data.taskId,
-            status: "pending",
-            currentStep: "等待开始",
-            stepProgress: 0,
-            completedChapters: 0,
-            targetChapters,
-          });
-        } catch (error) {
-          newTasks.push({
-            taskId: `failed_${i}`,
-            status: "failed",
-            currentStep: "创建失败",
-            stepProgress: 0,
-            completedChapters: 0,
-            targetChapters,
-            errorMessage: error instanceof Error ? error.message : "创建失败",
-          });
+            if (!response.ok) {
+              const data = await response.json().catch(() => ({}));
+              throw new Error(data.error || "创建失败");
+            }
+
+            const data = await response.json();
+            results[currentIndex] = {
+              taskId: data.taskId,
+              status: "pending",
+              currentStep: "等待开始",
+              stepProgress: 0,
+              completedChapters: 0,
+              targetChapters: 100,
+            };
+          } catch (error) {
+            results[currentIndex] = {
+              taskId: `failed_${currentIndex}`,
+              status: "failed",
+              currentStep: "创建失败",
+              stepProgress: 0,
+              completedChapters: 0,
+              targetChapters: 100,
+              errorMessage: error instanceof Error ? error.message : "创建失败",
+            };
+          } finally {
+            lock.delete(currentIndex);
+          }
+          
+          setTasks([...results].filter(Boolean));
         }
-      }
+      };
 
-      setTasks(newTasks);
+      const workers = [];
+      for (let i = 0; i < threadCount; i++) {
+        workers.push(createTask());
+      }
+      
+      await Promise.all(workers);
 
     } catch (error) {
       alert(error instanceof Error ? error.message : "创建失败", "error");
@@ -232,22 +259,22 @@ export function CreateProjectDialog({ onSuccess }: CreateProjectDialogProps) {
 
         {tasks.length === 0 && (
           <div className="space-y-4 py-4">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-3 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="projectCount">项目数量</Label>
                 <Input
                   id="projectCount"
                   type="number"
                   min={1}
-                  max={10}
+                  max={100}
                   value={projectCount}
                   onChange={(e) => setProjectCount(Number(e.target.value))}
                   disabled={isCreating}
                 />
-                <p className="text-xs text-muted-foreground">1-10 个项目</p>
+                <p className="text-xs text-muted-foreground">1-100 个项目</p>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="firstBatchChapters">首批生成章节</Label>
+                <Label htmlFor="firstBatchChapters">首批章节</Label>
                 <Input
                   id="firstBatchChapters"
                   type="number"
@@ -257,23 +284,7 @@ export function CreateProjectDialog({ onSuccess }: CreateProjectDialogProps) {
                   onChange={(e) => setFirstBatchChapters(Number(e.target.value))}
                   disabled={isCreating}
                 />
-                <p className="text-xs text-muted-foreground">投稿测试章节数</p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="targetChapters">最终目标章节</Label>
-                <Input
-                  id="targetChapters"
-                  type="number"
-                  min={firstBatchChapters}
-                  max={1000}
-                  value={targetChapters}
-                  onChange={(e) => setTargetChapters(Number(e.target.value))}
-                  disabled={isCreating}
-                />
-                <p className="text-xs text-muted-foreground">100章（过签后续写）</p>
+                <p className="text-xs text-muted-foreground">投稿测试</p>
               </div>
               <div className="space-y-2">
                 <Label htmlFor="wordCount">每章字数</Label>
@@ -287,7 +298,20 @@ export function CreateProjectDialog({ onSuccess }: CreateProjectDialogProps) {
                   onChange={(e) => setWordCount(Number(e.target.value))}
                   disabled={isCreating}
                 />
-                <p className="text-xs text-muted-foreground">默认 1000 字</p>
+                <p className="text-xs text-muted-foreground">默认1000字</p>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="threadCount">并发线程</Label>
+                <Input
+                  id="threadCount"
+                  type="number"
+                  min={1}
+                  max={10}
+                  value={threadCount}
+                  onChange={(e) => setThreadCount(Number(e.target.value))}
+                  disabled={isCreating}
+                />
+                <p className="text-xs text-muted-foreground">同时运行数</p>
               </div>
             </div>
 
@@ -297,7 +321,7 @@ export function CreateProjectDialog({ onSuccess }: CreateProjectDialogProps) {
                 <li>1. AI 自动生成热门小说类型和创作需求</li>
                 <li>2. 自动创建项目并生成核心设定</li>
                 <li>3. 自动批量生成角色体系</li>
-                <li>4. 自动生成完整大纲（{targetChapters}章）</li>
+                <li>4. 自动生成完整大纲（100章规模）</li>
                 <li>5. 首批生成 {firstBatchChapters} 章，过签后续写</li>
               </ul>
             </div>
