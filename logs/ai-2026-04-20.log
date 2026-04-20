@@ -1,0 +1,68 @@
+[2026-04-20T18:35:47.441Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 994
+}
+[2026-04-20T18:36:18.025Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 450,
+  "textHead": "{\n  \"titles\": [\n    {\n      \"title\": \"模拟器：弟子皆想杀我\",\n      \"reason\": \"直击痛点，悬念拉满\"\n    },\n    {\n      \"title\": \"全员背叛？我强行改命\",\n      \"reason\": \"爽文风，体现主角掌控力\"\n    },\n    {\n      \"title\": \"为了弟子，我成了魔头\",\n      \"reason\": \"反差感，突出父爱如山\"\n    }\n  ],\n  \"description\": \"当魔宗废柴少主觉醒模拟器，看到的却是全员背叛的必死结局。\\n天道降下剧情杀？想让我众叛亲离？\\n陈"
+}
+[2026-04-20T18:36:18.026Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "titles",
+    "description"
+  ]
+}
+[2026-04-20T18:36:51.833Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1104
+}
+[2026-04-20T18:38:16.880Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 1531,
+  "textHead": "{\n  \"worldView\": \"这是一个名为“万灵牧场”的高维养殖场。世界被划分为无数个“界域”，每个界域都是独立的围栏。所谓的“天道”并非自然意志，而是高维牧羊人留下的自动化收割程序。为了收割最高纯度的“因果能量”，天道会编写充满悲剧、背叛与绝望的“命运剧本”，强行降下“剧情杀”诱导修真者走向毁灭。每当一个“大宗师”级别的角色在极致的痛苦中陨落，天道便能收集到足以维持世界运转的能量。陈荒所在的“血浮屠宗”正是被标记为“特级悲剧素材”的牧场，注定要在少主陈荒的大婚之日遭遇全员背叛，最终灰飞烟灭，为天道献祭极致的怨气。在这个世界，自由意志是最大的谎言，所有人都只是剧本中的提线木偶。\",\n  "
+}
+[2026-04-20T18:38:16.881Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "worldView",
+    "coreConflict",
+    "powerSystem",
+    "factions",
+    "specialRules"
+  ]
+}
+[2026-04-20T18:38:16.888Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1530
+}
+[2026-04-20T18:39:43.565Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 5213,
+  "textHead": "{\n  \"characters\": [\n    {\n      \"name\": \"陈荒\",\n      \"role\": \"protagonist\",\n      \"age\": 24,\n      \"gender\": \"男\",\n      \"appearance\": \"面容苍白俊美，常穿一袭染血的素白长袍。看似文弱书生，实则眼神深邃如渊，周身萦绕着一种令人窒息的掌控感，指尖常把玩着一枚名为“因果轮”的黑色玉简。\",\n      \"personality\": [\"极度理智\", \"掌控欲强\", \"伪装大师\"],\n      \"background\": \"血浮屠宗少主，原剧本中的终极祭品。觉醒“因果模"
+}
+[2026-04-20T18:39:43.566Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "characters",
+    "relationships"
+  ]
+}
+[2026-04-20T18:39:43.595Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 3180
+}
+[2026-04-20T18:41:12.380Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 3709,
+  "textHead": "{\n  \"acts\": [\n    {\n      \"actNumber\": 1,\n      \"title\": \"觉醒与重塑\",\n      \"chapterRange\": \"第1-5章\",\n      \"description\": \"陈荒觉醒因果模拟器，预知到大婚之日全员背叛的必死结局。为了对抗天道收割逻辑，他放弃原本的仁慈，利用模拟器寻找弟子心理漏洞，开始对大弟子谢无妄和二弟子苏红衣进行残酷而高效的“爱的改造”，将他们重塑为狂热的护道者。\",\n      \"plotSegments\": [\n        {\n          \"title\": \"必死的剧本\",\n          \""
+}

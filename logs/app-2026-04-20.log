@@ -1,0 +1,83 @@
+[2026-04-20T17:58:18.609Z] [INFO] 应用启动
+{
+  "runtime": "nodejs",
+  "env": "development"
+}
+[2026-04-20T18:04:28.599Z] [INFO] 应用启动
+{
+  "runtime": "nodejs",
+  "env": "production"
+}
+[2026-04-20T18:07:01.149Z] [INFO] 应用启动
+{
+  "runtime": "nodejs",
+  "env": "production"
+}
+[2026-04-20T18:07:05.154Z] [INFO] 应用启动
+{
+  "runtime": "nodejs",
+  "env": "production"
+}
+[2026-04-20T18:07:07.391Z] [INFO] 应用启动
+{
+  "runtime": "nodejs",
+  "env": "production"
+}
+[2026-04-20T18:19:58.791Z] [INFO] 应用启动
+{
+  "runtime": "nodejs",
+  "env": "production"
+}
+[2026-04-20T18:24:09.476Z] [INFO] 应用启动
+{
+  "runtime": "nodejs",
+  "env": "production"
+}
+[2026-04-20T18:26:51.430Z] [INFO] 应用启动
+{
+  "runtime": "nodejs",
+  "env": "production"
+}
+[2026-04-20T18:27:59.948Z] [INFO] 应用启动
+{
+  "runtime": "nodejs",
+  "env": "production"
+}
+[2026-04-20T18:28:58.382Z] [INFO] 应用启动
+{
+  "runtime": "nodejs",
+  "env": "production"
+}
+[2026-04-20T18:30:18.010Z] [INFO] 应用启动
+{
+  "runtime": "nodejs",
+  "env": "production"
+}
+[2026-04-20T18:30:35.825Z] [INFO] 应用启动
+{
+  "runtime": "nodejs",
+  "env": "production"
+}
+[2026-04-20T18:30:47.158Z] [INFO] 应用启动
+{
+  "runtime": "nodejs",
+  "env": "production"
+}
+[2026-04-20T18:34:02.987Z] [INFO] 开始优化用户需求
+{
+  "genre": "玄幻",
+  "requirementsLength": 63
+}
+[2026-04-20T18:35:47.441Z] [INFO] 需求优化完成
+{
+  "refinedLength": 227
+}
+[2026-04-20T18:38:16.887Z] [INFO] 一键生成：核心设定完成
+{
+  "projectId": "cmo7jdwzi00023j9gs6yqjhow"
+}
+[2026-04-20T18:39:43.593Z] [INFO] 一键生成：角色生成完成
+{
+  "projectId": "cmo7jdwzi00023j9gs6yqjhow",
+  "count": 8
+}
