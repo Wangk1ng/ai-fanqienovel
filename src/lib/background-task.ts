@@ -143,17 +143,12 @@ export async function executeGenerationTask(taskId: string) {
 
   const aiConfig = resolveAIConfig(null, user);
   
-  const session = await prisma.session.findFirst({
-    where: { userId: task.userId },
-    orderBy: { createdAt: "desc" },
-  });
-  
-  if (!session) {
+  if (!task.sessionCookie) {
     await updateTask(taskId, { status: "failed", errorMessage: "用户会话不存在" });
     return;
   }
 
-  const cookie = `next-auth.session-token=${session.token}`;
+  const cookie = `next-auth.session-token=${task.sessionCookie}`;
 
   const { targetChapters, wordCount } = task;
   const randomGenre = HOT_GENRES[Math.floor(Math.random() * HOT_GENRES.length)];

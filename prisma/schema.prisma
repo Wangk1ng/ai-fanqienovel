@@ -171,6 +171,7 @@ model SceneImage {
 model GenerationTask {
   id            String   @id @default(cuid())
   userId        String
+  sessionCookie String?                     // 存储用户 session cookie
   projectId     String?
   status        String   @default("pending") // pending, running, completed, failed
   currentStep   String   @default("初始化")   // 当前步骤

@@ -10,6 +10,19 @@ const batchCreateSchema = z.object({
   wordCount: z.number().min(1000).max(5000).optional().default(1000),
 });
 
+function extractSessionCookie(req: Request): string | null {
+  const cookieHeader = req.headers.get("cookie");
+  if (!cookieHeader) return null;
+
+  const cookies = cookieHeader.split(";").map((c) => c.trim());
+  for (const cookie of cookies) {
+    if (cookie.startsWith("next-auth.session-token=")) {
+      return cookie.substring("next-auth.session-token=".length);
+    }
+  }
+  return null;
+}
+
 export async function POST(req: Request) {
   try {
     const session = await auth();
@@ -25,11 +38,14 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "用户不存在" }, { status: 404 });
     }
 
+    const sessionCookie = extractSessionCookie(req);
+
     logger.info("创建批量生成任务", { userId: session.user.id, targetChapters, wordCount });
 
     const task = await prisma.generationTask.create({
       data: {
         userId: session.user.id,
+        sessionCookie,
         status: "pending",
         currentStep: "等待开始",
         stepProgress: 0,
