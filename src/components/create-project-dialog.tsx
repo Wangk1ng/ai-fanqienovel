@@ -42,7 +42,8 @@ export function CreateProjectDialog({ onSuccess }: CreateProjectDialogProps) {
   const [isCreating, setIsCreating] = useState(false);
   const [hasAiConfig, setHasAiConfig] = useState<boolean | null>(null);
 
-  const [targetChapters, setTargetChapters] = useState(15);
+  const [targetChapters, setTargetChapters] = useState(100);
+  const [firstBatchChapters, setFirstBatchChapters] = useState(15);
   const [wordCount, setWordCount] = useState(1000);
   const [projectCount, setProjectCount] = useState(1);
 
@@ -246,21 +247,34 @@ export function CreateProjectDialog({ onSuccess }: CreateProjectDialogProps) {
                 <p className="text-xs text-muted-foreground">1-10 个项目</p>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="targetChapters">目标章节数</Label>
+                <Label htmlFor="firstBatchChapters">首批生成章节</Label>
+                <Input
+                  id="firstBatchChapters"
+                  type="number"
+                  min={5}
+                  max={50}
+                  value={firstBatchChapters}
+                  onChange={(e) => setFirstBatchChapters(Number(e.target.value))}
+                  disabled={isCreating}
+                />
+                <p className="text-xs text-muted-foreground">投稿测试章节数</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="targetChapters">最终目标章节</Label>
                 <Input
                   id="targetChapters"
                   type="number"
-                  min={10}
+                  min={firstBatchChapters}
                   max={1000}
                   value={targetChapters}
                   onChange={(e) => setTargetChapters(Number(e.target.value))}
                   disabled={isCreating}
                 />
-                <p className="text-xs text-muted-foreground">每项目章节数</p>
+                <p className="text-xs text-muted-foreground">100章（过签后续写）</p>
               </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="wordCount">每章字数</Label>
                 <Input
@@ -283,8 +297,8 @@ export function CreateProjectDialog({ onSuccess }: CreateProjectDialogProps) {
                 <li>1. AI 自动生成热门小说类型和创作需求</li>
                 <li>2. 自动创建项目并生成核心设定</li>
                 <li>3. 自动批量生成角色体系</li>
-                <li>4. 自动生成大纲结构</li>
-                <li>5. 自动生成所有章节内容</li>
+                <li>4. 自动生成完整大纲（{targetChapters}章）</li>
+                <li>5. 首批生成 {firstBatchChapters} 章，过签后续写</li>
               </ul>
             </div>
           </div>

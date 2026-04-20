@@ -384,7 +384,7 @@ export async function executeGenerationTask(taskId: string) {
 
   const aiConfig = resolveAIConfig(null, user);
 
-  const { targetChapters, wordCount } = task;
+  const { targetChapters, firstBatchChapters, wordCount } = task;
   const randomGenre = HOT_GENRES[Math.floor(Math.random() * HOT_GENRES.length)];
   const requirementsPrompt = `从以下热门类型中随机选择创作一个吸引人且大胆的脑洞：${HOT_GENRES.join("、")}。角色姓名不要带有：${EXCLUDED_NAMES.join("、")}`;
 
@@ -493,12 +493,6 @@ export async function executeGenerationTask(taskId: string) {
 
     await updateTask(taskId, { currentStep: "生成章节", stepProgress: 55 });
 
-    const totalChapters = outline.reduce((sum: number, act: any) => {
-      const rangeMatch = act.chapterRange?.match(/第(\d+)-(\d+)章/);
-      if (!rangeMatch) return sum;
-      return sum + (parseInt(rangeMatch[2]) - parseInt(rangeMatch[1]) + 1);
-    }, 0);
-
     let completedChapters = 0;
 
     for (const act of outline) {
@@ -511,11 +505,16 @@ export async function executeGenerationTask(taskId: string) {
       const endChapter = parseInt(rangeMatch[2]);
 
       for (let chapterNumber = startChapter; chapterNumber <= endChapter; chapterNumber++) {
+        if (completedChapters >= firstBatchChapters) {
+          logger.info("首批章节生成完成", { completedChapters, firstBatchChapters });
+          break;
+        }
+        
         completedChapters++;
 
-        const progress = Math.floor(55 + (completedChapters / totalChapters) * 40);
+        const progress = Math.floor(55 + (completedChapters / firstBatchChapters) * 40);
         await updateTask(taskId, {
-          currentStep: `生成章节 ${chapterNumber}/${totalChapters}`,
+          currentStep: `生成章节 ${chapterNumber}/${firstBatchChapters}`,
           stepProgress: progress,
           completedChapters
         });
@@ -536,6 +535,9 @@ export async function executeGenerationTask(taskId: string) {
             }
           }
         }
+      }
+      if (completedChapters >= firstBatchChapters) {
+        break;
       }
     }
 

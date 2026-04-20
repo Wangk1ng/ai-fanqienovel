@@ -6,8 +6,9 @@ import { startGenerationTask } from "@/lib/background-task";
 import { z } from "zod";
 
 const batchCreateSchema = z.object({
-  targetChapters: z.number().min(10).max(10000).optional().default(15),
-  wordCount: z.number().min(1000).max(5000).optional().default(1000),
+  targetChapters: z.number().min(10).max(1000).optional().default(100),
+  firstBatchChapters: z.number().min(5).max(50).optional().default(15),
+  wordCount: z.number().min(500).max(5000).optional().default(1000),
 });
 
 function extractSessionCookie(req: Request): string | null {
@@ -31,7 +32,7 @@ export async function POST(req: Request) {
     }
 
     const body = await req.json();
-    const { targetChapters = 15, wordCount = 1000 } = batchCreateSchema.parse(body);
+    const { targetChapters = 100, firstBatchChapters = 15, wordCount = 1000 } = batchCreateSchema.parse(body);
 
     const user = await prisma.user.findUnique({ where: { id: session.user.id } });
     if (!user) {
@@ -40,7 +41,7 @@ export async function POST(req: Request) {
 
     const sessionCookie = extractSessionCookie(req);
 
-    logger.info("创建批量生成任务", { userId: session.user.id, targetChapters, wordCount });
+    logger.info("创建批量生成任务", { userId: session.user.id, targetChapters, firstBatchChapters, wordCount });
 
     const task = await prisma.generationTask.create({
       data: {
@@ -51,6 +52,7 @@ export async function POST(req: Request) {
         stepProgress: 0,
         totalSteps: 5,
         targetChapters,
+        firstBatchChapters,
         wordCount,
         completedChapters: 0,
       },
