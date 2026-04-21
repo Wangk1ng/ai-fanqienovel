@@ -188,3 +188,8 @@
   "runtime": "nodejs",
   "env": "production"
 }
+[2026-04-21T06:28:23.973Z] [INFO] 应用启动
+{
+  "runtime": "nodejs",
+  "env": "production"
+}

@@ -163,36 +163,41 @@ ${existingCharacters.map(c => `- ${c.name}（${c.role}）：${c.personality.join
 3. 主角需要至少3个配角形成有效互动
 4. 人物关系要有戏剧张力`;
 
-  const parsed = await generateWithRetry(async () => {
-    return generateObject(prompt, z.object({
-      characters: z.array(z.object({
-        name: z.string(),
-        role: z.string(),
-        age: z.number().optional(),
-        gender: z.string(),
-        appearance: z.string().optional(),
-        personality: z.array(z.string()),
-        background: z.string(),
-        motivation: z.string().optional(),
-        strengths: z.array(z.string()),
-        weaknesses: z.array(z.string()),
-      })),
-    }), { ...aiConfig, temperature: 0.8 });
-  }, 3, 30000);
+  let parsed: any;
+  let success = false;
+  let retryCount = 0;
+  const maxRetries = 10;
 
-  if (!parsed.characters || parsed.characters.length === 0) {
-    logger.warn("角色生成为空，将使用默认角色", { projectId });
-    const defaultChars = [
-      { name: "主角", role: "protagonist", gender: "男", personality: ["坚毅", "善良"], background: "普通青年", strengths: ["意志坚定"], weaknesses: ["经验不足"] },
-      { name: "女主", role: "supporting", gender: "女", personality: ["聪慧", "独立"], background: "职场精英", strengths: ["能力强"], weaknesses: ["防备心强"] },
-      { name: "反派", role: "antagonist", gender: "男", personality: ["阴险", "野心"], background: "组织首领", strengths: ["手段狠辣"], weaknesses: ["多疑"] },
-    ];
-    for (const char of defaultChars) {
-      await prisma.character.create({
-        data: { projectId, ...char },
-      });
+  while (!success && retryCount < maxRetries) {
+    try {
+      parsed = await generateObject(prompt, z.object({
+        characters: z.array(z.object({
+          name: z.string(),
+          role: z.string(),
+          age: z.number().optional(),
+          gender: z.string(),
+          appearance: z.string().optional(),
+          personality: z.array(z.string()),
+          background: z.string(),
+          motivation: z.string().optional(),
+          strengths: z.array(z.string()),
+          weaknesses: z.array(z.string()),
+        })),
+      }), { ...aiConfig, temperature: 0.8 });
+
+      if (!parsed.characters || parsed.characters.length === 0) {
+        throw new Error("角色数组为空");
+      }
+
+      success = true;
+    } catch (error) {
+      retryCount++;
+      logger.warn(`角色生成失败，重试中 (${retryCount}/${maxRetries})`, { error });
+      if (retryCount >= maxRetries) {
+        throw new Error(`角色生成失败，已重试 ${maxRetries} 次仍为空`);
+      }
+      await sleep(30000);
     }
-    return;
   }
 
   for (const char of parsed.characters) {
@@ -320,7 +325,10 @@ ${lastChapterSummary}
 
     let parsed: any;
     let success = false;
-    for (let retry = 0; retry < 3 && !success; retry++) {
+    let retryCount = 0;
+    const maxRetries = 10;
+
+    while (!success && retryCount < maxRetries) {
       try {
         parsed = await generateObject(prompt, z.object({
           structure: isFirstBatch ? z.array(z.object({
@@ -338,11 +346,19 @@ ${lastChapterSummary}
             characters: z.array(z.string()),
           })),
         }), { ...aiConfig, temperature: 0.8 });
+
+        if (!parsed.plotPoints || parsed.plotPoints.length === 0) {
+          throw new Error("章节大纲数组为空");
+        }
+
         success = true;
       } catch (error) {
-        logger.warn(`大纲批次 ${batch + 1} 生成失败，重试中`, { error });
-        if (retry === 2) throw error;
-        await sleep(30000 * Math.pow(2, retry));
+        retryCount++;
+        logger.warn(`大纲批次 ${batch + 1} 生成失败，重试中 (${retryCount}/${maxRetries})`, { error });
+        if (retryCount >= maxRetries) {
+          throw new Error(`大纲批次 ${batch + 1} 生成失败，已重试 ${maxRetries} 次仍为空`);
+        }
+        await sleep(30000);
       }
     }
 
@@ -448,12 +464,32 @@ ${previousChapter ? `【上一章结尾】${previousChapter.content?.slice(-500)
   "content": "章节正文（直接开始故事，不要包含'第x章xxx'这样的标题）"
 }`;
 
-  const parsed = await generateWithRetry(async () => {
-    return generateObject(prompt, z.object({
-      title: z.string(),
-      content: z.string(),
-    }), { ...aiConfig, temperature: 0.8 });
-  }, 3, 60000);
+  let parsed: any;
+  let success = false;
+  let retryCount = 0;
+  const maxRetries = 10;
+
+  while (!success && retryCount < maxRetries) {
+    try {
+      parsed = await generateObject(prompt, z.object({
+        title: z.string(),
+        content: z.string(),
+      }), { ...aiConfig, temperature: 0.8 });
+
+      if (!parsed.content || parsed.content.trim().length < 100) {
+        throw new Error("章节内容为空或过短");
+      }
+
+      success = true;
+    } catch (error) {
+      retryCount++;
+      logger.warn(`章节 ${chapterNumber} 生成失败，重试中 (${retryCount}/${maxRetries})`, { error });
+      if (retryCount >= maxRetries) {
+        throw new Error(`章节 ${chapterNumber} 生成失败，已重试 ${maxRetries} 次仍为空`);
+      }
+      await sleep(60000);
+    }
+  }
 
   await prisma.chapter.create({
     data: {
