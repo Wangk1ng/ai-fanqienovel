@@ -180,6 +180,21 @@ ${existingCharacters.map(c => `- ${c.name}（${c.role}）：${c.personality.join
     }), { ...aiConfig, temperature: 0.8 });
   }, 3, 30000);
 
+  if (!parsed.characters || parsed.characters.length === 0) {
+    logger.warn("角色生成为空，将使用默认角色", { projectId });
+    const defaultChars = [
+      { name: "主角", role: "protagonist", gender: "男", personality: ["坚毅", "善良"], background: "普通青年", strengths: ["意志坚定"], weaknesses: ["经验不足"] },
+      { name: "女主", role: "supporting", gender: "女", personality: ["聪慧", "独立"], background: "职场精英", strengths: ["能力强"], weaknesses: ["防备心强"] },
+      { name: "反派", role: "antagonist", gender: "男", personality: ["阴险", "野心"], background: "组织首领", strengths: ["手段狠辣"], weaknesses: ["多疑"] },
+    ];
+    for (const char of defaultChars) {
+      await prisma.character.create({
+        data: { projectId, ...char },
+      });
+    }
+    return;
+  }
+
   for (const char of parsed.characters) {
     await prisma.character.create({
       data: {
@@ -212,7 +227,7 @@ async function generateOutline(projectId: string, targetChapters: number, aiConf
     `${c.name}（${c.role}）：${c.personality.join("、")}，${c.background.slice(0, 50)}`
   ).join("\n");
 
-  const BATCH_SIZE = 50;
+  const BATCH_SIZE = 34;
   const allPlotPoints: Array<{
     chapterNumber: number;
     title: string;
@@ -427,20 +442,27 @@ ${previousChapter ? `【上一章结尾】${previousChapter.content?.slice(-500)
 
 目标字数：${wordCount}+ 字
 
-请直接输出章节内容，不要包含任何 JSON 或其他格式标记。`;
+请严格按照以下 JSON 格式输出（不要包含 markdown 代码块，不要在 content 中包含章节标题）：
+{
+  "title": "章节标题（不要包含'第x章'字样）",
+  "content": "章节正文（直接开始故事，不要包含'第x章xxx'这样的标题）"
+}`;
 
-  const content = await generateWithRetry(async () => {
-    return generateText(prompt, { ...aiConfig, temperature: 0.8 });
+  const parsed = await generateWithRetry(async () => {
+    return generateObject(prompt, z.object({
+      title: z.string(),
+      content: z.string(),
+    }), { ...aiConfig, temperature: 0.8 });
   }, 3, 60000);
 
   await prisma.chapter.create({
     data: {
       projectId,
       chapterNumber,
-      title: outlineItem?.title || `第${chapterNumber}章`,
-      content,
+      title: parsed.title || outlineItem?.title || `第${chapterNumber}章`,
+      content: parsed.content,
       summary: outlineItem?.summary || "",
-      wordCount: content.length,
+      wordCount: parsed.content.length,
       status: "completed",
     },
   });
