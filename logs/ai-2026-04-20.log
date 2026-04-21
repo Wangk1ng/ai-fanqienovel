@@ -1,0 +1,688 @@
+[2026-04-20T20:56:33.132Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 2809
+}
+[2026-04-20T20:58:45.801Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 6422,
+  "textHead": "{\n  \"acts\": [\n    {\n      \"actNumber\": 1,\n      \"title\": \"荒星迷途：猎手与猎物的初遇\",\n      \"chapterRange\": \"第1-20章\",\n      \"description\": \"本幕旨在建立陆辞铁血元帅与姜宁柔弱军校生的表象人设，同时通过荒星意外将两人强行绑定。重点展示姜宁在危机中隐藏实力的极限拉扯，以及陆辞对“柔弱”姜宁产生的保护欲，与他对“海盗女王”的杀意形成强烈反差。\",\n      \"plotSegments\": [\n        {\n          \"title\": \"星际追捕与意外坠毁\",\n    "
+}
+[2026-04-20T20:58:45.805Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "acts",
+    "plotPoints"
+  ]
+}
+[2026-04-20T21:11:21.913Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1036
+}
+[2026-04-20T21:11:28.933Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1072
+}
+[2026-04-20T21:11:33.360Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1044
+}
+[2026-04-20T21:11:35.590Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1069
+}
+[2026-04-20T21:11:35.825Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1018
+}
+[2026-04-20T21:11:36.294Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1031
+}
+[2026-04-20T21:11:36.543Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1060
+}
+[2026-04-20T21:11:42.869Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1049
+}
+[2026-04-20T21:11:43.042Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1021
+}
+[2026-04-20T21:11:47.384Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1118
+}
+[2026-04-20T21:11:59.016Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 471,
+  "textHead": "{\n  \"titles\": [\n    {\n      \"title\": \"伪装F级向导，元帅疯了\",\n      \"reason\": \"突出马甲反差与男主病娇反应\"\n    },\n    {\n      \"title\": \"被病娇元帅猎杀，我摊牌了\",\n      \"reason\": \"体现相爱相杀与掉马爽感\"\n    },\n    {\n      \"title\": \"穿成宇宙灾难，元帅想囚禁我\",\n      \"reason\": \"强调女主身份与男主独占欲\"\n    }\n  ],\n  \"description\": \"当联邦元帅发现，他怀里那个柔弱爱哭的F级向导，竟是吞噬万物的宇宙大灾变时，"
+}
+[2026-04-20T21:11:59.017Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "titles",
+    "description"
+  ]
+}
+[2026-04-20T21:12:04.401Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 450,
+  "textHead": "{\n  \"titles\": [\n    {\n      \"title\": \"闪婚后，元帅夫人掉马了\",\n      \"reason\": \"直击核心爽点，吸引点击\"\n    },\n    {\n      \"title\": \"废柴Omega？那是机甲大佬\",\n      \"reason\": \"强烈反差，突出人设张力\"\n    },\n    {\n      \"title\": \"元帅别宠，我徒手拆高达\",\n      \"reason\": \"画面感强，幽默甜宠风\"\n    }\n  ],\n  \"description\": \"当全星际闻风丧胆的神秘机甲师“零号”，被铁血元帅霍霆堵在墙角求贴贴时，全网炸了！唐"
+}
+[2026-04-20T21:12:04.402Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "titles",
+    "description"
+  ]
+}
+[2026-04-20T21:12:05.371Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 456,
+  "textHead": "{\n  \"titles\": [\n    {\n      \"title\": \"被迫和键盘谈恋爱\",\n      \"reason\": \"脑洞大开，社恐被迫营业\"\n    },\n    {\n      \"title\": \"社恐黑客：万物皆女友\",\n      \"reason\": \"身份反差，爽点明确\"\n    },\n    {\n      \"title\": \"系统逼我攻略大楼\",\n      \"reason\": \"画面感强，极具反差\"\n    }\n  ],\n  \"description\": \"当社恐黑客许默发现自己绑定了“万物女友”系统时，整个人都裂开了！本想当个隐形人，系统却逼他对身边的物品“恋爱"
+}
+[2026-04-20T21:12:05.371Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "titles",
+    "description"
+  ]
+}
+[2026-04-20T21:12:06.287Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 462,
+  "textHead": "{\n  \"titles\": [\n    {\n      \"title\": \"我成了宇宙唯一的Bug\",\n      \"reason\": \"突出独特身份，吸引好奇心\"\n    },\n    {\n      \"title\": \"修改现实参数，我无敌了\",\n      \"reason\": \"直白爽文风，强调金手指\"\n    },\n    {\n      \"title\": \"掌握宇宙后台，全星际慌了\",\n      \"reason\": \"制造紧张感，体现大佬风范\"\n    }\n  ],\n  \"description\": \"当星际联邦最高议会发现，那个被全宇宙通缉的S级罪犯陆离，其实是宇宙诞生时唯一的“"
+}
+[2026-04-20T21:12:06.287Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "titles",
+    "description"
+  ]
+}
+[2026-04-20T21:12:07.420Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 470,
+  "textHead": "{\n  \"titles\": [\n    {\n      \"title\": \"全网嘲后，我在星际杀疯了\",\n      \"reason\": \"突出反差与暴力美学爽点\"\n    },\n    {\n      \"title\": \"元帅以为我是小可怜\",\n      \"reason\": \"强调身份误会与极致反差\"\n    },\n    {\n      \"title\": \"马甲一掉，元帅连夜跪求原谅\",\n      \"reason\": \"经典掉马爽文风，吸睛\"\n    }\n  ],\n  \"description\": \"当全网黑的花瓶叶曦在全息选秀里一拳打爆机甲时，整个星际都炸了！帝国元帅陆泽看着自家柔弱"
+}
+[2026-04-20T21:12:07.420Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "titles",
+    "description"
+  ]
+}
+[2026-04-20T21:12:09.900Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 490,
+  "textHead": "{\n  \"titles\": [\n    {\n      \"title\": \"靠激怒疯批续命\",\n      \"reason\": \"直击核心玩法，系统流+疯批，吸睛。\"\n    },\n    {\n      \"title\": \"病娇大佬的掌中雀\",\n      \"reason\": \"突出囚禁与占有欲，虐恋感拉满。\"\n    },\n    {\n      \"title\": \"绿茶女配的疯狗男主\",\n      \"reason\": \"强调人设反差博弈，期待感十足。\"\n    }\n  ],\n  \"description\": \"绝症晚期，苏念绑定了怨气收集系统。任务目标：掌控娱乐圈的疯批资本家顾妄。为了"
+}
+[2026-04-20T21:12:09.900Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "titles",
+    "description"
+  ]
+}
+[2026-04-20T21:12:10.228Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 449,
+  "textHead": "{\n  \"titles\": [\n    {\n      \"title\": \"穿成毒体，被修罗将军独宠\",\n      \"reason\": \"突出穿越与反差甜宠，吸睛\"\n    },\n    {\n      \"title\": \"以身为药：修罗夫君太难缠\",\n      \"reason\": \"强调独特设定和男主占有欲\"\n    },\n    {\n      \"title\": \"毒体弃妃，靠蛊术杀疯了\",\n      \"reason\": \"突出爽点与苗疆蛊术元素\"\n    }\n  ],\n  \"description\": \"当顶级病毒学家苏锦瑟穿越成剧毒弃妃，正等着被赐婚给那个杀人不眨眼的修罗将军时，"
+}
+[2026-04-20T21:12:10.229Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "titles",
+    "description"
+  ]
+}
+[2026-04-20T21:12:14.439Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 442,
+  "textHead": "{\n  \"titles\": [\n    {\n      \"title\": \"感化反派后他崩坏了\",\n      \"reason\": \"直击核心冲突，反转感强\"\n    },\n    {\n      \"title\": \"快穿：被疯批男主通缉\",\n      \"reason\": \"标签清晰，危机感拉满\"\n    },\n    {\n      \"title\": \"清空记忆后被囚禁\",\n      \"reason\": \"悬念十足，体现病娇特质\"\n    }\n  ],\n  \"description\": \"当清空记忆也无法逃离那个疯批，陈诺才明白，感化反派是世界上最危险的职业。作为高维剧情修补师，她穿梭三"
+}
+[2026-04-20T21:12:14.440Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "titles",
+    "description"
+  ]
+}
+[2026-04-20T21:12:22.562Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 421,
+  "textHead": "{\n  \"titles\": [\n    {\n      \"title\": \"满级恶女，虐哭疯批大佬\",\n      \"reason\": \"突出爽感与恶女属性\"\n    },\n    {\n      \"title\": \"马甲掉光，反派求我别杀\",\n      \"reason\": \"强调掉马与武力碾压\"\n    },\n    {\n      \"title\": \"快穿：系统想借刀杀我\",\n      \"reason\": \"突出系统背叛与危机感\"\n    }\n  ],\n  \"description\": \"当联邦通缉犯苏清辞绑定了想借刀杀人的病娇系统。她伪装成身娇体软的治愈女神，穿梭位面攻略黑化大佬，实"
+}
+[2026-04-20T21:12:22.563Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "titles",
+    "description"
+  ]
+}
+[2026-04-20T21:12:28.482Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 493,
+  "textHead": "{\n  \"titles\": [\n    {\n      \"title\": \"绑定首富后，我被迫装穷\",\n      \"reason\": \"点出核心系统与装穷反差\"\n    },\n    {\n      \"title\": \"反向扶贫：越装穷越有钱\",\n      \"reason\": \"强调爽点机制，吸睛\"\n    },\n    {\n      \"title\": \"首富掉马：老婆也是大佬\",\n      \"reason\": \"突出双强设定与打脸\"\n    }\n  ],\n  \"description\": \"当霍景深发现，自己绑定的“反向扶贫系统”对象，竟然是那个看起来穷得叮当响的社恐小职员云初夏时，"
+}
+[2026-04-20T21:12:28.482Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "titles",
+    "description"
+  ]
+}
+[2026-04-20T21:12:40.263Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1249
+}
+[2026-04-20T21:12:50.283Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1165
+}
+[2026-04-20T21:12:52.938Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1042
+}
+[2026-04-20T21:12:53.411Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1448
+}
+[2026-04-20T21:12:55.038Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1189
+}
+[2026-04-20T21:12:55.151Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1263
+}
+[2026-04-20T21:12:58.862Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1087
+}
+[2026-04-20T21:13:09.934Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1132
+}
+[2026-04-20T21:13:19.171Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1584
+}
+[2026-04-20T21:13:19.348Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 1050,
+  "textHead": "{\n  \"worldView\": \"星际大航海时代，人类疆域辽阔但危机四伏。宇宙深处“深渊”不断滋生“异种”威胁文明。为对抗异种，人类进化出“哨兵”与“向导”体系：哨兵主战，向导主辅。联邦政府作为最高统治机构，致力于维持秩序并净化异种，但在深渊阴影下，人类文明岌岌可危。\",\n  \"coreConflict\": \"猎手与猎物的身份倒置，毁灭与救赎的情感博弈。男主在理智警惕与情感沦陷中拉扯；女主在维持人设与暴露怪物本源间走钢丝。终极矛盾在于男主面临守护全人类职责与独占爱人病娇欲望的生死抉择，导致两人与世界的对立。\",\n  \"powerSystem\": \"采用F至SSS级评定制。哨兵强化肉体与五感，"
+}
+[2026-04-20T21:13:19.349Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "worldView",
+    "coreConflict",
+    "powerSystem",
+    "factions",
+    "specialRules"
+  ]
+}
+[2026-04-20T21:13:19.356Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 541
+}
+[2026-04-20T21:13:20.450Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1582
+}
+[2026-04-20T21:13:26.391Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 1017,
+  "textHead": "{\n  \"worldView\": \"这是一个本质为“超级模拟程序”的宏大星际宇宙，物质与法则皆由底层数据构成。星际联邦作为系统的“杀毒软件”，致力于维护绝对秩序，清除一切异常。对于众生，这是真实的星际时代；但对于主角陆离，这不过是充满漏洞的游戏后台。隐藏的“数据废墟”与“加密区”散落在宇宙各处，那是旧版本的残骸，也是陆离探寻自身真相的关键线索。\",\n  \"coreConflict\": \"“唯一的错误代码”陆离与“宇宙维护程序”星际联邦的生存博弈。联邦欲将陆离格式化以保秩序，陆离为求自保与真相，利用修改现实参数的能力对抗联邦的庞大算力。冲突从追杀升级为重塑秩序的理念之争，双方在无数星系间展开高维"
+}
+[2026-04-20T21:13:26.391Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "worldView",
+    "coreConflict",
+    "powerSystem",
+    "factions",
+    "specialRules"
+  ]
+}
+[2026-04-20T21:13:26.396Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 541
+}
+[2026-04-20T21:13:26.701Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 994,
+  "textHead": "{\n  \"worldView\": \"现代架空都市，表面是流量至上的娱乐圈，实则由疯批资本家顾妄绝对掌控。在这个弱肉强食的名利场中，顾妄如同“神”一般拥有生杀予夺的权力。世界遵循现实法则，但唯一的超自然变量——“怨气收集系统”打破了平衡，成为女主苏念在绝望中唯一的生存逻辑支撑，将这场囚禁游戏推向了极致的情感博弈。\",\n  \"coreConflict\": \"绝症倒计时与男主崩坏理智的极致对抗。女主苏念为续命，被迫通过扮演“背叛者”激怒顾妄以收集怨气；而顾妄在爱恨交织中对她展开残酷囚禁。这种“用你的恨换我的命”的错位关系，构成了最大的戏剧张力。\",\n  \"powerSystem\": \"强制绑定苏念的"
+}
+[2026-04-20T21:13:26.701Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "worldView",
+    "coreConflict",
+    "powerSystem",
+    "factions",
+    "specialRules"
+  ]
+}
+[2026-04-20T21:13:26.705Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 541
+}
+[2026-04-20T21:13:29.042Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 929,
+  "textHead": "{\n  \"worldView\": \"故事发生于由无数独立剧情位面构成的“三千世界”及高维“剧情管理局”。反派因爱生恨打破壁垒，导致世界崩塌融合为跨越时空的“逃亡迷宫”。时空不再是女主的护身符，反而成为反派步步紧逼的猎场，陈诺需在崩坏的秩序中寻找生路。\",\n  \"coreConflict\": \"冲突在于“剧情规则的强制脱离”与“反派极致占有欲”的对立。女主必须失忆离开，反派却誓要跨越时空囚禁她。双方从攻略感化转变为逃亡与追猎的生死时速，映射女主灵魂深处的自我囚禁。\",\n  \"powerSystem\": \"女主拥有“剧情修补系统”，可清洗记忆、感化反派及穿梭位面，但受强制结算限制。反派力量源于“执"
+}
+[2026-04-20T21:13:29.042Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "worldView",
+    "coreConflict",
+    "powerSystem",
+    "factions",
+    "specialRules"
+  ]
+}
+[2026-04-20T21:13:29.050Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 541
+}
+[2026-04-20T21:13:30.926Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 1072,
+  "textHead": "{\n  \"worldView\": \"这是一个高度科技化的现代都市，万物皆具“数据灵性”。暗网与AI技术暗中酝酿将现实数据化的阴谋。主角许默拥有唯一能唤醒物体“人格”的系统，在他眼中，城市不再是冰冷的建筑，而是充满恋爱对象的巨大迷宫，每一件物品都可能成为攻略目标或致命陷阱。\",\n  \"coreConflict\": \"极度社恐的许默渴望隐匿，却被迫执行“强制高调恋爱”任务。为维持生命，他必须对物品进行羞耻互动，打破当隐形人的初衷。攻略地标引发的异动引来多方追杀，迫使他必须在“社死”与“死亡”之间艰难求生。\",\n  \"powerSystem\": \"核心为“万物女友系统”，生命值与“恋爱值”挂钩，需通"
+}
+[2026-04-20T21:13:30.927Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "worldView",
+    "coreConflict",
+    "powerSystem",
+    "factions",
+    "specialRules"
+  ]
+}
+[2026-04-20T21:13:30.932Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 541
+}
+[2026-04-20T21:13:31.860Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 1077,
+  "textHead": "{\n  \"worldView\": \"大燕王朝，一个皇权与军权激烈博弈的架空时代。皇帝阴鸷多疑，忌惮功高震主的镇北将军；朝堂之上政治谋杀频发，江湖之远苗疆蛊毒诡异。社会表面维持森严礼教，实则瘟疫横行、暗流涌动，是一个危机四伏却又充满机遇的乱世。\",\n  \"coreConflict\": \"皇帝意图利用女主“毒体”设下赐婚毒杀局，却意外触发两人致命的生理共生：男主体温压制女主毒性，女主血液安抚男主狂躁。两人从互相利用转为生死相依，最终联手对抗腐朽皇权，在生存与大义间抉择，洗冤平乱。\",\n  \"powerSystem\": \"“低魔武侠+现代医理”混合体系。女主结合苗疆蛊毒与现代病毒学，以“毒体”操控瘟"
+}
+[2026-04-20T21:13:31.860Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "worldView",
+    "coreConflict",
+    "powerSystem",
+    "factions",
+    "specialRules"
+  ]
+}
+[2026-04-20T21:13:31.872Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 541
+}
+[2026-04-20T21:13:46.419Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 1047,
+  "textHead": "{\n  \"worldView\": \"这是一个星际大航海高度发达的未来世界，人类建立了庞大的星际帝国，实行严格的ABO性别分化制度。Alpha掌握军政大权，Omega被视为需被保护的对象。机甲是战争的核心工具，尽管科技繁荣，但星际边缘仍面临异兽与叛军的威胁。故事在硝烟战场与女主用于种田研发的宁静星球间切换，营造出“在外横扫千军，回家甜宠日常”的独特氛围。\",\n  \"coreConflict\": \"女主极力隐藏顶级机甲师身份，只想伪装成F级Omega种田搞研发，却因与男主闪婚屡屡破功。外部危机迫使她在丈夫面前展露惊人武力，导致“掉马”反复横跳。男主从“护妻”到“被妻护”的心理落差，以及两人从契约走"
+}
+[2026-04-20T21:13:46.419Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "worldView",
+    "coreConflict",
+    "powerSystem",
+    "factions",
+    "specialRules"
+  ]
+}
+[2026-04-20T21:13:46.424Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 541
+}
+[2026-04-20T21:13:46.785Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 1106,
+  "textHead": "{\n  \"worldView\": \"星际时代，联邦与帝国两大超级势力维持着表面和平，实则暗流涌动。全息网络技术高度普及，娱乐产业极度繁荣，成为缓解民众焦虑的关键。全息选秀是全星际最受关注的盛事，参赛者以精神力操控投影竞技。然而，名为“叛军”的邪恶势力已深度渗透娱乐圈，利用选秀进行舆论操控与暗杀，将光鲜亮丽的舞台变成了颠覆政权的阴谋温床。\",\n  \"coreConflict\": \"联邦指挥官叶曦伪装成全网黑废柴，需在全息选秀中以暴力美学洗白并平定叛乱；帝国元帅陆泽因误会欲将其圈养保护。女主展露锋芒与男主过度保护形成极致反差，迫使“金丝雀”屡次反保护“饲主”，最终女主层层掉马甲，从花瓶晋升为战神，"
+}
+[2026-04-20T21:13:46.785Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "worldView",
+    "coreConflict",
+    "powerSystem",
+    "factions",
+    "specialRules"
+  ]
+}
+[2026-04-20T21:13:46.790Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 541
+}
+[2026-04-20T21:13:53.682Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 1158,
+  "textHead": "{\n  \"worldView\": \"这是一个看似现代繁华实则暗流涌动的都市世界。表面遵循商业规则，实则由神秘财团与地下势力掌控。巨大的贫富差距割裂了社会，顶级富豪与底层平民生活在平行世界。独特的“信息壁垒”允许权贵通过伪装轻易隐藏身份，为“扮猪吃虎”提供了天然土壤。\",\n  \"coreConflict\": \"夫妇二人为维持“贫穷”人设拼命给对方花钱，却触发“反向扶贫”规则导致对方资产翻倍，陷入“越花越富”的死循环。这种“拼命炫富却要对外哭穷”的逻辑错位，与外部势利亲戚的嘲讽形成强烈反差，构成核心爽点。\",\n  \"powerSystem\": \"基于“反向扶贫系统”与“身份伪装机制”。系统强制绑定"
+}
+[2026-04-20T21:13:53.683Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "worldView",
+    "coreConflict",
+    "powerSystem",
+    "factions",
+    "specialRules"
+  ]
+}
+[2026-04-20T21:13:53.689Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 541
+}
+[2026-04-20T21:14:04.969Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 1151,
+  "textHead": "{\n  \"worldView\": \"这是一个宏大多元宇宙，主世界为科技与异能共存的星际时代，联邦法律森严却暗里秩序崩坏。苏清辞穿梭于古武、末世、豪门等因剧情崩坏而混乱的平行位面。世界奉行“适者生存，强者为尊”的暗黑法则，女主作为联邦最高通缉犯，是撕裂诸天秩序的“天灾”级存在，演绎全员恶人的利益博弈。\",\n  \"coreConflict\": \"苏清辞为压制毁灭力量伪装攻略黑化男主作为“容器”，实则与系统进行生存博弈。系统企图借男主之手抹杀女主，而男主病态的占有欲超出计算。当女主马甲掉落，恶女与疯批男主在利用、背叛与囚禁中展开极限拉扯。\",\n  \"powerSystem\": \"毁灭力量是女主的战力"
+}
+[2026-04-20T21:14:04.969Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "worldView",
+    "coreConflict",
+    "powerSystem",
+    "factions",
+    "specialRules"
+  ]
+}
+[2026-04-20T21:14:04.975Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 541
+}
+[2026-04-20T21:14:09.690Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 3495,
+  "textHead": "{\n  \"characters\": [\n    {\n      \"name\": \"林渊\",\n      \"role\": \"protagonist\",\n      \"age\": 24,\n      \"gender\": \"男\",\n      \"appearance\": \"黑发凌乱，眼神锐利如鹰，左眼植入了老旧的义眼，常穿一件磨损的深灰色风衣，身形消瘦却爆发力极强。\",\n      \"personality\": [\"坚韧不拔\", \"多疑谨慎\"],\n      \"background\": \"曾是顶级财团的王牌特工，因发现高层利用活人进行意识上传的阴谋而被陷害追杀。在贫民窟隐姓埋名三年，靠做黑市记忆黑客"
+}
+[2026-04-20T21:14:09.690Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "characters"
+  ]
+}
+[2026-04-20T21:14:09.706Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1695
+}
+[2026-04-20T21:14:23.884Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 3271,
+  "textHead": "{\n  \"characters\": [\n    {\n      \"name\": \"林渊\",\n      \"role\": \"protagonist\",\n      \"age\": 22,\n      \"gender\": \"男\",\n      \"appearance\": \"黑发凌乱，眼神锐利如鹰，常穿沾满机油的灰色工装，左手是一只改装过的机械义肢，散发着幽蓝的微光。\",\n      \"personality\": [\"坚韧不拔\", \"重情重义\"],\n      \"background\": \"下城区的底层拾荒者，靠挖掘旧时代遗物为生。某日意外获得一枚存有‘真理’的数据芯片，导致相依为命的妹妹被当局抓走。"
+}
+[2026-04-20T21:14:23.884Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "characters"
+  ]
+}
+[2026-04-20T21:14:23.900Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1730
+}
+[2026-04-20T21:14:26.690Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 3619,
+  "textHead": "{\n  \"characters\": [\n    {\n      \"name\": \"林渊\",\n      \"role\": \"protagonist\",\n      \"age\": 24,\n      \"gender\": \"男\",\n      \"appearance\": \"身材消瘦但眼神坚毅，留着利落的寸头。左眼角有一道浅浅的疤痕，常穿一件磨损严重的战术夹克，手指修长，指关节有常年操作机械留下的老茧。\",\n      \"personality\": [\"坚韧不拔\", \"冷静敏锐\"],\n      \"background\": \"出生在被遗弃的‘第13区’，林渊靠捡拾电子垃圾为生。他在一次挖掘中意外发现了"
+}
+[2026-04-20T21:14:26.691Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "characters"
+  ]
+}
+[2026-04-20T21:14:26.704Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1630
+}
+[2026-04-20T21:14:27.535Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 3594,
+  "textHead": "{\n  \"characters\": [\n    {\n      \"name\": \"林渊\",\n      \"role\": \"protagonist\",\n      \"age\": 24,\n      \"gender\": \"男\",\n      \"appearance\": \"身材精瘦，眼神锐利如鹰，常穿一件磨损的战术夹克。左眼是一枚廉价的旧型号义眼，偶尔闪烁着蓝光，右耳后有一道明显的疤痕。\",\n      \"personality\": [\"坚韧不拔\", \"重情重义\"],\n      \"background\": \"出生在霓虹城底层的“锈蚀区”，父母早亡，与妹妹相依为命。为了生存，他成为一名技术精湛的拾荒"
+}
+[2026-04-20T21:14:27.536Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "characters"
+  ]
+}
+[2026-04-20T21:14:27.549Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1729
+}
+[2026-04-20T21:14:38.615Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 3536,
+  "textHead": "{\n  \"characters\": [\n    {\n      \"name\": \"林渊\",\n      \"role\": \"protagonist\",\n      \"age\": 22,\n      \"gender\": \"男\",\n      \"appearance\": \"身材消瘦，乱糟糟的黑发，左眼是老旧的机械义眼，常穿一件褪色的飞行员夹克，上面贴满全息贴纸，看起来像个落魄的流浪者。\",\n      \"personality\": [\"观察力敏锐\", \"愤世嫉俗但重情义\", \"适应力强\"],\n      \"background\": \"底层的“记忆猎人”，靠从废弃神经连接提取数据为生。意外下载了名为“"
+}
+[2026-04-20T21:14:38.616Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "characters"
+  ]
+}
+[2026-04-20T21:14:38.631Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1670
+}
+[2026-04-20T21:14:48.464Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 3870,
+  "textHead": "{\n  \"characters\": [\n    {\n      \"name\": \"林渊\",\n      \"role\": \"protagonist\",\n      \"age\": 22,\n      \"gender\": \"男\",\n      \"appearance\": \"身形瘦削但结实，黑发略显凌乱，眼神锐利如鹰。常穿着一件磨损的深灰色连帽衫，左手总是缠着厚厚的绷带，隐约透出诡异的黑色纹路。\",\n      \"personality\": [\"坚韧不拔\", \"敏锐冷静\", \"外冷内热\"],\n      \"background\": \"自幼在贫民窟长大，父母在一次名为“深渊降临”的灾难中丧生。他在灾难中"
+}
+[2026-04-20T21:14:48.464Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "characters"
+  ]
+}
+[2026-04-20T21:14:48.479Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1717
+}
+[2026-04-20T21:14:55.940Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 3699,
+  "textHead": "{\n  \"characters\": [\n    {\n      \"name\": \"林渊\",\n      \"role\": \"protagonist\",\n      \"age\": 19,\n      \"gender\": \"男\",\n      \"appearance\": \"身形消瘦但眼神锐利如鹰，穿着一件磨损严重的战术风衣。左眼是廉价的红色义眼，右眼则是充满生机的黑色瞳孔，手指布满神经接口留下的陈旧伤痕。\",\n      \"personality\": [\"坚韧不拔\", \"观察力敏锐\", \"外冷内热\"],\n      \"background\": \"在下城区的垃圾堆中长大，靠拾荒电子废料为生。他意外发现"
+}
+[2026-04-20T21:14:55.941Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "characters"
+  ]
+}
+[2026-04-20T21:14:55.954Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1790
+}
+[2026-04-20T21:14:57.762Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 3933,
+  "textHead": "{\n  \"characters\": [\n    {\n      \"name\": \"林渊\",\n      \"role\": \"protagonist\",\n      \"age\": 22,\n      \"gender\": \"男\",\n      \"appearance\": \"身材消瘦但眼神锐利如鹰，留着略显凌乱的黑色短发。常穿一件磨损严重的灰色冲锋衣，左手佩戴着老旧的机械外骨骼，手指修长且布满细小的伤痕，整体气质带着一种底层挣扎者的坚韧与野性。\",\n      \"personality\": [\"坚韧不拔\", \"敏锐多疑\"],\n      \"background\": \"生长在被遗弃的“下城区”贫民窟，靠"
+}
+[2026-04-20T21:14:57.764Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "characters"
+  ]
+}
+[2026-04-20T21:14:57.777Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1716
+}
+[2026-04-20T21:15:00.263Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 5582,
+  "textHead": "{\n    \"characters\": [\n        {\n            \"name\": \"林渊\",\n            \"role\": \"protagonist\",\n            \"age\": 22,\n            \"gender\": \"男\",\n            \"appearance\": \"身形瘦削但挺拔，常穿一件洗得发白的灰色连帽衫。眼神深邃如潭水，觉醒能力后左眼瞳孔会变为诡异的银色旋涡，手指修长有力，常年戴着一枚破损的黑色指环。\",\n            \"personality\": [\n                \"坚韧隐忍\",\n  "
+}
+[2026-04-20T21:15:00.264Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "characters"
+  ]
+}
+[2026-04-20T21:15:00.276Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1725
+}
+[2026-04-20T21:15:28.294Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 3621,
+  "textHead": "{\n  \"characters\": [\n    {\n      \"name\": \"林渊\",\n      \"role\": \"protagonist\",\n      \"age\": 22,\n      \"gender\": \"男\",\n      \"appearance\": \"身材瘦削，常年穿着一件沾满机油的旧夹克，左眼是廉价的红色义眼，右手缠满绷带，指缝间总残留着洗不掉的金属粉尘，眼神中透着一股不服输的狠劲。\",\n      \"personality\": [\"坚韧不拔\", \"重情重义\"],\n      \"background\": \"生长在被遗弃的‘下城区’贫民窟，靠拾荒和非法改装义肢为生。在一次意外拾"
+}
+[2026-04-20T21:15:28.296Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "characters"
+  ]
+}
+[2026-04-20T21:15:28.316Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1656
+}
+[2026-04-20T21:15:57.644Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 8605,
+  "textHead": "```json\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"第一幕：深渊的伪装者\",\n      \"chapterRange\": \"第1-20章\",\n      \"summary\": \"苏念作为宇宙大灾变“星渊”伪装成F级废柴向导，在贫民窟艰难求生。一次深渊异种爆发中，她意外与前来镇压的死对头元帅顾寒建立了精神链接。顾寒本能察觉她的异常，却因链接无法杀她，将她带回元帅府监视。\",\n      \"plotPoints\": [\"苏念伪装F级向导身份登场\", \"深渊爆发，顾寒精神力暴走\", \"意外建立双向精神链接\""
+}
+[2026-04-20T21:16:09.499Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 9762,
+  "textHead": "```json\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"第一幕：错误的觉醒\",\n      \"chapterRange\": \"第1-20章\",\n      \"summary\": \"底层拾荒者林渊意外获得‘真理’芯片，导致妹妹被抓，自身濒死之际觉醒为宇宙唯一的Bug‘陆离’。他利用修改现实参数的能力死里逃生，结识老鬼，组建初始团队，并在与凯恩的初次交锋中展现出惊人的异常性。\",\n      \"plotPoints\": [\n        \"获得芯片与家庭变故\",\n        \"觉醒Bug能力与初次改写现"
+}
+[2026-04-20T21:16:20.542Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 9300,
+  "textHead": "```json\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"第一幕：绝境逢生，初入雷区\",\n      \"chapterRange\": \"第1-20章\",\n      \"summary\": \"苏念确诊绝症绑定系统，锁定疯批资本家顾妄。她化身顶级绿茶接近顾妄，通过言语挑衅和“白莲花”行径初次收集怨气。顾妄对苏念产生兴趣，两人展开初次试探，苏念在危险边缘成功续命。\",\n      \"plotPoints\": [\"绑定系统，锁定目标\", \"初次交锋，收集怨气\", \"进入娱乐圈，引起注意\", \"绿茶演技，顾妄动怒\"]"
+}
+[2026-04-20T21:16:43.204Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 9234,
+  "textHead": "```json\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"第一幕：社恐的恋爱噩梦\",\n      \"chapterRange\": \"第1-18章\",\n      \"summary\": \"社恐黑客许默绑定“万物女友”系统，被迫对键盘、路灯等物品进行羞耻互动以续命。在完成初期任务解锁黑客神技的同时，因行为怪异被赏金猎人苏青盯上，并初次遭遇反派势力的试探。\",\n      \"plotPoints\": [\"许默绑定系统，被迫亲吻键盘\", \"解锁极速编程能力，解决黑市危机\", \"被苏青目击“调戏”路灯，引发误会\"]\n"
+}
+[2026-04-20T21:16:46.962Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 9030,
+  "textHead": "```json\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"第一幕：闪婚与伪装\",\n      \"chapterRange\": \"第1-15章\",\n      \"summary\": \"唐糖为掩盖身份被迫与霍霆闪婚，入住元帅府。她试图维持柔弱Omega人设，在暗中建立工作室，却因霍霆带回的受损机甲手痒难耐，初次展露不凡的机械直觉，引发霍霆怀疑。\",\n      \"plotPoints\": [\n        \"唐糖在黑市偶遇受伤的霍霆并暗中相助\",\n        \"霍霆因信息素风暴急需伴侣，选中看似无害的唐糖"
+}
+[2026-04-20T21:16:49.502Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 8709,
+  "textHead": "```json\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"第一幕：毒体初现与修罗共生\",\n      \"chapterRange\": \"第1-20章\",\n      \"summary\": \"苏锦瑟穿越成毒体弃妃，被皇帝赐婚给修罗将军穆寒川，意图借刀杀人。大婚之夜，两人意外发现生理互补：男主体温压制女主毒性，女主血液安抚男主狂躁。两人从互相试探到达成共生契约，在将军府内斗智斗勇，初步站稳脚跟。\",\n      \"plotPoints\": [\"穿越赐婚\", \"生理互补发现\", \"将军府立威\", \"初次进宫交锋\""
+}
+[2026-04-20T21:17:07.977Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 9009,
+  "textHead": "```json\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"第一幕：反向扶贫与双向奔赴\",\n      \"chapterRange\": \"第1-25章\",\n      \"summary\": \"霍景深绑定系统，发现扶贫对象竟是社恐小职员云初夏。为了不让对方破产，两人开启疯狂装穷模式，领证同居。在应对势利亲戚嘲讽中，两人通过“疯狂消费”触发资产翻倍，建立起独特的“贫穷”夫妻关系。\",\n      \"plotPoints\": [\"系统绑定与初次相遇\", \"领证同居与确立人设\", \"初次交锋势利亲戚\", \"资产翻倍机"
+}
+[2026-04-20T21:17:09.459Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 9568,
+  "textHead": "```json\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"第一幕：全网黑的“金丝雀”\",\n      \"chapterRange\": \"第1-20章\",\n      \"summary\": \"叶曦作为全网黑的花瓶，被迫参加全息选秀。她本想隐藏实力做个咸鱼，却因系统BUG和对手挑衅，被迫用“暴力美学”通关。帝国元帅陆泽试图将她圈养保护，却不知自家小娇妻在虚拟世界里大杀四方。\",\n      \"plotPoints\": [\"叶曦进入全息选秀，遭遇系统BUG\", \"一拳打爆机甲，初露锋芒\", \"陆泽试图劝退叶曦，反"
+}
+[2026-04-20T21:17:48.030Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 8790,
+  "textHead": "```json\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"第一幕：赛博废土的机械玫瑰\",\n      \"chapterRange\": \"第1-30章\",\n      \"summary\": \"苏清辞进入星际赛博朋克位面，伪装成柔弱难民，被拾荒者林渊救下。她利用林渊压制毁灭力量，诱导其对抗天机集团。系统试图激怒林渊杀她，苏清辞反手利用赵无极的追杀步步为营。最终在林渊彻底黑化后，她“惨死”于男主怀中，完成攻略并收割毁灭能量。\",\n      \"plotPoints\": [\"苏清辞绑定系统，进入下城区\", \"利用林"
+}
+[2026-04-20T21:21:18.069Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 9059,
+  "textHead": "```json\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"第一幕：霓虹下的剧本\",\n      \"chapterRange\": \"第1-20章\",\n      \"summary\": \"陈诺降临赛博朋克世界，任务是感化垄断能源的暴君顾苍生。她接近原身主角林渊，试图修补剧情，却在不知不觉中落入顾苍生的精心算计。任务完成之际，并非解脱的开始，而是噩梦的序章。\",\n      \"plotPoints\": [\"陈诺进入世界，结识林渊与苏叶\", \"接触反派顾苍生，进行感化攻略\", \"顾苍生识破身份，暗中封锁世界\"]\n "
+}

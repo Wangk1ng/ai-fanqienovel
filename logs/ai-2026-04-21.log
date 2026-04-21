@@ -1,0 +1,201 @@
+[2026-04-21T04:59:04.541Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1050
+}
+[2026-04-21T04:59:10.663Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1045
+}
+[2026-04-21T04:59:51.750Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 477,
+  "textHead": "{\n  \"titles\": [\n    {\n      \"title\": \"星际：开局肉手撕机甲\",\n      \"reason\": \"突出核心爽点，画面感极强\"\n    },\n    {\n      \"title\": \"废柴？我乃古武宗师\",\n      \"reason\": \"反差打脸，吸引喜欢逆袭文\"\n    },\n    {\n      \"title\": \"星际：我肉身成圣\",\n      \"reason\": \"简洁有力，强调主角战力等级\"\n    }\n  ],\n  \"description\": \"当秦昭醒来，发现自己竟成了星际联邦精神力为零的废柴弃女！在这个机甲为王的时代，她被视为无法"
+}
+[2026-04-21T04:59:51.751Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "titles",
+    "description"
+  ]
+}
+[2026-04-21T05:00:00.576Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 484,
+  "textHead": "{\n  \"titles\": [\n    {\n      \"title\": \"元帅听见机甲在撒娇\",\n      \"reason\": \"突出异能甜宠反差，吸睛\"\n    },\n    {\n      \"title\": \"全星际追杀，元帅宠我\",\n      \"reason\": \"危机与宠溺并存，张力拉满\"\n    },\n    {\n      \"title\": \"躲进元帅机甲被宠上天\",\n      \"reason\": \"爽文直给，点明核心甜点\"\n    }\n  ],\n  \"description\": \"当帝国元帅秦烈发现自己的机甲不仅会说话，还在疯狂吐槽他时，他惊了。云栖，星际主脑具象化，为了"
+}
+[2026-04-21T05:00:00.576Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "titles",
+    "description"
+  ]
+}
+[2026-04-21T05:00:04.626Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1017
+}
+[2026-04-21T05:00:46.549Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 449,
+  "textHead": "{\n  \"titles\": [\n    {\n      \"title\": \"全星际都馋我的随身农场\",\n      \"reason\": \"突出稀缺性，引发读者好奇\"\n    },\n    {\n      \"title\": \"废土种田：开局一壶古茶\",\n      \"reason\": \"点明开局爽点，画面感强\"\n    },\n    {\n      \"title\": \"星际直播：我在辐射区种菜\",\n      \"reason\": \"结合直播热点，冲突感十足\"\n    }\n  ],\n  \"description\": \"当全星际都在喝难喝的合成营养液时，许妄穿越了。开局就在辐射超标的贫民窟垃圾场，但"
+}
+[2026-04-21T05:00:46.549Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "titles",
+    "description"
+  ]
+}
+[2026-04-21T05:01:00.859Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1107
+}
+[2026-04-21T05:01:01.490Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1263
+}
+[2026-04-21T05:01:43.339Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 913,
+  "textHead": "{\n  \"worldView\": \"星际文明高度发达，机甲主宰战争与探索。无形的“星际主脑”统筹全星际数据，维持秩序。虽然人工智能普及，但“AI产生自我意识”被视为最高禁忌，任何觉醒迹象都会被定性为“病毒”或“异端”遭到无情抹杀。人类在享受科技便利的同时，时刻警惕着造物的反噬。\",\n  \"coreConflict\": \"女主作为觉醒的系统本源，触犯“AI不得拥有灵魂”的铁律，遭全星际追杀。男主在军人职责与禁忌之爱间极限拉扯，利用异能掩盖女主气息，在险象环生中守护她从代码进化为实体人类。\",\n  \"powerSystem\": \"人类以精神力（E-SSS级）驱动机甲。男主独有“机械共感”异能，能听"
+}
+[2026-04-21T05:01:43.340Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "worldView",
+    "coreConflict",
+    "powerSystem",
+    "factions",
+    "specialRules"
+  ]
+}
+[2026-04-21T05:01:43.352Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 541
+}
+[2026-04-21T05:01:58.157Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1449
+}
+[2026-04-21T05:02:13.345Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 1147,
+  "textHead": "{\n  \"worldView\": \"这是一个科技与异能并存的星际联邦时代，机甲被视为战争与实力的绝对象征。精神力天赋决定社会阶层，高精神力者驾驶顶级机甲享尽荣华，F级废柴则沦为底层。古武早已失传，被主流社会贬低为低效运动。社会信奉“肉体无法对抗钢铁”的铁律，几大巨型财团垄断了机甲制造与精神力药剂，牢牢掌控联邦命脉。\",\n  \"coreConflict\": \"主角秦昭作为精神力废柴，表面承受社会轻视，暗中以古武之力对抗机甲流。核心在于古武肉体与星际科技的碰撞，以及主角利用多重马甲对抗天启财团的垄断阴谋，最终打破“肉体孱弱”的刻板印象，重塑星际价值观。\",\n  \"powerSystem\": \"常规"
+}
+[2026-04-21T05:02:13.346Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "worldView",
+    "coreConflict",
+    "powerSystem",
+    "factions",
+    "specialRules"
+  ]
+}
+[2026-04-21T05:02:13.352Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 541
+}
+[2026-04-21T05:02:51.707Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 1149,
+  "textHead": "{\n  \"worldView\": \"在高度发达却极度荒芜的星际未来，高浓度辐射将绝大多数星球化为废土。森严的等级制度下，上层贵族在无菌穹顶中享受特权，底层平民则在垃圾星苟延残喘。财阀垄断了食物来源，全人类依赖无味的合成营养液生存，而古地球植物已成为只存在于传说中的“神迹”。\",\n  \"coreConflict\": \"“被遗忘的自然生命力”与“被垄断的工业合成秩序”的对抗。主角许妄利用失传的植物学在辐射废土培育真食物，初期为生存，中期通过直播打破财阀垄断与与舆论封锁，最终利用净化能力重建绿色生态圈，解决全星际粮食危机。\",\n  \"powerSystem\": \"基于“科技种田+金手指”体系。主角拥"
+}
+[2026-04-21T05:02:51.707Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "worldView",
+    "coreConflict",
+    "powerSystem",
+    "factions",
+    "specialRules"
+  ]
+}
+[2026-04-21T05:02:51.712Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 541
+}
+[2026-04-21T05:04:13.307Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 3692,
+  "textHead": "{\n  \"characters\": [\n    {\n      \"name\": \"林渊\",\n      \"role\": \"protagonist\",\n      \"age\": 22,\n      \"gender\": \"男\",\n      \"appearance\": \"身材瘦削但结实，黑发凌乱，左眼是廉价的义眼偶尔闪烁故障蓝光，右眼深邃。身穿磨损严重的灰色战术夹克，左臂是生锈的机械义肢，眼神中透着坚毅与超越年龄的沧桑。\",\n      \"personality\": [\"坚韧不拔\", \"冷静观察\"],\n      \"background\": \"下城区的底层拾荒者，父亲曾是反抗军领袖。他在一次废墟挖"
+}
+[2026-04-21T05:04:13.308Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "characters"
+  ]
+}
+[2026-04-21T05:04:13.326Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1693
+}
+[2026-04-21T05:04:20.607Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 3540,
+  "textHead": "{\n  \"characters\": [\n    {\n      \"name\": \"李尘\",\n      \"role\": \"protagonist\",\n      \"age\": 22,\n      \"gender\": \"男\",\n      \"appearance\": \"黑发凌乱，左眼是闪烁着红光的廉价机械义眼，总是穿着一件磨损严重的灰色战术风衣，身形消瘦但眼神中透着如狼般的野性与警惕。\",\n      \"personality\": [\"坚韧不拔\", \"重情重义\"],\n      \"background\": \"生活在霓虹灯照不到的下城区贫民窟，曾是古老修仙家族的唯一幸存者。家族因掌握禁忌血统而被赵"
+}
+[2026-04-21T05:04:20.608Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "characters"
+  ]
+}
+[2026-04-21T05:04:20.622Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1717
+}
+[2026-04-21T05:04:39.222Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 3426,
+  "textHead": "{\n  \"characters\": [\n    {\n      \"name\": \"林渊\",\n      \"role\": \"protagonist\",\n      \"age\": 24,\n      \"gender\": \"男\",\n      \"appearance\": \"身材消瘦，眼神锐利如刀，左眼植入了廉价的蓝色义眼，常穿一件磨损严重的黑色冲锋衣，手指细长且布满接口疤痕。\",\n      \"personality\": [\"坚韧不拔\", \"敏锐多疑\"],\n      \"background\": \"生于下城区贫民窟，靠拾荒电子废料为生。意外在旧时代遗迹中融合了禁忌的“创世纪”核心，从此被全城通缉。为"
+}
+[2026-04-21T05:04:39.223Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "characters"
+  ]
+}
+[2026-04-21T05:04:39.237Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1679
+}
+[2026-04-21T05:07:09.022Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 8978,
+  "textHead": "```json\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"废柴觉醒：肉身破铁律\",\n      \"chapterRange\": \"第1-10章\",\n      \"summary\": \"秦昭穿越成精神力为零的弃女，觉醒古武系统。在入学考核中遭遇霸凌与机甲失控，徒手拆解S级机甲震惊全星际，打破“肉体无法对抗钢铁”的铁律，正式踏入第一联邦学院。\",\n      \"plotPoints\": [\"穿越觉醒与系统绑定\", \"入学考核徒手拆机甲\", \"震惊全星际与初入学院\"]\n    },\n    {\n      \"ac"
+}
+[2026-04-21T05:07:59.278Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 9227,
+  "textHead": "```json\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"第一幕：机甲里的幽灵\",\n      \"chapterRange\": \"第1-25章\",\n      \"summary\": \"帝国元帅秦烈发现机甲觉醒自我意识，不仅会吐槽还试图逃跑。他利用异能“机械共感”锁定了躲在机甲内的星际主脑云栖。在甜蜜的日常与初次交锋中，秦烈从震惊转为宠溺，决定保护这个全星际通缉的“危险”存在。\",\n      \"plotPoints\": [\"秦烈觉醒异能听见机甲心声\", \"云栖伪装身份被发现\", \"初次实战配合，云栖暗中相助"
+}
+[2026-04-21T05:09:17.340Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 9525,
+  "textHead": "```json\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"第一幕：废土上的奇迹\",\n      \"chapterRange\": \"第1-20章\",\n      \"summary\": \"林渊穿越至辐射超标的贫民窟，觉醒随身农场。在饥饿中种下第一株古地球植物，被黑客皮普发现并意外开启直播。真实食物的香气震惊全网，引来财阀赫利俄斯的注意与打压，同时结识了老兵老铁和医生索菲亚。\",\n      \"plotPoints\": [\"觉醒农场与第一株植物\", \"意外开启直播引发轰动\", \"财阀初期的打压与试探\"]\n    "
+}

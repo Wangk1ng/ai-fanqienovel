@@ -212,6 +212,9 @@ async function generateOutline(projectId: string, targetChapters: number, aiConf
     `${c.name}（${c.role}）：${c.personality.join("、")}，${c.background.slice(0, 50)}`
   ).join("\n");
 
+  // 生成大纲时使用较少章节数，避免 JSON 过大导致截断
+  const outlineChapters = Math.min(targetChapters, 50);
+
   const prompt = `你是一位资深的网络小说大纲设计师。请为小说《${project.title}》生成完整的大纲。
 
 类型：${project.genre}
@@ -224,15 +227,15 @@ ${settings.powerSystem ? `力量体系：${settings.powerSystem}` : ""}
 角色体系：
 ${charDescriptions}
 
-目标章节数：${targetChapters}
+目标章节数：${outlineChapters}
 
-请生成 ${targetChapters} 章节的大纲，严格按照以下 JSON 格式输出：
+请生成 ${outlineChapters} 章节的大纲，严格按照以下 JSON 格式输出：
 {
   "structure": [
     {
       "actNumber": 1,
       "actName": "第一幕名称",
-      "chapterRange": "第1-5章",
+      "chapterRange": "第1-${Math.ceil(outlineChapters / 3)}章",
       "summary": "本幕概述（100-150字）",
       "plotPoints": ["关键情节点1", "关键情节点2"]
     }

@@ -1,0 +1,84 @@
+[2026-04-21T04:58:18.995Z] [INFO] 创建批量生成任务
+{
+  "userId": "cmo7j79k700003j9gqao23jd4",
+  "targetChapters": 100,
+  "firstBatchChapters": 15,
+  "wordCount": 1000
+}
+[2026-04-21T04:58:19.005Z] [INFO] 创建批量生成任务
+{
+  "userId": "cmo7j79k700003j9gqao23jd4",
+  "targetChapters": 100,
+  "firstBatchChapters": 15,
+  "wordCount": 1000
+}
+[2026-04-21T04:58:19.006Z] [INFO] 开始执行生成任务
+{
+  "taskId": "cmo85l4ae005u3jxn1wysdhcg",
+  "randomGenre": "甜宠"
+}
+[2026-04-21T04:58:19.016Z] [INFO] 创建批量生成任务
+{
+  "userId": "cmo7j79k700003j9gqao23jd4",
+  "targetChapters": 100,
+  "firstBatchChapters": 15,
+  "wordCount": 1000
+}
+[2026-04-21T04:58:19.033Z] [INFO] 开始执行生成任务
+{
+  "taskId": "cmo85l4ay005v3jxnp1yfvemm",
+  "randomGenre": "穿越"
+}
+[2026-04-21T04:58:19.045Z] [INFO] 开始执行生成任务
+{
+  "taskId": "cmo85l4be005w3jxnppt4mg40",
+  "randomGenre": "穿越"
+}
+[2026-04-21T04:59:04.541Z] [INFO] 创作需求优化完成
+{
+  "refinedLength": 283
+}
+[2026-04-21T04:59:10.662Z] [INFO] 创作需求优化完成
+{
+  "refinedLength": 278
+}
+[2026-04-21T04:59:51.751Z] [INFO] 标题和简介生成成功
+{
+  "title": "星际：开局肉手撕机甲",
+  "descriptionLength": 219
+}
+[2026-04-21T04:59:51.759Z] [INFO] 项目创建成功
+{
+  "projectId": "cmo85n3v1005y3jxnvuwyk87f",
+  "title": "星际：开局肉手撕机甲"
+}
+[2026-04-21T05:00:00.577Z] [INFO] 标题和简介生成成功
+{
+  "title": "元帅听见机甲在撒娇",
+  "descriptionLength": 227
+}
+[2026-04-21T05:00:00.581Z] [INFO] 项目创建成功
+{
+  "projectId": "cmo85nao400603jxn2n435n35",
+  "title": "元帅听见机甲在撒娇"
+}
+[2026-04-21T05:00:04.625Z] [INFO] 创作需求优化完成
+{
+  "refinedLength": 250
+}
+[2026-04-21T05:00:46.549Z] [INFO] 标题和简介生成成功
+{
+  "title": "全星际都馋我的随身农场",
+  "descriptionLength": 186
+}
+[2026-04-21T05:00:46.556Z] [INFO] 项目创建成功
+{
+  "projectId": "cmo85oa5700623jxn63m6x2dy",
+  "title": "全星际都馋我的随身农场"
+}
+[2026-04-21T05:01:43.346Z] [INFO] 核心设定生成成功
+[2026-04-21T05:02:13.349Z] [INFO] 核心设定生成成功
+[2026-04-21T05:02:51.710Z] [INFO] 核心设定生成成功
+[2026-04-21T05:04:13.321Z] [INFO] 角色生成成功
+[2026-04-21T05:04:20.618Z] [INFO] 角色生成成功
+[2026-04-21T05:04:39.232Z] [INFO] 角色生成成功

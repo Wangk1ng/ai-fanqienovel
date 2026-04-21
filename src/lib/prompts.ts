@@ -16,7 +16,15 @@ export function extractJSON<T = any>(raw: string): T | null {
     } catch {}
   }
 
-  // 3. 从文本中找到第一个 { ... } 或 [ ... ] 结构
+  // 3. 尝试找到 JSON 结构并补全截断的 JSON
+  const truncatedJsonFix = tryFixTruncatedJSON(raw);
+  if (truncatedJsonFix) {
+    try {
+      return JSON.parse(truncatedJsonFix.trim());
+    } catch {}
+  }
+
+  // 4. 从文本中找到第一个 { ... } 或 [ ... ] 结构
   const jsonMatch = raw.match(/(\{[\s\S]*\}|\[[\s\S]*\])/);
   if (jsonMatch) {
     try {
@@ -24,6 +32,47 @@ export function extractJSON<T = any>(raw: string): T | null {
     } catch {}
   }
 
+  return null;
+}
+
+function tryFixTruncatedJSON(raw: string): string | null {
+  // 如果 JSON 被截断，尝试补全
+  // 找到最后一个完整的对象/数组
+  const trimmed = raw.trim();
+  
+  // 检查是否是截断的（以 " 结尾但没有闭合）
+  const lastChar = trimmed.slice(-1);
+  if (lastChar !== '"' && lastChar !== ']' && lastChar !== '}') {
+    // 可能是截断的结尾，尝试修复
+    let fixed = trimmed;
+    
+    // 补全未闭合的字符串（找到最后一个完整的字段）
+    const lastCommaIndex = fixed.lastIndexOf(',');
+    if (lastCommaIndex > 0) {
+      fixed = fixed.slice(0, lastCommaIndex + 1) + ']}';
+    }
+    
+    // 尝试解析修复后的 JSON
+    try {
+      JSON.parse(fixed);
+      return fixed;
+    } catch {
+      // 尝试更激进的修复
+    }
+    
+    // 尝试补全顶层数组或对象
+    if (fixed.startsWith('[')) {
+      fixed = fixed + ']';
+    } else if (fixed.startsWith('{')) {
+      fixed = fixed + '}';
+    }
+    
+    try {
+      JSON.parse(fixed);
+      return fixed;
+    } catch {}
+  }
+  
   return null;
 }
 

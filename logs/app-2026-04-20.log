@@ -1,0 +1,292 @@
+[2026-04-20T20:58:45.806Z] [INFO] 生成成功，幕数:
+5
+[2026-04-20T21:05:39.003Z] [INFO] 应用启动
+{
+  "runtime": "nodejs",
+  "env": "development"
+}
+[2026-04-20T21:09:10.865Z] [INFO] 应用启动
+{
+  "runtime": "nodejs",
+  "env": "production"
+}
+[2026-04-20T21:10:56.338Z] [INFO] 创建批量生成任务
+{
+  "userId": "cmo7j79k700003j9gqao23jd4",
+  "targetChapters": 100,
+  "firstBatchChapters": 15,
+  "wordCount": 1000
+}
+[2026-04-20T21:10:56.340Z] [INFO] 创建批量生成任务
+{
+  "userId": "cmo7j79k700003j9gqao23jd4",
+  "targetChapters": 100,
+  "firstBatchChapters": 15,
+  "wordCount": 1000
+}
+[2026-04-20T21:10:56.342Z] [INFO] 创建批量生成任务
+{
+  "userId": "cmo7j79k700003j9gqao23jd4",
+  "targetChapters": 100,
+  "firstBatchChapters": 15,
+  "wordCount": 1000
+}
+[2026-04-20T21:10:56.358Z] [INFO] 开始执行生成任务
+{
+  "taskId": "cmo7ow2fp00003jxnbza0ekvo",
+  "randomGenre": "虐恋"
+}
+[2026-04-20T21:10:56.362Z] [INFO] 开始执行生成任务
+{
+  "taskId": "cmo7ow2g300013jxnphjegd87",
+  "randomGenre": "都市"
+}
+[2026-04-20T21:10:56.387Z] [INFO] 开始执行生成任务
+{
+  "taskId": "cmo7ow2g500023jxnnokcvrwf",
+  "randomGenre": "马甲"
+}
+[2026-04-20T21:10:56.788Z] [INFO] 创建批量生成任务
+{
+  "userId": "cmo7j79k700003j9gqao23jd4",
+  "targetChapters": 100,
+  "firstBatchChapters": 15,
+  "wordCount": 1000
+}
+[2026-04-20T21:10:56.796Z] [INFO] 开始执行生成任务
+{
+  "taskId": "cmo7ow2s500033jxnerokok75",
+  "randomGenre": "快穿"
+}
+[2026-04-20T21:10:56.797Z] [INFO] 创建批量生成任务
+{
+  "userId": "cmo7j79k700003j9gqao23jd4",
+  "targetChapters": 100,
+  "firstBatchChapters": 15,
+  "wordCount": 1000
+}
+[2026-04-20T21:10:56.800Z] [INFO] 创建批量生成任务
+{
+  "userId": "cmo7j79k700003j9gqao23jd4",
+  "targetChapters": 100,
+  "firstBatchChapters": 15,
+  "wordCount": 1000
+}
+[2026-04-20T21:10:56.803Z] [INFO] 开始执行生成任务
+{
+  "taskId": "cmo7ow2se00043jxnnajf0tf9",
+  "randomGenre": "总裁"
+}
+[2026-04-20T21:10:56.806Z] [INFO] 开始执行生成任务
+{
+  "taskId": "cmo7ow2sg00053jxnqwsft4kh",
+  "randomGenre": "甜宠"
+}
+[2026-04-20T21:10:57.220Z] [INFO] 创建批量生成任务
+{
+  "userId": "cmo7j79k700003j9gqao23jd4",
+  "targetChapters": 100,
+  "firstBatchChapters": 15,
+  "wordCount": 1000
+}
+[2026-04-20T21:10:57.225Z] [INFO] 开始执行生成任务
+{
+  "taskId": "cmo7ow34500063jxnfilaixct",
+  "randomGenre": "病娇"
+}
+[2026-04-20T21:10:57.235Z] [INFO] 创建批量生成任务
+{
+  "userId": "cmo7j79k700003j9gqao23jd4",
+  "targetChapters": 100,
+  "firstBatchChapters": 15,
+  "wordCount": 1000
+}
+[2026-04-20T21:10:57.240Z] [INFO] 开始执行生成任务
+{
+  "taskId": "cmo7ow34k00073jxnw92zpkat",
+  "randomGenre": "大佬"
+}
+[2026-04-20T21:10:57.241Z] [INFO] 创建批量生成任务
+{
+  "userId": "cmo7j79k700003j9gqao23jd4",
+  "targetChapters": 100,
+  "firstBatchChapters": 15,
+  "wordCount": 1000
+}
+[2026-04-20T21:10:57.247Z] [INFO] 开始执行生成任务
+{
+  "taskId": "cmo7ow34q00083jxnyrj6bbye",
+  "randomGenre": "医妃"
+}
+[2026-04-20T21:10:57.644Z] [INFO] 创建批量生成任务
+{
+  "userId": "cmo7j79k700003j9gqao23jd4",
+  "targetChapters": 100,
+  "firstBatchChapters": 15,
+  "wordCount": 1000
+}
+[2026-04-20T21:10:57.648Z] [INFO] 开始执行生成任务
+{
+  "taskId": "cmo7ow3fx00093jxnsuarw5kf",
+  "randomGenre": "言情"
+}
+[2026-04-20T21:11:21.913Z] [INFO] 创作需求优化完成
+{
+  "refinedLength": 269
+}
+[2026-04-20T21:11:28.933Z] [INFO] 创作需求优化完成
+{
+  "refinedLength": 305
+}
+[2026-04-20T21:11:33.359Z] [INFO] 创作需求优化完成
+{
+  "refinedLength": 277
+}
+[2026-04-20T21:11:35.590Z] [INFO] 创作需求优化完成
+{
+  "refinedLength": 302
+}
+[2026-04-20T21:11:35.824Z] [INFO] 创作需求优化完成
+{
+  "refinedLength": 251
+}
+[2026-04-20T21:11:36.294Z] [INFO] 创作需求优化完成
+{
+  "refinedLength": 264
+}
+[2026-04-20T21:11:36.543Z] [INFO] 创作需求优化完成
+{
+  "refinedLength": 293
+}
+[2026-04-20T21:11:42.869Z] [INFO] 创作需求优化完成
+{
+  "refinedLength": 282
+}
+[2026-04-20T21:11:43.042Z] [INFO] 创作需求优化完成
+{
+  "refinedLength": 254
+}
+[2026-04-20T21:11:47.384Z] [INFO] 创作需求优化完成
+{
+  "refinedLength": 351
+}
+[2026-04-20T21:11:59.017Z] [INFO] 标题和简介生成成功
+{
+  "title": "伪装F级向导，元帅疯了",
+  "descriptionLength": 205
+}
+[2026-04-20T21:11:59.023Z] [INFO] 项目创建成功
+{
+  "projectId": "cmo7oxest000b3jxnwiai3dgz",
+  "title": "伪装F级向导，元帅疯了"
+}
+[2026-04-20T21:12:04.402Z] [INFO] 标题和简介生成成功
+{
+  "title": "闪婚后，元帅夫人掉马了",
+  "descriptionLength": 188
+}
+[2026-04-20T21:12:04.407Z] [INFO] 项目创建成功
+{
+  "projectId": "cmo7oxiye000d3jxnca43oub9",
+  "title": "闪婚后，元帅夫人掉马了"
+}
+[2026-04-20T21:12:05.371Z] [INFO] 标题和简介生成成功
+{
+  "title": "被迫和键盘谈恋爱",
+  "descriptionLength": 207
+}
+[2026-04-20T21:12:05.375Z] [INFO] 项目创建成功
+{
+  "projectId": "cmo7oxjpa000f3jxnwbqalpom",
+  "title": "被迫和键盘谈恋爱"
+}
+[2026-04-20T21:12:06.288Z] [INFO] 标题和简介生成成功
+{
+  "title": "我成了宇宙唯一的Bug",
+  "descriptionLength": 199
+}
+[2026-04-20T21:12:06.292Z] [INFO] 项目创建成功
+{
+  "projectId": "cmo7oxker000h3jxnokvgqria",
+  "title": "我成了宇宙唯一的Bug"
+}
+[2026-04-20T21:12:07.420Z] [INFO] 标题和简介生成成功
+{
+  "title": "全网嘲后，我在星际杀疯了",
+  "descriptionLength": 210
+}
+[2026-04-20T21:12:07.424Z] [INFO] 项目创建成功
+{
+  "projectId": "cmo7oxla8000j3jxnpgxz009r",
+  "title": "全网嘲后，我在星际杀疯了"
+}
+[2026-04-20T21:12:09.900Z] [INFO] 标题和简介生成成功
+{
+  "title": "靠激怒疯批续命",
+  "descriptionLength": 225
+}
+[2026-04-20T21:12:09.904Z] [INFO] 项目创建成功
+{
+  "projectId": "cmo7oxn73000l3jxn9on9mh88",
+  "title": "靠激怒疯批续命"
+}
+[2026-04-20T21:12:10.229Z] [INFO] 标题和简介生成成功
+{
+  "title": "穿成毒体，被修罗将军独宠",
+  "descriptionLength": 185
+}
+[2026-04-20T21:12:10.232Z] [INFO] 项目创建成功
+{
+  "projectId": "cmo7oxng7000n3jxng94q5jfl",
+  "title": "穿成毒体，被修罗将军独宠"
+}
+[2026-04-20T21:12:14.440Z] [INFO] 标题和简介生成成功
+{
+  "title": "感化反派后他崩坏了",
+  "descriptionLength": 189
+}
+[2026-04-20T21:12:14.444Z] [INFO] 项目创建成功
+{
+  "projectId": "cmo7oxqp7000p3jxn6no9oye9",
+  "title": "感化反派后他崩坏了"
+}
+[2026-04-20T21:12:22.563Z] [INFO] 标题和简介生成成功
+{
+  "title": "满级恶女，虐哭疯批大佬",
+  "descriptionLength": 167
+}
+[2026-04-20T21:12:22.568Z] [INFO] 项目创建成功
+{
+  "projectId": "cmo7oxwyv000r3jxn4r27qrib",
+  "title": "满级恶女，虐哭疯批大佬"
+}
+[2026-04-20T21:12:28.482Z] [INFO] 标题和简介生成成功
+{
+  "title": "绑定首富后，我被迫装穷",
+  "descriptionLength": 231
+}
+[2026-04-20T21:12:28.486Z] [INFO] 项目创建成功
+{
+  "projectId": "cmo7oy1j9000t3jxnlksx1667",
+  "title": "绑定首富后，我被迫装穷"
+}
+[2026-04-20T21:13:19.353Z] [INFO] 核心设定生成成功
+[2026-04-20T21:13:26.394Z] [INFO] 核心设定生成成功
+[2026-04-20T21:13:26.703Z] [INFO] 核心设定生成成功
+[2026-04-20T21:13:29.047Z] [INFO] 核心设定生成成功
+[2026-04-20T21:13:30.930Z] [INFO] 核心设定生成成功
+[2026-04-20T21:13:31.869Z] [INFO] 核心设定生成成功
+[2026-04-20T21:13:46.422Z] [INFO] 核心设定生成成功
+[2026-04-20T21:13:46.787Z] [INFO] 核心设定生成成功
+[2026-04-20T21:13:53.686Z] [INFO] 核心设定生成成功
+[2026-04-20T21:14:04.972Z] [INFO] 核心设定生成成功
+[2026-04-20T21:14:09.701Z] [INFO] 角色生成成功
+[2026-04-20T21:14:23.897Z] [INFO] 角色生成成功
+[2026-04-20T21:14:26.701Z] [INFO] 角色生成成功
+[2026-04-20T21:14:27.546Z] [INFO] 角色生成成功
+[2026-04-20T21:14:38.627Z] [INFO] 角色生成成功
+[2026-04-20T21:14:48.475Z] [INFO] 角色生成成功
+[2026-04-20T21:14:55.950Z] [INFO] 角色生成成功
+[2026-04-20T21:14:57.773Z] [INFO] 角色生成成功
+[2026-04-20T21:15:00.273Z] [INFO] 角色生成成功
+[2026-04-20T21:15:28.310Z] [INFO] 角色生成成功
