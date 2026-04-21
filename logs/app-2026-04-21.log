@@ -82,3 +82,104 @@
 [2026-04-21T05:04:13.321Z] [INFO] 角色生成成功
 [2026-04-21T05:04:20.618Z] [INFO] 角色生成成功
 [2026-04-21T05:04:39.232Z] [INFO] 角色生成成功
+[2026-04-21T05:17:16.075Z] [INFO] 应用启动
+{
+  "runtime": "nodejs",
+  "env": "production"
+}
+[2026-04-21T05:51:02.913Z] [INFO] 创建批量生成任务
+{
+  "userId": "cmo7j79k700003j9gqao23jd4",
+  "targetChapters": 100,
+  "firstBatchChapters": 15,
+  "wordCount": 1000
+}
+[2026-04-21T05:51:02.927Z] [INFO] 创建批量生成任务
+{
+  "userId": "cmo7j79k700003j9gqao23jd4",
+  "targetChapters": 100,
+  "firstBatchChapters": 15,
+  "wordCount": 1000
+}
+[2026-04-21T05:51:02.934Z] [INFO] 开始执行生成任务
+{
+  "taskId": "cmo87gxl000003jir1qnj8tji",
+  "randomGenre": "虐恋"
+}
+[2026-04-21T05:51:02.939Z] [INFO] 创建批量生成任务
+{
+  "userId": "cmo7j79k700003j9gqao23jd4",
+  "targetChapters": 100,
+  "firstBatchChapters": 15,
+  "wordCount": 1000
+}
+[2026-04-21T05:51:02.983Z] [INFO] 开始执行生成任务
+{
+  "taskId": "cmo87gxlo00023jirsldcnl3c",
+  "randomGenre": "科举"
+}
+[2026-04-21T05:51:02.984Z] [INFO] 开始执行生成任务
+{
+  "taskId": "cmo87gxlh00013jirtjnjevbl",
+  "randomGenre": "星际恋"
+}
+[2026-04-21T05:51:53.492Z] [INFO] 创作需求优化完成
+{
+  "refinedLength": 332
+}
+[2026-04-21T05:52:24.356Z] [INFO] 创作需求优化完成
+{
+  "refinedLength": 282
+}
+[2026-04-21T05:52:29.980Z] [INFO] 创作需求优化完成
+{
+  "refinedLength": 310
+}
+[2026-04-21T05:52:45.027Z] [INFO] 标题和简介生成成功
+{
+  "title": "异族医后：元帅请赐死",
+  "descriptionLength": 194
+}
+[2026-04-21T05:52:45.034Z] [INFO] 项目创建成功
+{
+  "projectId": "cmo87j4dk00043jir3mjvavpo",
+  "title": "异族医后：元帅请赐死"
+}
+[2026-04-21T05:53:16.015Z] [INFO] 标题和简介生成成功
+{
+  "title": "疯批元帅求我喂一口",
+  "descriptionLength": 223
+}
+[2026-04-21T05:53:16.019Z] [INFO] 项目创建成功
+{
+  "projectId": "cmo87jsaa00063jir45la3sne",
+  "title": "疯批元帅求我喂一口"
+}
+[2026-04-21T05:53:16.162Z] [INFO] 标题和简介生成成功
+{
+  "title": "考官微表情被我看穿了",
+  "descriptionLength": 189
+}
+[2026-04-21T05:53:16.166Z] [INFO] 项目创建成功
+{
+  "projectId": "cmo87jsed00083jirzetyo2wq",
+  "title": "考官微表情被我看穿了"
+}
+[2026-04-21T05:55:11.538Z] [INFO] 核心设定生成成功
+[2026-04-21T05:56:07.387Z] [INFO] 核心设定生成成功
+[2026-04-21T05:56:28.690Z] [INFO] 核心设定生成成功
+[2026-04-21T05:57:34.742Z] [INFO] 角色生成成功
+[2026-04-21T05:58:03.626Z] [WARN] 生成角色失败，继续执行
+{
+  "projectId": "cmo87jsaa00063jir45la3sne",
+  "error": {}
+}
+[2026-04-21T05:58:33.258Z] [WARN] 生成角色失败，继续执行
+{
+  "projectId": "cmo87jsed00083jirzetyo2wq",
+  "error": {}
+}
+[2026-04-21T06:00:48.636Z] [INFO] 生成章节 1 失败，60秒后重试
+{
+  "retry": 0
+}

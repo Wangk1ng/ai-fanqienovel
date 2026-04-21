@@ -212,10 +212,31 @@ async function generateOutline(projectId: string, targetChapters: number, aiConf
     `${c.name}（${c.role}）：${c.personality.join("、")}，${c.background.slice(0, 50)}`
   ).join("\n");
 
-  // 生成大纲时使用较少章节数，避免 JSON 过大导致截断
-  const outlineChapters = Math.min(targetChapters, 50);
+  const BATCH_SIZE = 50;
+  const allPlotPoints: Array<{
+    chapterNumber: number;
+    title: string;
+    summary: string;
+    keyEvents: string[];
+    characters: string[];
+  }> = [];
+  let allStructure: Array<{
+    actNumber: number;
+    actName: string;
+    chapterRange: string;
+    summary: string;
+    plotPoints: string[];
+  }> = [];
+  let lastChapterSummary = "";
 
-  const prompt = `你是一位资深的网络小说大纲设计师。请为小说《${project.title}》生成完整的大纲。
+  for (let batch = 0; batch < Math.ceil(targetChapters / BATCH_SIZE); batch++) {
+    const startChapter = batch * BATCH_SIZE + 1;
+    const endChapter = Math.min((batch + 1) * BATCH_SIZE, targetChapters);
+    const isFirstBatch = batch === 0;
+
+    let prompt: string;
+    if (isFirstBatch) {
+      prompt = `你是一位资深的网络小说大纲设计师。请为小说《${project.title}》生成完整的大纲。
 
 类型：${project.genre}
 简介：${project.description || "无"}
@@ -227,15 +248,15 @@ ${settings.powerSystem ? `力量体系：${settings.powerSystem}` : ""}
 角色体系：
 ${charDescriptions}
 
-目标章节数：${outlineChapters}
+目标章节数：${endChapter}
 
-请生成 ${outlineChapters} 章节的大纲，严格按照以下 JSON 格式输出：
+请生成第 ${startChapter} 到第 ${endChapter} 章的大纲，严格按照以下 JSON 格式输出：
 {
   "structure": [
     {
       "actNumber": 1,
       "actName": "第一幕名称",
-      "chapterRange": "第1-${Math.ceil(outlineChapters / 3)}章",
+      "chapterRange": "第1-${Math.ceil(endChapter / 3)}章",
       "summary": "本幕概述（100-150字）",
       "plotPoints": ["关键情节点1", "关键情节点2"]
     }
@@ -255,52 +276,111 @@ ${charDescriptions}
 1. 大纲要有起承转合，情节要有起伏
 2. 每幕要有明确的主题和目标
 3. 章节之间要有逻辑递进关系`;
+    } else {
+      prompt = `你是一位资深的网络小说大纲设计师。请继续为小说《${project.title}》生成后续章节的大纲。
 
-  const parsed = await generateWithRetry(async () => {
-    return generateObject(prompt, z.object({
-      structure: z.array(z.object({
-        actNumber: z.number(),
-        actName: z.string(),
-        chapterRange: z.string(),
-        summary: z.string(),
-        plotPoints: z.array(z.string()),
-      })),
-      plotPoints: z.array(z.object({
-        chapterNumber: z.number(),
-        title: z.string(),
-        summary: z.string(),
-        keyEvents: z.array(z.string()),
-        characters: z.array(z.string()),
-      })),
-    }), { ...aiConfig, temperature: 0.8 });
-  }, 3, 45000);
+类型：${project.genre}
 
-  await prisma.outline.create({
+上文最后章节摘要：
+${lastChapterSummary}
+
+请生成第 ${startChapter} 到第 ${endChapter} 章的大纲，严格按照以下 JSON 格式输出：
+{
+  "plotPoints": [
+    {
+      "chapterNumber": ${startChapter},
+      "title": "章节标题",
+      "summary": "章节摘要（50-80字）",
+      "keyEvents": ["关键事件1", "关键事件2"],
+      "characters": ["涉及的角色名"]
+    }
+  ]
+}
+
+要求：
+1. 情节要承接上文，自然递进
+2. 章节之间要有逻辑递进关系
+3. 只输出 JSON，不要其他文字`;
+    }
+
+    let parsed: any;
+    let success = false;
+    for (let retry = 0; retry < 3 && !success; retry++) {
+      try {
+        parsed = await generateObject(prompt, z.object({
+          structure: isFirstBatch ? z.array(z.object({
+            actNumber: z.number(),
+            actName: z.string(),
+            chapterRange: z.string(),
+            summary: z.string(),
+            plotPoints: z.array(z.string()),
+          })) : z.array(z.object({})).optional(),
+          plotPoints: z.array(z.object({
+            chapterNumber: z.number(),
+            title: z.string(),
+            summary: z.string(),
+            keyEvents: z.array(z.string()),
+            characters: z.array(z.string()),
+          })),
+        }), { ...aiConfig, temperature: 0.8 });
+        success = true;
+      } catch (error) {
+        logger.warn(`大纲批次 ${batch + 1} 生成失败，重试中`, { error });
+        if (retry === 2) throw error;
+        await sleep(30000 * Math.pow(2, retry));
+      }
+    }
+
+    if (parsed.plotPoints && parsed.plotPoints.length > 0) {
+      allPlotPoints.push(...parsed.plotPoints);
+      if (parsed.plotPoints.length > 0) {
+        lastChapterSummary = parsed.plotPoints[parsed.plotPoints.length - 1].summary;
+      }
+    }
+
+    if (isFirstBatch && parsed.structure) {
+      allStructure = parsed.structure;
+    }
+
+    logger.info(`大纲批次 ${batch + 1} 完成`, { 
+      startChapter, 
+      endChapter, 
+      plotPointsCount: parsed.plotPoints?.length || 0 
+    });
+  }
+
+  if (allPlotPoints.length === 0) {
+    throw new Error("大纲生成失败：未能获取任何章节大纲");
+  }
+
+  const outline = await prisma.outline.create({
     data: {
       projectId,
-      structure: parsed.structure,
-      plotPoints: parsed.plotPoints,
+      structure: allStructure,
+      plotPoints: allPlotPoints,
     },
   });
 
-  for (const point of parsed.plotPoints) {
-    const outline = await prisma.outline.findUnique({ where: { projectId } });
-    if (outline) {
-      await prisma.outlineItem.create({
-        data: {
-          outlineId: outline.id,
-          chapterNumber: point.chapterNumber,
-          title: point.title,
-          summary: point.summary,
-          keyEvents: point.keyEvents,
-          characters: point.characters,
-          order: point.chapterNumber,
-        },
-      });
-    }
+  for (const point of allPlotPoints) {
+    await prisma.outlineItem.create({
+      data: {
+        outlineId: outline.id,
+        chapterNumber: point.chapterNumber,
+        title: point.title,
+        summary: point.summary,
+        keyEvents: point.keyEvents,
+        characters: point.characters,
+        order: point.chapterNumber,
+      },
+    });
   }
 
-  return parsed;
+  logger.info("大纲生成完成", { projectId, totalChapters: allPlotPoints.length });
+
+  return {
+    structure: allStructure,
+    plotPoints: allPlotPoints,
+  };
 }
 
 async function generateChapter(

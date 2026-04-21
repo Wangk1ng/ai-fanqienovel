@@ -199,3 +199,199 @@
   "textLength": 9525,
   "textHead": "```json\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"第一幕：废土上的奇迹\",\n      \"chapterRange\": \"第1-20章\",\n      \"summary\": \"林渊穿越至辐射超标的贫民窟，觉醒随身农场。在饥饿中种下第一株古地球植物，被黑客皮普发现并意外开启直播。真实食物的香气震惊全网，引来财阀赫利俄斯的注意与打压，同时结识了老兵老铁和医生索菲亚。\",\n      \"plotPoints\": [\"觉醒农场与第一株植物\", \"意外开启直播引发轰动\", \"财阀初期的打压与试探\"]\n    "
 }
+[2026-04-21T05:51:53.493Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1099
+}
+[2026-04-21T05:52:24.357Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1050
+}
+[2026-04-21T05:52:29.980Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1077
+}
+[2026-04-21T05:52:45.025Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 449,
+  "textHead": "{\n  \"titles\": [\n    {\n      \"title\": \"异族医后：元帅请赐死\",\n      \"reason\": \"身份反差，极致BE美学\"\n    },\n    {\n      \"title\": \"我是敌族间谍，被元帅囚禁\",\n      \"reason\": \"第一人称，强冲突吸睛\"\n    },\n    {\n      \"title\": \"处决她后，元帅疯了\",\n      \"reason\": \"追妻火葬场，悬念强\"\n    }\n  ],\n  \"description\": \"当铁血元帅楚云发现，那个能抚平他精神狂暴的温柔军医，竟是令全人类闻风丧胆的异族遗孤时，他亲手折断"
+}
+[2026-04-21T05:52:45.027Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "titles",
+    "description"
+  ]
+}
+[2026-04-21T05:53:16.014Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 480,
+  "textHead": "{\n  \"titles\": [\n    {\n      \"title\": \"疯批元帅求我喂一口\",\n      \"reason\": \"强反差感，突出甜宠与治愈\"\n    },\n    {\n      \"title\": \"全星际都在等我种田\",\n      \"reason\": \"直击粮荒痛点，爽感十足\"\n    },\n    {\n      \"title\": \"被全网黑后我养大了战神\",\n      \"reason\": \"逆袭打脸流，期待感拉满\"\n    }\n  ],\n  \"description\": \"当楚瑶在垃圾星捡到那个浑身是血的男人时，他正死死咬着她的手腕不放。这可是全网黑、被称作“疯狗"
+}
+[2026-04-21T05:53:16.014Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "titles",
+    "description"
+  ]
+}
+[2026-04-21T05:53:16.161Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 464,
+  "textHead": "{\n  \"titles\": [\n    {\n      \"title\": \"考官微表情被我看穿了\",\n      \"reason\": \"直击爽点，画面感强，吸引点击。\"\n    },\n    {\n      \"title\": \"侧写师：我在古代连中三元\",\n      \"reason\": \"身份明确，期待感足，符合番茄风。\"\n    },\n    {\n      \"title\": \"大梁科举：我一眼看穿人心\",\n      \"reason\": \"结合背景，突出金手指，简洁有力。\"\n    }\n  ],\n  \"description\": \"重生回到大梁，陈景发现自己成了一名被家族抛弃的落魄书生。"
+}
+[2026-04-21T05:53:16.161Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "titles",
+    "description"
+  ]
+}
+[2026-04-21T05:54:04.170Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1157
+}
+[2026-04-21T05:54:40.777Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1102
+}
+[2026-04-21T05:54:50.079Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1211
+}
+[2026-04-21T05:55:11.533Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 1043,
+  "textHead": "{\n  \"worldView\": \"这是一个处于毁灭边缘的黑暗星际纪元，人类帝国与神秘异族展开漫长而残酷的全面战争。科技与古武并存，星际战舰与精神力机甲主宰战场。帝国实行铁血独裁，对异族实施种族清洗，整个宇宙弥漫着硝烟与精神污染。精神力强者是稀缺的战略武器，却时刻面临精神崩溃的风险，而唯一的救赎竟来自最危险的敌人。\",\n  \"coreConflict\": \"宏观上人类与异族进行种族生存之战；微观上男主楚云与女主苏离在“猎手与猎物”、“仇敌与挚爱”间极限拉扯。苏离在利用与动心间挣扎，楚云在处决与依赖间博弈。当伪装破碎，两人面临“亲手折断爱人翅膀”与“为爱背叛世界”的毁灭抉择。\",\n  \"powe"
+}
+[2026-04-21T05:55:11.534Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "worldView",
+    "coreConflict",
+    "powerSystem",
+    "factions",
+    "specialRules"
+  ]
+}
+[2026-04-21T05:55:11.542Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 541
+}
+[2026-04-21T05:56:07.380Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 1080,
+  "textHead": "{\n  \"worldView\": \"星际废土时代，科技高度发达但生态崩坏。人类长期依赖无味营养液，导致基因锁死、体质孱弱。环境中的“暗物质辐射”使人类精神力极易崩溃异化为“狂躁症”。帝国与联邦表面和平实则暗战，联邦高层极度腐败，视人命如草芥，社会阶层固化严重，是一个全员恶人式的黑暗丛林世界。\",\n  \"coreConflict\": \"围绕“生存与掠夺”展开。女主楚瑶拥有唯一的“地球灵植”与“净化能力”，需躲避联邦切片研究并应对贵族打压。男主霍渊在精神力暴走边缘对女主产生从杀意到极致疯魔的占有欲。最终二人联手解决粮荒与污染，推翻联邦，重塑星际秩序。\",\n  \"powerSystem\": \"双重体"
+}
+[2026-04-21T05:56:07.381Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "worldView",
+    "coreConflict",
+    "powerSystem",
+    "factions",
+    "specialRules"
+  ]
+}
+[2026-04-21T05:56:07.391Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 541
+}
+[2026-04-21T05:56:28.685Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 1131,
+  "textHead": "{\n  \"worldView\": \"大梁国，一个金玉其外、败絮其中的架空王朝。阶级壁垒森严，科举虽为寒门唯一的通天梯，实则被世家大族垄断，考题与评判尽是黑幕。朝堂之上党争林立，官场生态以‘出身’与‘站队’为尊，人情凌驾于王法之上。主角陈景将以现代科学逻辑与心理学，对这腐朽的封建权力体系进行降维打击。\",\n  \"coreConflict\": \"核心矛盾在于‘个人生存复仇’与‘体制压迫’的殊死对抗。主角陈景开局惨遭家族陷害，被迫在严苛科举中利用考官心理漏洞破局。入仕后，他在多方势力夹缝中生存，凭借‘心理侧写’打破世家垄断，从弃子逆袭为权倾朝野的宰辅，最终揭开动摇国本的惊天阴谋。\",\n  \"powe"
+}
+[2026-04-21T05:56:28.686Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "worldView",
+    "coreConflict",
+    "powerSystem",
+    "factions",
+    "specialRules"
+  ]
+}
+[2026-04-21T05:56:28.692Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 541
+}
+[2026-04-21T05:57:34.730Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 3705,
+  "textHead": "{\n  \"characters\": [\n    {\n      \"name\": \"林渊\",\n      \"role\": \"protagonist\",\n      \"age\": 19,\n      \"gender\": \"男\",\n      \"appearance\": \"身材消瘦，穿着磨损严重的战术夹克，左眼是一只廉价且偶尔闪烁的义眼，右眼却透着与其年龄不符的沧桑与锐利，手指细长且布满细小的伤痕。\",\n      \"personality\": [\"坚韧不拔\", \"冷静观察\", \"极度警惕\"],\n      \"background\": \"霓虹城底层的拾荒者，在一次挖掘旧时代废墟时意外获得一枚蕴含禁忌"
+}
+[2026-04-21T05:57:34.731Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "characters"
+  ]
+}
+[2026-04-21T05:57:34.751Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1752
+}
+[2026-04-21T05:58:03.624Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 3712,
+  "textHead": "{\n  \"characters\": [\n    {\n      \"name\": \"林渊\",\n      \"role\": \"protagonist\",\n      \" \"age\": 22,\n      \"gender\": \"男\",\n      \"appearance\": \"身材精瘦，眼神锐利如鹰，留着略显凌乱的寸头。左臂是老旧的机械义肢，上面布满了划痕和改装痕迹，常穿一件磨损严重的黑色冲锋衣，透着一股底层混迹的沧桑感。\",\n      \"personality\": [\"坚韧不拔\", \"冷静理智\"],\n      \"background\": \"出生在霓虹闪烁的底层‘锈蚀区’，父母早亡，自幼靠捡拾巨"
+}
+[2026-04-21T05:58:03.636Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1116
+}
+[2026-04-21T05:58:33.256Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 3928,
+  "textHead": "{\n  \"characters\": [\n    {\n      \"name\": \"林渊\",\n      \"role\": \"protagonist\",\n      \"age\": 22,\n      \"gender\": \"男\",\n      \"appearance\": \"身形瘦削但结实，常穿一件磨损严重的战术夹克。左眼是一颗廉价的二手义眼，偶尔闪烁着故障般的蓝光。双手布满老茧和细小的伤疤，眼神中透着与其年龄不符的沧桑与警惕。\",\n      \"personality\": [\"坚韧不拔\", \"观察力敏锐\", \"重情重义\"],\n      \"background\": \"在霓虹闪烁的“下城区”贫民窟长大"
+}
+[2026-04-21T05:58:33.263Z] [INFO] [generateObject] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1117
+}
+[2026-04-21T06:00:42.518Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 1904,
+  "textHead": "```json\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"第一幕：绝境求生，县试初啼\",\n      \"chapterRange\": \"第1-17章\",\n      \"summary\": \"陈景重生为被家族抛弃的落魄书生，身无分文。他利用前世刑侦侧写能力，通过观察县令微表情得知其心病，精准押题并献策，在县试中脱颖而出。面对家族陷害，他通过微表情识破堂兄作弊，不仅洗清嫌疑，更令考官刮目相看，成功通过县试，迈出逆袭第一步。\",\n      \"plotPoints\": [\n        \"陈景重生被逐出家族，利"
+}
+[2026-04-21T06:00:42.518Z] [INFO] [generateObject] JSON 提取成功
+{
+  "keys": [
+    "structure",
+    "plotPoints"
+  ]
+}
+[2026-04-21T06:00:48.593Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 9216,
+  "textHead": "```json\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"第一幕：人形抑制剂\",\n      \"chapterRange\": \"第1-12章\",\n      \"summary\": \"SSS级精神力者楚云濒临狂暴，异族遗孤苏离化身军医潜伏。她以“痛觉共生”体质成为楚云唯一的救赎。两猎手与猎物的关系中，苏离在复仇与动心间挣扎，楚云在警惕与沉沦中越陷越深。\",\n      \"plotPoints\": [\n        \"苏离初次接触楚云，成功平息其狂暴\",\n        \"苏离利用身份便利暗中搜集情报\",\n "
+}
+[2026-04-21T06:01:34.195Z] [INFO] [generateObject] AI 返回文本
+{
+  "textLength": 9132,
+  "textHead": "```json\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"第一幕：垃圾星的疯犬\",\n      \"chapterRange\": \"第1-10章\",\n      \"summary\": \"楚瑶在垃圾星捡到精神力暴走的元帅霍渊，用灵植果暂时安抚了他。两人为了生存联手对抗当地暴徒，霍渊在杀戮中逐渐对楚瑶产生依赖，最终护送楚瑶离开垃圾星前往文明世界。\",\n      \"plotPoints\": [\"捡到濒死元帅并喂食\", \"霍渊展现疯批战力护主\", \"夺取飞船逃离垃圾星\"]\n    },\n    {\n      \"a"
+}
