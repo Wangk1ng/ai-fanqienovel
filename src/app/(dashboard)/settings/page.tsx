@@ -30,8 +30,17 @@ export default function UserSettingsPage() {
   const [imageApiKey, setImageApiKey] = useState("");
   const [imageBaseUrl, setImageBaseUrl] = useState("");
 
+  const [tokenSettings, setTokenSettings] = useState({
+    enabled: false,
+    tokenThreshold: 5000000,
+    models: "",
+    currentModelIndex: 0,
+  });
+  const [tokenStats, setTokenStats] = useState<any>(null);
+
   useEffect(() => {
     fetchSettings();
+    fetchTokenSettings();
   }, []);
 
   const fetchSettings = async () => {
@@ -53,6 +62,19 @@ export default function UserSettingsPage() {
       console.error("获取设置失败:", error);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const fetchTokenSettings = async () => {
+    try {
+      const response = await fetch("/api/token/settings");
+      if (response.ok) {
+        const data = await response.json();
+        setTokenSettings(data.settings);
+        setTokenStats(data.stats);
+      }
+    } catch (error) {
+      console.error("获取 token 设置失败:", error);
     }
   };
 
@@ -80,7 +102,24 @@ export default function UserSettingsPage() {
         return;
       }
 
+      const tokenResponse = await fetch("/api/token/settings", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          enabled: tokenSettings.enabled,
+          tokenThreshold: tokenSettings.tokenThreshold,
+          models: tokenSettings.models,
+        }),
+      });
+
+      if (!tokenResponse.ok) {
+        const error = await tokenResponse.json();
+        alert(`保存 token 设置失败: ${error.error || "未知错误"}`, "error");
+        return;
+      }
+
       alert("保存成功", "success");
+      fetchTokenSettings();
     } catch (error) {
       console.error("保存失败:", error);
       alert(`保存失败：${error instanceof Error ? error.message : "请稍后重试"}`, "error");
@@ -305,6 +344,80 @@ export default function UserSettingsPage() {
                 图像模型专用 API Key，留空使用系统环境变量
               </p>
             </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Token 阈值控制</CardTitle>
+            <CardDescription>
+              设置每日 token 消耗阈值，启用后程序将自动循环创建项目直到 token 用尽。每天北京时间中午12时重置。
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                id="tokenEnabled"
+                checked={tokenSettings.enabled}
+                onChange={(e) => setTokenSettings({ ...tokenSettings, enabled: e.target.checked })}
+                className="w-4 h-4"
+              />
+              <Label htmlFor="tokenEnabled">启用 Token 阈值控制</Label>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="tokenThreshold">每日 Token 阈值</Label>
+              <Input
+                id="tokenThreshold"
+                type="number"
+                value={tokenSettings.tokenThreshold}
+                onChange={(e) => setTokenSettings({ ...tokenSettings, tokenThreshold: parseInt(e.target.value) || 5000000 })}
+                placeholder="5000000"
+                disabled={!tokenSettings.enabled}
+              />
+              <p className="text-xs text-muted-foreground">
+                字节模型每日免费 5000000 tokens，建议设置为 4500000 左右留有余量
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="models">模型列表（逗号分割）</Label>
+              <Input
+                id="models"
+                value={tokenSettings.models}
+                onChange={(e) => setTokenSettings({ ...tokenSettings, models: e.target.value })}
+                placeholder="doubao-pro-32k,doubao-lite-32k"
+                disabled={!tokenSettings.enabled}
+              />
+              <p className="text-xs text-muted-foreground">
+                输入火山引擎模型名称，多个模型用逗号分割。当一个模型的 token 用尽时，自动切换到下一个模型
+              </p>
+            </div>
+
+            {tokenStats && (
+              <div className="bg-muted/50 rounded-lg p-3 space-y-2">
+                <h4 className="font-medium text-sm">当前周期统计</h4>
+                <div className="grid grid-cols-2 gap-2 text-xs">
+                  <div>
+                    <span className="text-muted-foreground">已使用：</span>
+                    <span>{tokenStats.totalTokens.toLocaleString()}</span>
+                  </div>
+                  <div>
+                    <span className="text-muted-foreground">剩余：</span>
+                    <span>{tokenStats.remainingTokens.toLocaleString()}</span>
+                  </div>
+                  <div>
+                    <span className="text-muted-foreground">使用率：</span>
+                    <span>{Math.round(100 - tokenStats.remainingPercent)}%</span>
+                  </div>
+                  <div>
+                    <span className="text-muted-foreground">当前模型：</span>
+                    <span>{tokenSettings.models.split(",")[tokenSettings.currentModelIndex] || "未设置"}</span>
+                  </div>
+                </div>
+              </div>
+            )}
           </CardContent>
         </Card>
 

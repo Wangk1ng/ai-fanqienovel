@@ -193,3 +193,531 @@
   "runtime": "nodejs",
   "env": "production"
 }
+[2026-04-21T06:33:37.724Z] [INFO] 应用启动
+{
+  "runtime": "nodejs",
+  "env": "production"
+}
+[2026-04-21T06:37:34.974Z] [INFO] 创建批量生成任务
+{
+  "userId": "cmo7j79k700003j9gqao23jd4",
+  "targetChapters": 100,
+  "firstBatchChapters": 15,
+  "wordCount": 1000
+}
+[2026-04-21T06:37:34.985Z] [INFO] 开始执行生成任务
+{
+  "taskId": "cmo894ry700003jq5hawioxxr",
+  "randomGenre": "种田"
+}
+[2026-04-21T06:37:34.986Z] [INFO] 创建批量生成任务
+{
+  "userId": "cmo7j79k700003j9gqao23jd4",
+  "targetChapters": 100,
+  "firstBatchChapters": 15,
+  "wordCount": 1000
+}
+[2026-04-21T06:37:35.017Z] [INFO] 开始执行生成任务
+{
+  "taskId": "cmo894ryj00013jq5s0p2enk0",
+  "randomGenre": "科举"
+}
+[2026-04-21T06:37:35.024Z] [INFO] 创建批量生成任务
+{
+  "userId": "cmo7j79k700003j9gqao23jd4",
+  "targetChapters": 100,
+  "firstBatchChapters": 15,
+  "wordCount": 1000
+}
+[2026-04-21T06:37:35.028Z] [INFO] 开始执行生成任务
+{
+  "taskId": "cmo894rzk00023jq50u91s6ry",
+  "randomGenre": "马甲"
+}
+[2026-04-21T06:38:27.930Z] [INFO] 创作需求优化完成
+{
+  "refinedLength": 265
+}
+[2026-04-21T06:39:15.524Z] [INFO] 创作需求优化完成
+{
+  "refinedLength": 259
+}
+[2026-04-21T06:39:31.887Z] [INFO] 标题和简介生成成功
+{
+  "title": "元帅通缉令：抓我未婚妻",
+  "descriptionLength": 223
+}
+[2026-04-21T06:39:31.893Z] [INFO] 项目创建成功
+{
+  "projectId": "cmo897a5v00043jq5db7sddfw",
+  "title": "元帅通缉令：抓我未婚妻"
+}
+[2026-04-21T06:40:05.528Z] [INFO] 标题和简介生成成功
+{
+  "title": "科举：我的考场有弹幕",
+  "descriptionLength": 170
+}
+[2026-04-21T06:40:05.532Z] [INFO] 项目创建成功
+{
+  "projectId": "cmo89804c00063jq5b3132mjf",
+  "title": "科举：我的考场有弹幕"
+}
+[2026-04-21T06:42:05.391Z] [INFO] 核心设定生成成功
+[2026-04-21T06:42:56.444Z] [INFO] 核心设定生成成功
+[2026-04-21T06:43:35.739Z] [INFO] 创作需求优化完成
+{
+  "refinedLength": 243
+}
+[2026-04-21T06:44:30.165Z] [INFO] 标题和简介生成成功
+{
+  "title": "流放荒漠：我靠种田成团宠",
+  "descriptionLength": 146
+}
+[2026-04-21T06:44:30.170Z] [INFO] 项目创建成功
+{
+  "projectId": "cmo89dobc000c3jq5zd7s1za2",
+  "title": "流放荒漠：我靠种田成团宠"
+}
+[2026-04-21T06:44:40.254Z] [INFO] 角色生成成功
+[2026-04-21T06:45:23.407Z] [INFO] 角色生成成功
+[2026-04-21T06:47:34.149Z] [INFO] 核心设定生成成功
+[2026-04-21T06:48:09.611Z] [WARN] 大纲批次 1 生成失败，重试中 (1/10)
+{
+  "error": {}
+}
+[2026-04-21T06:49:30.379Z] [WARN] 大纲批次 1 生成失败，重试中 (1/10)
+{
+  "error": {}
+}
+[2026-04-21T06:50:21.250Z] [INFO] 角色生成成功
+[2026-04-21T06:50:27.432Z] [WARN] 大纲批次 1 生成失败，重试中 (1/10)
+{
+  "error": {
+    "name": "AI_RetryError",
+    "reason": "maxRetriesExceeded",
+    "errors": [
+      {
+        "name": "AI_APICallError",
+        "url": "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+        "requestBodyValues": {
+          "model": "ep-20260410222903-lqcpr",
+          "temperature": 0.8,
+          "messages": [
+            {
+              "role": "user",
+              "content": "你是一位资深的网络小说大纲设计师。请为小说《流放荒漠：我靠种田成团宠》生成完整的大纲。\n\n类型：种田\n简介：当顶级植物学家苏青穿越成流放罪奴，睁眼便是漫天黄沙和嗷嗷待哺的族人。面对寸草不生的绝境和豪强的欺压，她笑了。随身灵泉空间在手，不仅能净化死地，更能催生万物！贫瘠盐碱地？变万亩良田！恶霸欺人？直接打回去！且看她手握现代农学，将荒漠改造成天下粮仓，带全家逆袭致富，成为全族团宠，甚至改变王朝格局！\n\n世界观：大夏朝北境边境的“绝命漠”，黄沙漫天、盐碱遍布，是朝廷流放重犯的天然死地。此地社会风气野蛮，流放者毫无尊严。然而，随着主角苏青的到来，这片绝望之地将经历翻天覆地的变化，从寸草不生的荒漠演变为塞上江南，最终成为左右王朝国运、令万国来朝的天下粮仓。\n核心冲突：冲突分为三阶段：初期的生存绝境，利用灵泉解决温饱；中期的阶级压迫，智斗垄断水源的豪强；后期的政治博弈，在朝堂党争与边疆战事中，利用粮食霸权重塑王朝格局。\n力量体系：核心金手指为“灵泉空间”，泉水具有强力净化与生命催化双重功效，空间随改造土地面积升级。主角结合现代顶级植物学知识（杂交、滴灌等），形成“科学种田+玄学催熟”的降维打击优势，培育出古代绝无仅有的珍稀作物。\n\n角色体系：\n林萧（protagonist）：坚韧不拔、重情重义，出生在霓虹灯照不到的‘下城区’，父母因反抗天机集团的暴政而被处决。林萧靠拾荒为生，意外在废墟中挖掘出\n叶天（antagonist）：冷酷无情、极度自负，天机集团现任继承人，经过基因改造的‘完美人类’。他坚信科技与灵气应当由精英阶层垄断，视普通人为消耗品\n苏青（supporting）：理智冷静、毒舌心软，曾是天机集团的首席灵气研究员，因不满集团将活人做实验而叛逃。现在在下城区经营一家黑诊所，利用自己的专\n老鬼（supporting）：愤世嫉俗、护短，曾是旧时代修仙界的绝世天骄，在科技崛起的战争中战败并隐匿。他在下城区伪装成酒鬼，整日醉生梦死。直到感\nK-9（supporting）：绝对忠诚、天真直率，天机集团废弃的军用原型机，因产生了自我意识而被判定为故障品。林萧在垃圾场修复了他的核心逻辑，从此K-\n红蜘蛛（supporting）：贪婪狡猾、唯利是图，地下世界令人闻风丧胆的赏金猎人，只要价码合适谁都杀。起初受雇于天机集团追杀林萧，但在交手中发现林萧的\n陈默（supporting）：隐忍克制、内心矛盾，林萧的儿时玩伴，为了给重病的妹妹筹集治疗费用，被迫加入天机集团的安保部队。他被迫执行针对下城区的任务\n零号（supporting）：疯狂暴戾、单纯如孩童，天机集团‘灵气融合计划’的第一个失败实验品，身体与狂暴的灵气彻底融合，导致精神极不稳定。他逃出实验室\n\n目标章节数：34\n\n请生成第 1 到第 34 章的大纲，严格按照以下 JSON 格式输出：\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"第一幕名称\",\n      \"chapterRange\": \"第1-12章\",\n      \"summary\": \"本幕概述（100-150字）\",\n      \"plotPoints\": [\"关键情节点1\", \"关键情节点2\"]\n    }\n  ],\n  \"plotPoints\": [\n    {\n      \"chapterNumber\": 1,\n      \"title\": \"章节标题\",\n      \"summary\": \"章节摘要（50-80字）\",\n      \"keyEvents\": [\"关键事件1\", \"关键事件2\"],\n      \"characters\": [\"涉及的角色名\"]\n    }\n  ]\n}\n\n要求：\n1. 大纲要有起承转合，情节要有起伏\n2. 每幕要有明确的主题和目标\n3. 章节之间要有逻辑递进关系"
+            }
+          ]
+        },
+        "statusCode": 429,
+        "responseHeaders": {
+          "content-encoding": "gzip",
+          "content-length": "246",
+          "content-type": "application/json; charset=utf-8",
+          "date": "Tue, 21 Apr 2026 06:50:20 GMT",
+          "server": "istio-envoy",
+          "vary": "Accept-Encoding",
+          "x-client-request-id": "unknown-20260421145021-cGOZuxrg",
+          "x-envoy-upstream-service-time": "25",
+          "x-request-id": "02177675422143431edffe5894cf4edd820b8db875d15b8fed96f"
+        },
+        "responseBody": "{\"error\":{\"code\":\"ServerOverloaded\",\"message\":\"The service is currently unable to handle additional requests due to server overload, please retry later or contact with administrator if not work afterwards. Request id: 02177675422143431edffe5894cf4edd820b8db875d15b8fed96f\",\"param\":\"\",\"type\":\"TooManyRequests\"}}",
+        "isRetryable": true,
+        "data": {
+          "error": {
+            "message": "The service is currently unable to handle additional requests due to server overload, please retry later or contact with administrator if not work afterwards. Request id: 02177675422143431edffe5894cf4edd820b8db875d15b8fed96f",
+            "type": "TooManyRequests",
+            "param": "",
+            "code": "ServerOverloaded"
+          }
+        }
+      },
+      {
+        "name": "AI_APICallError",
+        "url": "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+        "requestBodyValues": {
+          "model": "ep-20260410222903-lqcpr",
+          "temperature": 0.8,
+          "messages": [
+            {
+              "role": "user",
+              "content": "你是一位资深的网络小说大纲设计师。请为小说《流放荒漠：我靠种田成团宠》生成完整的大纲。\n\n类型：种田\n简介：当顶级植物学家苏青穿越成流放罪奴，睁眼便是漫天黄沙和嗷嗷待哺的族人。面对寸草不生的绝境和豪强的欺压，她笑了。随身灵泉空间在手，不仅能净化死地，更能催生万物！贫瘠盐碱地？变万亩良田！恶霸欺人？直接打回去！且看她手握现代农学，将荒漠改造成天下粮仓，带全家逆袭致富，成为全族团宠，甚至改变王朝格局！\n\n世界观：大夏朝北境边境的“绝命漠”，黄沙漫天、盐碱遍布，是朝廷流放重犯的天然死地。此地社会风气野蛮，流放者毫无尊严。然而，随着主角苏青的到来，这片绝望之地将经历翻天覆地的变化，从寸草不生的荒漠演变为塞上江南，最终成为左右王朝国运、令万国来朝的天下粮仓。\n核心冲突：冲突分为三阶段：初期的生存绝境，利用灵泉解决温饱；中期的阶级压迫，智斗垄断水源的豪强；后期的政治博弈，在朝堂党争与边疆战事中，利用粮食霸权重塑王朝格局。\n力量体系：核心金手指为“灵泉空间”，泉水具有强力净化与生命催化双重功效，空间随改造土地面积升级。主角结合现代顶级植物学知识（杂交、滴灌等），形成“科学种田+玄学催熟”的降维打击优势，培育出古代绝无仅有的珍稀作物。\n\n角色体系：\n林萧（protagonist）：坚韧不拔、重情重义，出生在霓虹灯照不到的‘下城区’，父母因反抗天机集团的暴政而被处决。林萧靠拾荒为生，意外在废墟中挖掘出\n叶天（antagonist）：冷酷无情、极度自负，天机集团现任继承人，经过基因改造的‘完美人类’。他坚信科技与灵气应当由精英阶层垄断，视普通人为消耗品\n苏青（supporting）：理智冷静、毒舌心软，曾是天机集团的首席灵气研究员，因不满集团将活人做实验而叛逃。现在在下城区经营一家黑诊所，利用自己的专\n老鬼（supporting）：愤世嫉俗、护短，曾是旧时代修仙界的绝世天骄，在科技崛起的战争中战败并隐匿。他在下城区伪装成酒鬼，整日醉生梦死。直到感\nK-9（supporting）：绝对忠诚、天真直率，天机集团废弃的军用原型机，因产生了自我意识而被判定为故障品。林萧在垃圾场修复了他的核心逻辑，从此K-\n红蜘蛛（supporting）：贪婪狡猾、唯利是图，地下世界令人闻风丧胆的赏金猎人，只要价码合适谁都杀。起初受雇于天机集团追杀林萧，但在交手中发现林萧的\n陈默（supporting）：隐忍克制、内心矛盾，林萧的儿时玩伴，为了给重病的妹妹筹集治疗费用，被迫加入天机集团的安保部队。他被迫执行针对下城区的任务\n零号（supporting）：疯狂暴戾、单纯如孩童，天机集团‘灵气融合计划’的第一个失败实验品，身体与狂暴的灵气彻底融合，导致精神极不稳定。他逃出实验室\n\n目标章节数：34\n\n请生成第 1 到第 34 章的大纲，严格按照以下 JSON 格式输出：\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"第一幕名称\",\n      \"chapterRange\": \"第1-12章\",\n      \"summary\": \"本幕概述（100-150字）\",\n      \"plotPoints\": [\"关键情节点1\", \"关键情节点2\"]\n    }\n  ],\n  \"plotPoints\": [\n    {\n      \"chapterNumber\": 1,\n      \"title\": \"章节标题\",\n      \"summary\": \"章节摘要（50-80字）\",\n      \"keyEvents\": [\"关键事件1\", \"关键事件2\"],\n      \"characters\": [\"涉及的角色名\"]\n    }\n  ]\n}\n\n要求：\n1. 大纲要有起承转合，情节要有起伏\n2. 每幕要有明确的主题和目标\n3. 章节之间要有逻辑递进关系"
+            }
+          ]
+        },
+        "statusCode": 429,
+        "responseHeaders": {
+          "content-encoding": "gzip",
+          "content-length": "246",
+          "content-type": "application/json; charset=utf-8",
+          "date": "Tue, 21 Apr 2026 06:50:23 GMT",
+          "server": "istio-envoy",
+          "vary": "Accept-Encoding",
+          "x-client-request-id": "unknown-20260421145023-RuGaJmWV",
+          "x-envoy-upstream-service-time": "29",
+          "x-request-id": "02177675422347631edffe5894cf4edd820b8db875d15b8e9d576"
+        },
+        "responseBody": "{\"error\":{\"code\":\"ServerOverloaded\",\"message\":\"The service is currently unable to handle additional requests due to server overload, please retry later or contact with administrator if not work afterwards. Request id: 02177675422347631edffe5894cf4edd820b8db875d15b8e9d576\",\"param\":\"\",\"type\":\"TooManyRequests\"}}",
+        "isRetryable": true,
+        "data": {
+          "error": {
+            "message": "The service is currently unable to handle additional requests due to server overload, please retry later or contact with administrator if not work afterwards. Request id: 02177675422347631edffe5894cf4edd820b8db875d15b8e9d576",
+            "type": "TooManyRequests",
+            "param": "",
+            "code": "ServerOverloaded"
+          }
+        }
+      },
+      {
+        "name": "AI_APICallError",
+        "url": "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+        "requestBodyValues": {
+          "model": "ep-20260410222903-lqcpr",
+          "temperature": 0.8,
+          "messages": [
+            {
+              "role": "user",
+              "content": "你是一位资深的网络小说大纲设计师。请为小说《流放荒漠：我靠种田成团宠》生成完整的大纲。\n\n类型：种田\n简介：当顶级植物学家苏青穿越成流放罪奴，睁眼便是漫天黄沙和嗷嗷待哺的族人。面对寸草不生的绝境和豪强的欺压，她笑了。随身灵泉空间在手，不仅能净化死地，更能催生万物！贫瘠盐碱地？变万亩良田！恶霸欺人？直接打回去！且看她手握现代农学，将荒漠改造成天下粮仓，带全家逆袭致富，成为全族团宠，甚至改变王朝格局！\n\n世界观：大夏朝北境边境的“绝命漠”，黄沙漫天、盐碱遍布，是朝廷流放重犯的天然死地。此地社会风气野蛮，流放者毫无尊严。然而，随着主角苏青的到来，这片绝望之地将经历翻天覆地的变化，从寸草不生的荒漠演变为塞上江南，最终成为左右王朝国运、令万国来朝的天下粮仓。\n核心冲突：冲突分为三阶段：初期的生存绝境，利用灵泉解决温饱；中期的阶级压迫，智斗垄断水源的豪强；后期的政治博弈，在朝堂党争与边疆战事中，利用粮食霸权重塑王朝格局。\n力量体系：核心金手指为“灵泉空间”，泉水具有强力净化与生命催化双重功效，空间随改造土地面积升级。主角结合现代顶级植物学知识（杂交、滴灌等），形成“科学种田+玄学催熟”的降维打击优势，培育出古代绝无仅有的珍稀作物。\n\n角色体系：\n林萧（protagonist）：坚韧不拔、重情重义，出生在霓虹灯照不到的‘下城区’，父母因反抗天机集团的暴政而被处决。林萧靠拾荒为生，意外在废墟中挖掘出\n叶天（antagonist）：冷酷无情、极度自负，天机集团现任继承人，经过基因改造的‘完美人类’。他坚信科技与灵气应当由精英阶层垄断，视普通人为消耗品\n苏青（supporting）：理智冷静、毒舌心软，曾是天机集团的首席灵气研究员，因不满集团将活人做实验而叛逃。现在在下城区经营一家黑诊所，利用自己的专\n老鬼（supporting）：愤世嫉俗、护短，曾是旧时代修仙界的绝世天骄，在科技崛起的战争中战败并隐匿。他在下城区伪装成酒鬼，整日醉生梦死。直到感\nK-9（supporting）：绝对忠诚、天真直率，天机集团废弃的军用原型机，因产生了自我意识而被判定为故障品。林萧在垃圾场修复了他的核心逻辑，从此K-\n红蜘蛛（supporting）：贪婪狡猾、唯利是图，地下世界令人闻风丧胆的赏金猎人，只要价码合适谁都杀。起初受雇于天机集团追杀林萧，但在交手中发现林萧的\n陈默（supporting）：隐忍克制、内心矛盾，林萧的儿时玩伴，为了给重病的妹妹筹集治疗费用，被迫加入天机集团的安保部队。他被迫执行针对下城区的任务\n零号（supporting）：疯狂暴戾、单纯如孩童，天机集团‘灵气融合计划’的第一个失败实验品，身体与狂暴的灵气彻底融合，导致精神极不稳定。他逃出实验室\n\n目标章节数：34\n\n请生成第 1 到第 34 章的大纲，严格按照以下 JSON 格式输出：\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"第一幕名称\",\n      \"chapterRange\": \"第1-12章\",\n      \"summary\": \"本幕概述（100-150字）\",\n      \"plotPoints\": [\"关键情节点1\", \"关键情节点2\"]\n    }\n  ],\n  \"plotPoints\": [\n    {\n      \"chapterNumber\": 1,\n      \"title\": \"章节标题\",\n      \"summary\": \"章节摘要（50-80字）\",\n      \"keyEvents\": [\"关键事件1\", \"关键事件2\"],\n      \"characters\": [\"涉及的角色名\"]\n    }\n  ]\n}\n\n要求：\n1. 大纲要有起承转合，情节要有起伏\n2. 每幕要有明确的主题和目标\n3. 章节之间要有逻辑递进关系"
+            }
+          ]
+        },
+        "statusCode": 429,
+        "responseHeaders": {
+          "content-encoding": "gzip",
+          "content-length": "245",
+          "content-type": "application/json; charset=utf-8",
+          "date": "Tue, 21 Apr 2026 06:50:27 GMT",
+          "server": "istio-envoy",
+          "vary": "Accept-Encoding",
+          "x-client-request-id": "unknown-20260421145027-pVAOBSuG",
+          "x-envoy-upstream-service-time": "60",
+          "x-request-id": "02177675422753677b7e892e9721221f8ca1a94f85371e5a85fee"
+        },
+        "responseBody": "{\"error\":{\"code\":\"ServerOverloaded\",\"message\":\"The service is currently unable to handle additional requests due to server overload, please retry later or contact with administrator if not work afterwards. Request id: 02177675422753677b7e892e9721221f8ca1a94f85371e5a85fee\",\"param\":\"\",\"type\":\"TooManyRequests\"}}",
+        "isRetryable": true,
+        "data": {
+          "error": {
+            "message": "The service is currently unable to handle additional requests due to server overload, please retry later or contact with administrator if not work afterwards. Request id: 02177675422753677b7e892e9721221f8ca1a94f85371e5a85fee",
+            "type": "TooManyRequests",
+            "param": "",
+            "code": "ServerOverloaded"
+          }
+        }
+      }
+    ],
+    "lastError": {
+      "name": "AI_APICallError",
+      "url": "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+      "requestBodyValues": {
+        "model": "ep-20260410222903-lqcpr",
+        "temperature": 0.8,
+        "messages": [
+          {
+            "role": "user",
+            "content": "你是一位资深的网络小说大纲设计师。请为小说《流放荒漠：我靠种田成团宠》生成完整的大纲。\n\n类型：种田\n简介：当顶级植物学家苏青穿越成流放罪奴，睁眼便是漫天黄沙和嗷嗷待哺的族人。面对寸草不生的绝境和豪强的欺压，她笑了。随身灵泉空间在手，不仅能净化死地，更能催生万物！贫瘠盐碱地？变万亩良田！恶霸欺人？直接打回去！且看她手握现代农学，将荒漠改造成天下粮仓，带全家逆袭致富，成为全族团宠，甚至改变王朝格局！\n\n世界观：大夏朝北境边境的“绝命漠”，黄沙漫天、盐碱遍布，是朝廷流放重犯的天然死地。此地社会风气野蛮，流放者毫无尊严。然而，随着主角苏青的到来，这片绝望之地将经历翻天覆地的变化，从寸草不生的荒漠演变为塞上江南，最终成为左右王朝国运、令万国来朝的天下粮仓。\n核心冲突：冲突分为三阶段：初期的生存绝境，利用灵泉解决温饱；中期的阶级压迫，智斗垄断水源的豪强；后期的政治博弈，在朝堂党争与边疆战事中，利用粮食霸权重塑王朝格局。\n力量体系：核心金手指为“灵泉空间”，泉水具有强力净化与生命催化双重功效，空间随改造土地面积升级。主角结合现代顶级植物学知识（杂交、滴灌等），形成“科学种田+玄学催熟”的降维打击优势，培育出古代绝无仅有的珍稀作物。\n\n角色体系：\n林萧（protagonist）：坚韧不拔、重情重义，出生在霓虹灯照不到的‘下城区’，父母因反抗天机集团的暴政而被处决。林萧靠拾荒为生，意外在废墟中挖掘出\n叶天（antagonist）：冷酷无情、极度自负，天机集团现任继承人，经过基因改造的‘完美人类’。他坚信科技与灵气应当由精英阶层垄断，视普通人为消耗品\n苏青（supporting）：理智冷静、毒舌心软，曾是天机集团的首席灵气研究员，因不满集团将活人做实验而叛逃。现在在下城区经营一家黑诊所，利用自己的专\n老鬼（supporting）：愤世嫉俗、护短，曾是旧时代修仙界的绝世天骄，在科技崛起的战争中战败并隐匿。他在下城区伪装成酒鬼，整日醉生梦死。直到感\nK-9（supporting）：绝对忠诚、天真直率，天机集团废弃的军用原型机，因产生了自我意识而被判定为故障品。林萧在垃圾场修复了他的核心逻辑，从此K-\n红蜘蛛（supporting）：贪婪狡猾、唯利是图，地下世界令人闻风丧胆的赏金猎人，只要价码合适谁都杀。起初受雇于天机集团追杀林萧，但在交手中发现林萧的\n陈默（supporting）：隐忍克制、内心矛盾，林萧的儿时玩伴，为了给重病的妹妹筹集治疗费用，被迫加入天机集团的安保部队。他被迫执行针对下城区的任务\n零号（supporting）：疯狂暴戾、单纯如孩童，天机集团‘灵气融合计划’的第一个失败实验品，身体与狂暴的灵气彻底融合，导致精神极不稳定。他逃出实验室\n\n目标章节数：34\n\n请生成第 1 到第 34 章的大纲，严格按照以下 JSON 格式输出：\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"第一幕名称\",\n      \"chapterRange\": \"第1-12章\",\n      \"summary\": \"本幕概述（100-150字）\",\n      \"plotPoints\": [\"关键情节点1\", \"关键情节点2\"]\n    }\n  ],\n  \"plotPoints\": [\n    {\n      \"chapterNumber\": 1,\n      \"title\": \"章节标题\",\n      \"summary\": \"章节摘要（50-80字）\",\n      \"keyEvents\": [\"关键事件1\", \"关键事件2\"],\n      \"characters\": [\"涉及的角色名\"]\n    }\n  ]\n}\n\n要求：\n1. 大纲要有起承转合，情节要有起伏\n2. 每幕要有明确的主题和目标\n3. 章节之间要有逻辑递进关系"
+          }
+        ]
+      },
+      "statusCode": 429,
+      "responseHeaders": {
+        "content-encoding": "gzip",
+        "content-length": "245",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 21 Apr 2026 06:50:27 GMT",
+        "server": "istio-envoy",
+        "vary": "Accept-Encoding",
+        "x-client-request-id": "unknown-20260421145027-pVAOBSuG",
+        "x-envoy-upstream-service-time": "60",
+        "x-request-id": "02177675422753677b7e892e9721221f8ca1a94f85371e5a85fee"
+      },
+      "responseBody": "{\"error\":{\"code\":\"ServerOverloaded\",\"message\":\"The service is currently unable to handle additional requests due to server overload, please retry later or contact with administrator if not work afterwards. Request id: 02177675422753677b7e892e9721221f8ca1a94f85371e5a85fee\",\"param\":\"\",\"type\":\"TooManyRequests\"}}",
+      "isRetryable": true,
+      "data": {
+        "error": {
+          "message": "The service is currently unable to handle additional requests due to server overload, please retry later or contact with administrator if not work afterwards. Request id: 02177675422753677b7e892e9721221f8ca1a94f85371e5a85fee",
+          "type": "TooManyRequests",
+          "param": "",
+          "code": "ServerOverloaded"
+        }
+      }
+    }
+  }
+}
+[2026-04-21T06:51:03.592Z] [WARN] 大纲批次 1 生成失败，重试中 (2/10)
+{
+  "error": {
+    "name": "AI_RetryError",
+    "reason": "maxRetriesExceeded",
+    "errors": [
+      {
+        "name": "AI_APICallError",
+        "url": "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+        "requestBodyValues": {
+          "model": "ep-20260410222903-lqcpr",
+          "temperature": 0.8,
+          "messages": [
+            {
+              "role": "user",
+              "content": "你是一位资深的网络小说大纲设计师。请为小说《流放荒漠：我靠种田成团宠》生成完整的大纲。\n\n类型：种田\n简介：当顶级植物学家苏青穿越成流放罪奴，睁眼便是漫天黄沙和嗷嗷待哺的族人。面对寸草不生的绝境和豪强的欺压，她笑了。随身灵泉空间在手，不仅能净化死地，更能催生万物！贫瘠盐碱地？变万亩良田！恶霸欺人？直接打回去！且看她手握现代农学，将荒漠改造成天下粮仓，带全家逆袭致富，成为全族团宠，甚至改变王朝格局！\n\n世界观：大夏朝北境边境的“绝命漠”，黄沙漫天、盐碱遍布，是朝廷流放重犯的天然死地。此地社会风气野蛮，流放者毫无尊严。然而，随着主角苏青的到来，这片绝望之地将经历翻天覆地的变化，从寸草不生的荒漠演变为塞上江南，最终成为左右王朝国运、令万国来朝的天下粮仓。\n核心冲突：冲突分为三阶段：初期的生存绝境，利用灵泉解决温饱；中期的阶级压迫，智斗垄断水源的豪强；后期的政治博弈，在朝堂党争与边疆战事中，利用粮食霸权重塑王朝格局。\n力量体系：核心金手指为“灵泉空间”，泉水具有强力净化与生命催化双重功效，空间随改造土地面积升级。主角结合现代顶级植物学知识（杂交、滴灌等），形成“科学种田+玄学催熟”的降维打击优势，培育出古代绝无仅有的珍稀作物。\n\n角色体系：\n林萧（protagonist）：坚韧不拔、重情重义，出生在霓虹灯照不到的‘下城区’，父母因反抗天机集团的暴政而被处决。林萧靠拾荒为生，意外在废墟中挖掘出\n叶天（antagonist）：冷酷无情、极度自负，天机集团现任继承人，经过基因改造的‘完美人类’。他坚信科技与灵气应当由精英阶层垄断，视普通人为消耗品\n苏青（supporting）：理智冷静、毒舌心软，曾是天机集团的首席灵气研究员，因不满集团将活人做实验而叛逃。现在在下城区经营一家黑诊所，利用自己的专\n老鬼（supporting）：愤世嫉俗、护短，曾是旧时代修仙界的绝世天骄，在科技崛起的战争中战败并隐匿。他在下城区伪装成酒鬼，整日醉生梦死。直到感\nK-9（supporting）：绝对忠诚、天真直率，天机集团废弃的军用原型机，因产生了自我意识而被判定为故障品。林萧在垃圾场修复了他的核心逻辑，从此K-\n红蜘蛛（supporting）：贪婪狡猾、唯利是图，地下世界令人闻风丧胆的赏金猎人，只要价码合适谁都杀。起初受雇于天机集团追杀林萧，但在交手中发现林萧的\n陈默（supporting）：隐忍克制、内心矛盾，林萧的儿时玩伴，为了给重病的妹妹筹集治疗费用，被迫加入天机集团的安保部队。他被迫执行针对下城区的任务\n零号（supporting）：疯狂暴戾、单纯如孩童，天机集团‘灵气融合计划’的第一个失败实验品，身体与狂暴的灵气彻底融合，导致精神极不稳定。他逃出实验室\n\n目标章节数：34\n\n请生成第 1 到第 34 章的大纲，严格按照以下 JSON 格式输出：\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"第一幕名称\",\n      \"chapterRange\": \"第1-12章\",\n      \"summary\": \"本幕概述（100-150字）\",\n      \"plotPoints\": [\"关键情节点1\", \"关键情节点2\"]\n    }\n  ],\n  \"plotPoints\": [\n    {\n      \"chapterNumber\": 1,\n      \"title\": \"章节标题\",\n      \"summary\": \"章节摘要（50-80字）\",\n      \"keyEvents\": [\"关键事件1\", \"关键事件2\"],\n      \"characters\": [\"涉及的角色名\"]\n    }\n  ]\n}\n\n要求：\n1. 大纲要有起承转合，情节要有起伏\n2. 每幕要有明确的主题和目标\n3. 章节之间要有逻辑递进关系"
+            }
+          ]
+        },
+        "statusCode": 429,
+        "responseHeaders": {
+          "content-encoding": "gzip",
+          "content-length": "247",
+          "content-type": "application/json; charset=utf-8",
+          "date": "Tue, 21 Apr 2026 06:50:57 GMT",
+          "server": "istio-envoy",
+          "vary": "Accept-Encoding",
+          "x-client-request-id": "unknown-20260421145057-CSpIlSxk",
+          "x-envoy-upstream-service-time": "22",
+          "x-request-id": "02177675425762863f0eaab47c0cb1f91106d2dbf243c4d98e0c7"
+        },
+        "responseBody": "{\"error\":{\"code\":\"ServerOverloaded\",\"message\":\"The service is currently unable to handle additional requests due to server overload, please retry later or contact with administrator if not work afterwards. Request id: 02177675425762863f0eaab47c0cb1f91106d2dbf243c4d98e0c7\",\"param\":\"\",\"type\":\"TooManyRequests\"}}",
+        "isRetryable": true,
+        "data": {
+          "error": {
+            "message": "The service is currently unable to handle additional requests due to server overload, please retry later or contact with administrator if not work afterwards. Request id: 02177675425762863f0eaab47c0cb1f91106d2dbf243c4d98e0c7",
+            "type": "TooManyRequests",
+            "param": "",
+            "code": "ServerOverloaded"
+          }
+        }
+      },
+      {
+        "name": "AI_APICallError",
+        "url": "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+        "requestBodyValues": {
+          "model": "ep-20260410222903-lqcpr",
+          "temperature": 0.8,
+          "messages": [
+            {
+              "role": "user",
+              "content": "你是一位资深的网络小说大纲设计师。请为小说《流放荒漠：我靠种田成团宠》生成完整的大纲。\n\n类型：种田\n简介：当顶级植物学家苏青穿越成流放罪奴，睁眼便是漫天黄沙和嗷嗷待哺的族人。面对寸草不生的绝境和豪强的欺压，她笑了。随身灵泉空间在手，不仅能净化死地，更能催生万物！贫瘠盐碱地？变万亩良田！恶霸欺人？直接打回去！且看她手握现代农学，将荒漠改造成天下粮仓，带全家逆袭致富，成为全族团宠，甚至改变王朝格局！\n\n世界观：大夏朝北境边境的“绝命漠”，黄沙漫天、盐碱遍布，是朝廷流放重犯的天然死地。此地社会风气野蛮，流放者毫无尊严。然而，随着主角苏青的到来，这片绝望之地将经历翻天覆地的变化，从寸草不生的荒漠演变为塞上江南，最终成为左右王朝国运、令万国来朝的天下粮仓。\n核心冲突：冲突分为三阶段：初期的生存绝境，利用灵泉解决温饱；中期的阶级压迫，智斗垄断水源的豪强；后期的政治博弈，在朝堂党争与边疆战事中，利用粮食霸权重塑王朝格局。\n力量体系：核心金手指为“灵泉空间”，泉水具有强力净化与生命催化双重功效，空间随改造土地面积升级。主角结合现代顶级植物学知识（杂交、滴灌等），形成“科学种田+玄学催熟”的降维打击优势，培育出古代绝无仅有的珍稀作物。\n\n角色体系：\n林萧（protagonist）：坚韧不拔、重情重义，出生在霓虹灯照不到的‘下城区’，父母因反抗天机集团的暴政而被处决。林萧靠拾荒为生，意外在废墟中挖掘出\n叶天（antagonist）：冷酷无情、极度自负，天机集团现任继承人，经过基因改造的‘完美人类’。他坚信科技与灵气应当由精英阶层垄断，视普通人为消耗品\n苏青（supporting）：理智冷静、毒舌心软，曾是天机集团的首席灵气研究员，因不满集团将活人做实验而叛逃。现在在下城区经营一家黑诊所，利用自己的专\n老鬼（supporting）：愤世嫉俗、护短，曾是旧时代修仙界的绝世天骄，在科技崛起的战争中战败并隐匿。他在下城区伪装成酒鬼，整日醉生梦死。直到感\nK-9（supporting）：绝对忠诚、天真直率，天机集团废弃的军用原型机，因产生了自我意识而被判定为故障品。林萧在垃圾场修复了他的核心逻辑，从此K-\n红蜘蛛（supporting）：贪婪狡猾、唯利是图，地下世界令人闻风丧胆的赏金猎人，只要价码合适谁都杀。起初受雇于天机集团追杀林萧，但在交手中发现林萧的\n陈默（supporting）：隐忍克制、内心矛盾，林萧的儿时玩伴，为了给重病的妹妹筹集治疗费用，被迫加入天机集团的安保部队。他被迫执行针对下城区的任务\n零号（supporting）：疯狂暴戾、单纯如孩童，天机集团‘灵气融合计划’的第一个失败实验品，身体与狂暴的灵气彻底融合，导致精神极不稳定。他逃出实验室\n\n目标章节数：34\n\n请生成第 1 到第 34 章的大纲，严格按照以下 JSON 格式输出：\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"第一幕名称\",\n      \"chapterRange\": \"第1-12章\",\n      \"summary\": \"本幕概述（100-150字）\",\n      \"plotPoints\": [\"关键情节点1\", \"关键情节点2\"]\n    }\n  ],\n  \"plotPoints\": [\n    {\n      \"chapterNumber\": 1,\n      \"title\": \"章节标题\",\n      \"summary\": \"章节摘要（50-80字）\",\n      \"keyEvents\": [\"关键事件1\", \"关键事件2\"],\n      \"characters\": [\"涉及的角色名\"]\n    }\n  ]\n}\n\n要求：\n1. 大纲要有起承转合，情节要有起伏\n2. 每幕要有明确的主题和目标\n3. 章节之间要有逻辑递进关系"
+            }
+          ]
+        },
+        "statusCode": 429,
+        "responseHeaders": {
+          "content-encoding": "gzip",
+          "content-length": "246",
+          "content-type": "application/json; charset=utf-8",
+          "date": "Tue, 21 Apr 2026 06:50:59 GMT",
+          "server": "istio-envoy",
+          "vary": "Accept-Encoding",
+          "x-client-request-id": "unknown-20260421145059-CsYUiFuG",
+          "x-envoy-upstream-service-time": "43",
+          "x-request-id": "02177675425966263f0eaab47c0cb1f91106d2dbf243c4d23f314"
+        },
+        "responseBody": "{\"error\":{\"code\":\"ServerOverloaded\",\"message\":\"The service is currently unable to handle additional requests due to server overload, please retry later or contact with administrator if not work afterwards. Request id: 02177675425966263f0eaab47c0cb1f91106d2dbf243c4d23f314\",\"param\":\"\",\"type\":\"TooManyRequests\"}}",
+        "isRetryable": true,
+        "data": {
+          "error": {
+            "message": "The service is currently unable to handle additional requests due to server overload, please retry later or contact with administrator if not work afterwards. Request id: 02177675425966263f0eaab47c0cb1f91106d2dbf243c4d23f314",
+            "type": "TooManyRequests",
+            "param": "",
+            "code": "ServerOverloaded"
+          }
+        }
+      },
+      {
+        "name": "AI_APICallError",
+        "url": "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+        "requestBodyValues": {
+          "model": "ep-20260410222903-lqcpr",
+          "temperature": 0.8,
+          "messages": [
+            {
+              "role": "user",
+              "content": "你是一位资深的网络小说大纲设计师。请为小说《流放荒漠：我靠种田成团宠》生成完整的大纲。\n\n类型：种田\n简介：当顶级植物学家苏青穿越成流放罪奴，睁眼便是漫天黄沙和嗷嗷待哺的族人。面对寸草不生的绝境和豪强的欺压，她笑了。随身灵泉空间在手，不仅能净化死地，更能催生万物！贫瘠盐碱地？变万亩良田！恶霸欺人？直接打回去！且看她手握现代农学，将荒漠改造成天下粮仓，带全家逆袭致富，成为全族团宠，甚至改变王朝格局！\n\n世界观：大夏朝北境边境的“绝命漠”，黄沙漫天、盐碱遍布，是朝廷流放重犯的天然死地。此地社会风气野蛮，流放者毫无尊严。然而，随着主角苏青的到来，这片绝望之地将经历翻天覆地的变化，从寸草不生的荒漠演变为塞上江南，最终成为左右王朝国运、令万国来朝的天下粮仓。\n核心冲突：冲突分为三阶段：初期的生存绝境，利用灵泉解决温饱；中期的阶级压迫，智斗垄断水源的豪强；后期的政治博弈，在朝堂党争与边疆战事中，利用粮食霸权重塑王朝格局。\n力量体系：核心金手指为“灵泉空间”，泉水具有强力净化与生命催化双重功效，空间随改造土地面积升级。主角结合现代顶级植物学知识（杂交、滴灌等），形成“科学种田+玄学催熟”的降维打击优势，培育出古代绝无仅有的珍稀作物。\n\n角色体系：\n林萧（protagonist）：坚韧不拔、重情重义，出生在霓虹灯照不到的‘下城区’，父母因反抗天机集团的暴政而被处决。林萧靠拾荒为生，意外在废墟中挖掘出\n叶天（antagonist）：冷酷无情、极度自负，天机集团现任继承人，经过基因改造的‘完美人类’。他坚信科技与灵气应当由精英阶层垄断，视普通人为消耗品\n苏青（supporting）：理智冷静、毒舌心软，曾是天机集团的首席灵气研究员，因不满集团将活人做实验而叛逃。现在在下城区经营一家黑诊所，利用自己的专\n老鬼（supporting）：愤世嫉俗、护短，曾是旧时代修仙界的绝世天骄，在科技崛起的战争中战败并隐匿。他在下城区伪装成酒鬼，整日醉生梦死。直到感\nK-9（supporting）：绝对忠诚、天真直率，天机集团废弃的军用原型机，因产生了自我意识而被判定为故障品。林萧在垃圾场修复了他的核心逻辑，从此K-\n红蜘蛛（supporting）：贪婪狡猾、唯利是图，地下世界令人闻风丧胆的赏金猎人，只要价码合适谁都杀。起初受雇于天机集团追杀林萧，但在交手中发现林萧的\n陈默（supporting）：隐忍克制、内心矛盾，林萧的儿时玩伴，为了给重病的妹妹筹集治疗费用，被迫加入天机集团的安保部队。他被迫执行针对下城区的任务\n零号（supporting）：疯狂暴戾、单纯如孩童，天机集团‘灵气融合计划’的第一个失败实验品，身体与狂暴的灵气彻底融合，导致精神极不稳定。他逃出实验室\n\n目标章节数：34\n\n请生成第 1 到第 34 章的大纲，严格按照以下 JSON 格式输出：\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"第一幕名称\",\n      \"chapterRange\": \"第1-12章\",\n      \"summary\": \"本幕概述（100-150字）\",\n      \"plotPoints\": [\"关键情节点1\", \"关键情节点2\"]\n    }\n  ],\n  \"plotPoints\": [\n    {\n      \"chapterNumber\": 1,\n      \"title\": \"章节标题\",\n      \"summary\": \"章节摘要（50-80字）\",\n      \"keyEvents\": [\"关键事件1\", \"关键事件2\"],\n      \"characters\": [\"涉及的角色名\"]\n    }\n  ]\n}\n\n要求：\n1. 大纲要有起承转合，情节要有起伏\n2. 每幕要有明确的主题和目标\n3. 章节之间要有逻辑递进关系"
+            }
+          ]
+        },
+        "statusCode": 429,
+        "responseHeaders": {
+          "content-encoding": "gzip",
+          "content-length": "246",
+          "content-type": "application/json; charset=utf-8",
+          "date": "Tue, 21 Apr 2026 06:51:03 GMT",
+          "server": "istio-envoy",
+          "vary": "Accept-Encoding",
+          "x-client-request-id": "unknown-20260421145103-OaMRQewx",
+          "x-envoy-upstream-service-time": "27",
+          "x-request-id": "0217767542637321e898ad59ee92efe47f7a884c6f3325639fecf"
+        },
+        "responseBody": "{\"error\":{\"code\":\"ServerOverloaded\",\"message\":\"The service is currently unable to handle additional requests due to server overload, please retry later or contact with administrator if not work afterwards. Request id: 0217767542637321e898ad59ee92efe47f7a884c6f3325639fecf\",\"param\":\"\",\"type\":\"TooManyRequests\"}}",
+        "isRetryable": true,
+        "data": {
+          "error": {
+            "message": "The service is currently unable to handle additional requests due to server overload, please retry later or contact with administrator if not work afterwards. Request id: 0217767542637321e898ad59ee92efe47f7a884c6f3325639fecf",
+            "type": "TooManyRequests",
+            "param": "",
+            "code": "ServerOverloaded"
+          }
+        }
+      }
+    ],
+    "lastError": {
+      "name": "AI_APICallError",
+      "url": "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+      "requestBodyValues": {
+        "model": "ep-20260410222903-lqcpr",
+        "temperature": 0.8,
+        "messages": [
+          {
+            "role": "user",
+            "content": "你是一位资深的网络小说大纲设计师。请为小说《流放荒漠：我靠种田成团宠》生成完整的大纲。\n\n类型：种田\n简介：当顶级植物学家苏青穿越成流放罪奴，睁眼便是漫天黄沙和嗷嗷待哺的族人。面对寸草不生的绝境和豪强的欺压，她笑了。随身灵泉空间在手，不仅能净化死地，更能催生万物！贫瘠盐碱地？变万亩良田！恶霸欺人？直接打回去！且看她手握现代农学，将荒漠改造成天下粮仓，带全家逆袭致富，成为全族团宠，甚至改变王朝格局！\n\n世界观：大夏朝北境边境的“绝命漠”，黄沙漫天、盐碱遍布，是朝廷流放重犯的天然死地。此地社会风气野蛮，流放者毫无尊严。然而，随着主角苏青的到来，这片绝望之地将经历翻天覆地的变化，从寸草不生的荒漠演变为塞上江南，最终成为左右王朝国运、令万国来朝的天下粮仓。\n核心冲突：冲突分为三阶段：初期的生存绝境，利用灵泉解决温饱；中期的阶级压迫，智斗垄断水源的豪强；后期的政治博弈，在朝堂党争与边疆战事中，利用粮食霸权重塑王朝格局。\n力量体系：核心金手指为“灵泉空间”，泉水具有强力净化与生命催化双重功效，空间随改造土地面积升级。主角结合现代顶级植物学知识（杂交、滴灌等），形成“科学种田+玄学催熟”的降维打击优势，培育出古代绝无仅有的珍稀作物。\n\n角色体系：\n林萧（protagonist）：坚韧不拔、重情重义，出生在霓虹灯照不到的‘下城区’，父母因反抗天机集团的暴政而被处决。林萧靠拾荒为生，意外在废墟中挖掘出\n叶天（antagonist）：冷酷无情、极度自负，天机集团现任继承人，经过基因改造的‘完美人类’。他坚信科技与灵气应当由精英阶层垄断，视普通人为消耗品\n苏青（supporting）：理智冷静、毒舌心软，曾是天机集团的首席灵气研究员，因不满集团将活人做实验而叛逃。现在在下城区经营一家黑诊所，利用自己的专\n老鬼（supporting）：愤世嫉俗、护短，曾是旧时代修仙界的绝世天骄，在科技崛起的战争中战败并隐匿。他在下城区伪装成酒鬼，整日醉生梦死。直到感\nK-9（supporting）：绝对忠诚、天真直率，天机集团废弃的军用原型机，因产生了自我意识而被判定为故障品。林萧在垃圾场修复了他的核心逻辑，从此K-\n红蜘蛛（supporting）：贪婪狡猾、唯利是图，地下世界令人闻风丧胆的赏金猎人，只要价码合适谁都杀。起初受雇于天机集团追杀林萧，但在交手中发现林萧的\n陈默（supporting）：隐忍克制、内心矛盾，林萧的儿时玩伴，为了给重病的妹妹筹集治疗费用，被迫加入天机集团的安保部队。他被迫执行针对下城区的任务\n零号（supporting）：疯狂暴戾、单纯如孩童，天机集团‘灵气融合计划’的第一个失败实验品，身体与狂暴的灵气彻底融合，导致精神极不稳定。他逃出实验室\n\n目标章节数：34\n\n请生成第 1 到第 34 章的大纲，严格按照以下 JSON 格式输出：\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"第一幕名称\",\n      \"chapterRange\": \"第1-12章\",\n      \"summary\": \"本幕概述（100-150字）\",\n      \"plotPoints\": [\"关键情节点1\", \"关键情节点2\"]\n    }\n  ],\n  \"plotPoints\": [\n    {\n      \"chapterNumber\": 1,\n      \"title\": \"章节标题\",\n      \"summary\": \"章节摘要（50-80字）\",\n      \"keyEvents\": [\"关键事件1\", \"关键事件2\"],\n      \"characters\": [\"涉及的角色名\"]\n    }\n  ]\n}\n\n要求：\n1. 大纲要有起承转合，情节要有起伏\n2. 每幕要有明确的主题和目标\n3. 章节之间要有逻辑递进关系"
+          }
+        ]
+      },
+      "statusCode": 429,
+      "responseHeaders": {
+        "content-encoding": "gzip",
+        "content-length": "246",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Tue, 21 Apr 2026 06:51:03 GMT",
+        "server": "istio-envoy",
+        "vary": "Accept-Encoding",
+        "x-client-request-id": "unknown-20260421145103-OaMRQewx",
+        "x-envoy-upstream-service-time": "27",
+        "x-request-id": "0217767542637321e898ad59ee92efe47f7a884c6f3325639fecf"
+      },
+      "responseBody": "{\"error\":{\"code\":\"ServerOverloaded\",\"message\":\"The service is currently unable to handle additional requests due to server overload, please retry later or contact with administrator if not work afterwards. Request id: 0217767542637321e898ad59ee92efe47f7a884c6f3325639fecf\",\"param\":\"\",\"type\":\"TooManyRequests\"}}",
+      "isRetryable": true,
+      "data": {
+        "error": {
+          "message": "The service is currently unable to handle additional requests due to server overload, please retry later or contact with administrator if not work afterwards. Request id: 0217767542637321e898ad59ee92efe47f7a884c6f3325639fecf",
+          "type": "TooManyRequests",
+          "param": "",
+          "code": "ServerOverloaded"
+        }
+      }
+    }
+  }
+}
+[2026-04-21T06:52:28.999Z] [INFO] 大纲批次 1 完成
+{
+  "startChapter": 1,
+  "endChapter": 34,
+  "plotPointsCount": 34
+}
+[2026-04-21T06:53:41.505Z] [WARN] 大纲批次 1 生成失败，重试中 (2/10)
+{
+  "error": {}
+}
+[2026-04-21T06:55:07.002Z] [INFO] 大纲批次 1 完成
+{
+  "startChapter": 1,
+  "endChapter": 34,
+  "plotPointsCount": 34
+}
+[2026-04-21T06:55:19.542Z] [INFO] 大纲批次 2 完成
+{
+  "startChapter": 35,
+  "endChapter": 68,
+  "plotPointsCount": 34
+}
+[2026-04-21T06:58:20.833Z] [WARN] 大纲批次 1 生成失败，重试中 (3/10)
+{
+  "error": {}
+}
+[2026-04-21T06:58:51.413Z] [INFO] 大纲批次 3 完成
+{
+  "startChapter": 69,
+  "endChapter": 100,
+  "plotPointsCount": 32
+}
+[2026-04-21T06:58:51.491Z] [INFO] 大纲生成完成
+{
+  "projectId": "cmo897a5v00043jq5db7sddfw",
+  "totalChapters": 100
+}
+[2026-04-21T06:59:18.886Z] [INFO] 大纲批次 2 完成
+{
+  "startChapter": 35,
+  "endChapter": 68,
+  "plotPointsCount": 34
+}
+[2026-04-21T07:02:29.125Z] [INFO] 大纲批次 1 完成
+{
+  "startChapter": 1,
+  "endChapter": 34,
+  "plotPointsCount": 34
+}
+[2026-04-21T07:02:52.417Z] [INFO] 大纲批次 3 完成
+{
+  "startChapter": 69,
+  "endChapter": 100,
+  "plotPointsCount": 32
+}
+[2026-04-21T07:02:52.539Z] [INFO] 大纲生成完成
+{
+  "projectId": "cmo89dobc000c3jq5zd7s1za2",
+  "totalChapters": 100
+}
+[2026-04-21T07:06:46.857Z] [INFO] 大纲批次 2 完成
+{
+  "startChapter": 35,
+  "endChapter": 68,
+  "plotPointsCount": 34
+}
+[2026-04-21T07:09:56.613Z] [INFO] 大纲批次 3 完成
+{
+  "startChapter": 69,
+  "endChapter": 100,
+  "plotPointsCount": 32
+}
+[2026-04-21T07:09:56.732Z] [INFO] 大纲生成完成
+{
+  "projectId": "cmo89804c00063jq5b3132mjf",
+  "totalChapters": 100
+}
+[2026-04-21T07:34:08.426Z] [INFO] 首批章节生成完成
+{
+  "completedChapters": 15,
+  "firstBatchChapters": 15
+}
+[2026-04-21T07:34:08.426Z] [INFO] 项目创建完成
+{
+  "taskId": "cmo894rzk00023jq50u91s6ry",
+  "projectId": "cmo897a5v00043jq5db7sddfw",
+  "title": "元帅通缉令：抓我未婚妻",
+  "chapterCount": 15
+}
+[2026-04-21T07:42:14.323Z] [WARN] 章节 13 生成失败，重试中 (1/10)
+{
+  "error": {}
+}
+[2026-04-21T07:46:02.462Z] [INFO] 首批章节生成完成
+{
+  "completedChapters": 15,
+  "firstBatchChapters": 15
+}
+[2026-04-21T07:46:02.462Z] [INFO] 项目创建完成
+{
+  "taskId": "cmo894ry700003jq5hawioxxr",
+  "projectId": "cmo89dobc000c3jq5zd7s1za2",
+  "title": "流放荒漠：我靠种田成团宠",
+  "chapterCount": 15
+}
+[2026-04-21T07:46:36.430Z] [WARN] 章节 13 生成失败，重试中 (2/10)
+{
+  "error": {}
+}
+[2026-04-21T07:50:25.588Z] [WARN] 章节 13 生成失败，重试中 (3/10)
+{
+  "error": {}
+}
+[2026-04-21T08:21:27.187Z] [INFO] 首批章节生成完成
+{
+  "completedChapters": 15,
+  "firstBatchChapters": 15
+}
+[2026-04-21T08:21:27.188Z] [INFO] 项目创建完成
+{
+  "taskId": "cmo894ryj00013jq5s0p2enk0",
+  "projectId": "cmo89804c00063jq5b3132mjf",
+  "title": "科举：我的考场有弹幕",
+  "chapterCount": 15
+}

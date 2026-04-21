@@ -177,7 +177,7 @@ model GenerationTask {
   currentStep   String   @default("初始化")   // 当前步骤
   stepProgress  Int      @default(0)          // 当前步骤进度 0-100
   totalSteps    Int      @default(5)          // 总步骤数
-  targetChapters Int    @default(100)        // 最终目标章节数
+  targetChapters Int     @default(100)        // 最终目标章节数
   firstBatchChapters Int @default(15)         // 首批生成章节数
   wordCount     Int      @default(1000)       // 每章字数
   completedChapters Int  @default(0)          // 已完成章节数
@@ -189,5 +189,34 @@ model GenerationTask {
 
   @@index([userId])
   @@index([status])
+}
+
+model TokenSettings {
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  enabled         Boolean  @default(false)      // 是否启用token阈值控制
+  tokenThreshold  Int      @default(5000000)     // token阈值，默认500万
+  models          String   @default("")          // 模型列表，逗号分割，如 "doubao-pro-32k,doubao-lite-32k"
+  currentModelIndex Int    @default(0)           // 当前使用的模型索引
+  lastResetAt     DateTime @default(now())      // 上次重置时间
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([userId])
+}
+
+model TokenUsage {
+  id              String   @id @default(cuid())
+  userId          String
+  model           String                    // 模型名称
+  promptTokens    Int      @default(0)      // 提示token
+  completionTokens Int     @default(0)       // 补全token
+  totalTokens     Int      @default(0)       // 总token
+  cost            Float    @default(0)       // 消耗金额
+  periodStart     DateTime                  // 统计周期开始时间
+  periodEnd       DateTime                  // 统计周期结束时间
+  createdAt       DateTime @default(now())
+
+  @@index([userId, periodStart])
 }
 

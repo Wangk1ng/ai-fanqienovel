@@ -18,6 +18,17 @@ export interface GenerateOptions {
   baseURL?: string;
 }
 
+export interface GenerationUsage {
+  promptTokens: number;
+  completionTokens: number;
+  totalTokens: number;
+}
+
+export interface GenerationResult<T> {
+  data: T;
+  usage?: GenerationUsage;
+}
+
 export interface ChatMessage {
   role: "system" | "user" | "assistant";
   content: string;
@@ -84,22 +95,36 @@ export async function generateObject<T>(
   schema: z.ZodType<T>,
   options: GenerateOptions = {},
 ): Promise<T> {
+  const result = await generateObjectWithUsage(prompt, schema, options);
+  return result.data;
+}
+
+/**
+ * 生成结构化 JSON 对象，返回结果和 usage 信息
+ */
+export async function generateObjectWithUsage<T>(
+  prompt: string,
+  schema: z.ZodType<T>,
+  options: GenerateOptions = {},
+): Promise<GenerationResult<T>> {
   const { temperature = 0.7 } = options;
   const model = getModel(options);
 
-  logger.ai("[generateObject] 开始调用", {
+  logger.ai("[generateObjectWithUsage] 开始调用", {
     provider: options.provider,
     model: options.model,
     promptLength: prompt.length,
   });
 
-  const { text } = await aiGenerateText({
+  const result = await aiGenerateText({
     model,
     prompt,
     temperature,
   });
 
-  logger.ai("[generateObject] AI 返回文本", {
+  const text = result.text;
+
+  logger.ai("[generateObjectWithUsage] AI 返回文本", {
     textLength: text.length,
     textHead: text.substring(0, 300),
   });
@@ -109,7 +134,7 @@ export async function generateObject<T>(
   try {
     raw = extractJSON(text);
   } catch (e) {
-    logger.error("[generateObject] JSON 提取失败", {
+    logger.error("[generateObjectWithUsage] JSON 提取失败", {
       error: String(e),
       textLength: text.length,
       textFull: text,
@@ -117,23 +142,29 @@ export async function generateObject<T>(
     throw e;
   }
 
-  logger.ai("[generateObject] JSON 提取成功", {
+  logger.ai("[generateObjectWithUsage] JSON 提取成功", {
     keys: raw ? Object.keys(raw) : null,
   });
 
+  // 提取 usage 信息
+  const usage: GenerationUsage = {
+    promptTokens: (result.usage?.promptTokens || 0),
+    completionTokens: (result.usage?.completionTokens || 0),
+    totalTokens: (result.usage?.totalTokens || 0),
+  };
+
   // zod 校验
-  const result = schema.safeParse(raw);
-  if (!result.success) {
-    logger.error("[generateObject] zod 校验失败", {
-      zodErrors: result.error.issues,
+  const parsed = schema.safeParse(raw);
+  if (!parsed.success) {
+    logger.error("[generateObjectWithUsage] zod 校验失败", {
+      zodErrors: parsed.error.issues,
       rawKeys: raw ? Object.keys(raw) : null,
     });
     // 校验失败也返回原始数据，不要炸掉整个流程
-    // 大部分字段可能是对的，只是个别字段类型不符
-    return raw as T;
+    return { data: raw as T, usage };
   }
 
-  return result.data;
+  return { data: parsed.data, usage };
 }
 
 /**

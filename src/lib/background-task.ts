@@ -1,9 +1,18 @@
 import { prisma } from "@/lib/db";
 import { logger } from "@/lib/logger";
-import { generateObject, generateText, resolveAIConfig } from "@/lib/ai";
+import { generateObject, generateObjectWithUsage, generateText, resolveAIConfig } from "@/lib/ai";
 import { buildRefineRequirementsPrompt, buildProjectPrompt } from "@/lib/prompts";
 import { projectGenerateSchema } from "@/lib/schemas";
 import { z } from "zod";
+import {
+  recordTokenUsage,
+  getTokenSettings,
+  getTokenStats,
+  shouldSwitchModel,
+  getNextModel,
+  isTokenExhausted,
+  getCurrentModel,
+} from "@/lib/token-manager";
 
 const HOT_GENRES = [
   "都市", "玄幻", "言情", "穿越", "系统", "末世", "星际", "娱乐圈",
@@ -705,4 +714,207 @@ export async function startGenerationTask(taskId: string) {
       logger.error("任务执行异常", { taskId, error });
     });
   });
+}
+
+interface GenerationContext {
+  userId: string;
+  targetChapters: number;
+  firstBatchChapters: number;
+  wordCount: number;
+  aiConfig: any;
+}
+
+async function createSingleProject(context: GenerationContext): Promise<{ projectId?: string; tokenUsed: number; title?: string; error?: string }> {
+  const { userId, targetChapters, firstBatchChapters, wordCount, aiConfig } = context;
+  const taskId = `token-${userId}-${Date.now()}`;
+  const randomGenre = HOT_GENRES[Math.floor(Math.random() * HOT_GENRES.length)];
+  const requirementsPrompt = `从以下热门类型中随机选择创作一个吸引人且大胆的脑洞：${HOT_GENRES.join("、")}。角色姓名不要带有：${EXCLUDED_NAMES.join("、")}`;
+
+  let totalTokenUsed = 0;
+  let projectId: string | undefined;
+  let title: string | undefined;
+
+  try {
+    const task = await prisma.generationTask.create({
+      data: {
+        userId,
+        status: "running",
+        currentStep: "生成创作需求",
+        stepProgress: 5,
+        targetChapters,
+        firstBatchChapters,
+        wordCount,
+        genre: randomGenre,
+      },
+    });
+
+    let refinedRequirements = "";
+    try {
+      refinedRequirements = await generateWithRetry(async () => {
+        const prompt = buildRefineRequirementsPrompt({ genre: randomGenre, requirements: requirementsPrompt });
+        return generateText(prompt, { ...aiConfig, temperature: 0.7 });
+      }, 3, 30000);
+      logger.info("创作需求优化完成", { refinedLength: refinedRequirements.length });
+    } catch (error) {
+      logger.error("优化创作需求失败", { error });
+      return { tokenUsed: 0, error: "优化创作需求失败" };
+    }
+
+    try {
+      const parsed = await generateWithRetry(async () => {
+        const prompt = buildProjectPrompt({ genre: randomGenre, requirements: refinedRequirements });
+        return generateObject(prompt, projectGenerateSchema, { ...aiConfig, temperature: 0.9 });
+      }, 3, 30000);
+      title = parsed.titles?.[0]?.title || `${randomGenre}小说_${Date.now()}`;
+      logger.info("标题和简介生成成功", { title });
+    } catch (error) {
+      logger.error("生成标题和简介失败", { error });
+      title = `${randomGenre}小说_${Date.now()}`;
+    }
+
+    const project = await prisma.project.create({
+      data: {
+        title: title || `${randomGenre}小说_${Date.now()}`,
+        genre: randomGenre,
+        userId,
+      },
+    });
+    projectId = project.id;
+    logger.info("项目创建成功", { projectId, title });
+
+    try {
+      await generateSettings(project.id, refinedRequirements, aiConfig);
+      logger.info("核心设定生成成功");
+    } catch (error) {
+      logger.error("生成核心设定失败", { projectId: project.id, error });
+    }
+
+    try {
+      await generateCharacters(project.id, aiConfig);
+      logger.info("角色生成成功");
+    } catch (error) {
+      logger.warn("生成角色失败，继续执行", { projectId: project.id, error });
+    }
+
+    let outlineData;
+    try {
+      outlineData = await generateOutline(project.id, targetChapters, aiConfig);
+    } catch (error) {
+      logger.error("生成大纲失败", { projectId: project.id, error });
+      return { projectId, tokenUsed: totalTokenUsed, title, error: "生成大纲失败" };
+    }
+
+    const outline = outlineData.structure;
+    if (!outline || outline.length === 0) {
+      logger.error("大纲结构为空", { projectId: project.id });
+      return { projectId, tokenUsed: totalTokenUsed, title, error: "大纲结构为空" };
+    }
+
+    let completedChapters = 0;
+    for (const act of outline) {
+      if (!act.chapterRange) continue;
+      const rangeMatch = act.chapterRange.match(/第(\d+)-(\d+)章/);
+      if (!rangeMatch) continue;
+
+      const startChapter = parseInt(rangeMatch[1]);
+      const endChapter = parseInt(rangeMatch[2]);
+
+      for (let chapterNumber = startChapter; chapterNumber <= endChapter; chapterNumber++) {
+        if (completedChapters >= firstBatchChapters) break;
+
+        completedChapters++;
+        logger.info(`生成章节 ${chapterNumber}/${firstBatchChapters}`);
+
+        let success = false;
+        for (let retry = 0; retry <= 2; retry++) {
+          try {
+            await generateChapter(project.id, act.actNumber, chapterNumber, wordCount, aiConfig);
+            success = true;
+            break;
+          } catch (error) {
+            if (retry === 2) {
+              logger.error(`生成章节 ${chapterNumber} 最终失败`, { error });
+            } else {
+              const delay = 60000 * Math.pow(2, retry);
+              logger.info(`生成章节 ${chapterNumber} 失败，${delay / 1000}秒后重试`, { retry });
+              await sleep(delay);
+            }
+          }
+        }
+      }
+      if (completedChapters >= firstBatchChapters) break;
+    }
+
+    logger.info("项目创建完成", { projectId, title, chapterCount: completedChapters });
+    return { projectId, tokenUsed: totalTokenUsed, title };
+
+  } catch (error) {
+    logger.error("创建项目失败", { error });
+    return { projectId, tokenUsed: totalTokenUsed, title, error: error instanceof Error ? error.message : "未知错误" };
+  }
+}
+
+export async function startTokenControlledGeneration(userId: string) {
+  logger.info("开始 token 阈值控制模式", { userId });
+
+  const settings = await getTokenSettings(userId);
+  if (!settings.enabled) {
+    logger.warn("Token 控制未启用", { userId });
+    return;
+  }
+
+  if (settings.models.length === 0) {
+    logger.warn("未配置模型列表", { userId });
+    return;
+  }
+
+  const stats = await getTokenStats(userId);
+  if (stats.totalTokens >= settings.tokenThreshold) {
+    logger.info("Token 额度已用尽", { userId, totalTokens: stats.totalTokens, threshold: settings.tokenThreshold });
+    return;
+  }
+
+  const aiConfig = resolveAIConfig(null, { id: userId } as any);
+
+  let currentModelIndex = settings.currentModelIndex;
+  let projectCount = 0;
+
+  while (true) {
+    const currentStats = await getTokenStats(userId);
+    if (currentStats.totalTokens >= settings.tokenThreshold) {
+      logger.info("Token 额度已用尽，停止创建", { userId, totalTokens: currentStats.totalTokens });
+      break;
+    }
+
+    const currentModel = settings.models[currentModelIndex];
+    logger.info(`使用模型: ${currentModel}`, { userId, projectCount: projectCount + 1 });
+
+    const context: GenerationContext = {
+      userId,
+      targetChapters: 100,
+      firstBatchChapters: 15,
+      wordCount: 1000,
+      aiConfig: { ...aiConfig, model: currentModel },
+    };
+
+    const result = await createSingleProject(context);
+
+    if (result.error) {
+      logger.error("创建项目失败", { error: result.error, projectCount });
+      await sleep(60000);
+      continue;
+    }
+
+    projectCount++;
+    logger.info(`项目创建成功，已创建 ${projectCount} 个项目`, { projectId: result.projectId, title: result.title });
+
+    if (projectCount >= 100) {
+      logger.info("达到最大项目数量限制", { userId, projectCount });
+      break;
+    }
+
+    await sleep(5000);
+  }
+
+  logger.info("Token 控制模式执行完成", { userId, totalProjects: projectCount });
 }
