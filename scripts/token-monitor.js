@@ -1,61 +1,12 @@
 #!/usr/bin/env node
 
-const { execSync } = require("child_process");
 const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient();
 
-async function checkAndStartTasks() {
-  try {
-    const activeTasks = await prisma.generationTask.findMany({
-      where: {
-        status: { in: ["pending", "running"] },
-      },
-      select: { userId: true },
-      distinct: ["userId"],
-    });
+const CHECK_INTERVAL = 10 * 60 * 1000;
 
-    if (activeTasks.length === 0) {
-      const usersWithTokenControl = await prisma.tokenSettings.findMany({
-        where: { enabled: true },
-        select: { userId: true },
-      });
-
-      if (usersWithTokenControl.length > 0) {
-        console.log(`[${new Date().toISOString()}] 有 ${usersWithTokenControl.length} 个用户启用了 token 控制模式`);
-        
-        for (const { userId } of usersWithTokenControl) {
-          const stats = await getTokenStats(prisma, userId);
-          if (stats.remainingTokens > 0) {
-            console.log(`[${new Date().toISOString()}] 用户 ${userId} 还有 ${stats.remainingTokens} token 额度，启动生成任务`);
-            
-            try {
-              execSync(
-                `cd /workspace && node -e "
-                  const { startTokenControlledGeneration } = require('./src/lib/background-task');
-                  startTokenControlledGeneration('${userId}').catch(console.error);
-                "`,
-                { stdio: "inherit", detached: true }
-              );
-            } catch (error) {
-              console.error(`启动 token 控制任务失败:`, error.message);
-            }
-          }
-        }
-      } else {
-        console.log(`[${new Date().toISOString()}] 没有活动任务和启用的 token 控制`);
-      }
-    } else {
-      console.log(`[${new Date().toISOString()}] 有 ${activeTasks.length} 个活动任务在运行`);
-    }
-  } catch (error) {
-    console.error(`[${new Date().toISOString()}] 检查任务失败:`, error);
-  } finally {
-    await prisma.$disconnect();
-  }
-}
-
-async function getTokenStats(prisma, userId) {
+async function getTokenStats(userId) {
   const now = new Date();
   const utc8Hours = 8 * 60 * 60 * 1000;
   
@@ -86,7 +37,56 @@ async function getTokenStats(prisma, userId) {
     totalTokens,
     remainingTokens: Math.max(0, threshold - totalTokens),
     threshold,
+    settings,
   };
 }
 
-checkAndStartTasks();
+async function checkAndStartTasks() {
+  try {
+    const activeTasks = await prisma.generationTask.findMany({
+      where: {
+        status: { in: ["pending", "running"] },
+      },
+      select: { userId: true },
+      distinct: ["userId"],
+    });
+
+    if (activeTasks.length === 0) {
+      const usersWithTokenControl = await prisma.tokenSettings.findMany({
+        where: { enabled: true },
+        select: { userId: true },
+      });
+
+      if (usersWithTokenControl.length > 0) {
+        console.log(`[${new Date().toISOString()}] 检查 ${usersWithTokenControl.length} 个用户的 token 控制`);
+
+        for (const { userId } of usersWithTokenControl) {
+          const stats = await getTokenStats(userId);
+          if (stats.remainingTokens > 0) {
+            console.log(`[${new Date().toISOString()}] 用户 ${userId} 还有 ${stats.remainingTokens} token，将启动后台任务`);
+            
+            const { startTokenControlledGeneration } = require("/workspace/src/lib/background-task");
+            startTokenControlledGeneration(userId);
+          } else {
+            console.log(`[${new Date().toISOString()}] 用户 ${userId} token 已用尽`);
+          }
+        }
+      }
+    } else {
+      console.log(`[${new Date().toISOString()}] 有 ${activeTasks.length} 个活动任务在运行`);
+    }
+  } catch (error) {
+    console.error(`[${new Date().toISOString()}] 检查任务失败:`, error);
+  }
+}
+
+async function main() {
+  console.log(`[${new Date().toISOString()}] Token Monitor 启动`);
+  
+  while (true) {
+    await checkAndStartTasks();
+    await new Promise(resolve => setTimeout(resolve, CHECK_INTERVAL));
+  }
+}
+
+main().catch(console.error);

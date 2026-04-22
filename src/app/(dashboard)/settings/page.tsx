@@ -395,25 +395,25 @@ export default function UserSettingsPage() {
               </p>
             </div>
 
-            {tokenStats && (
+            {tokenStats && tokenStats.totalTokens !== undefined && (
               <div className="bg-muted/50 rounded-lg p-3 space-y-2">
                 <h4 className="font-medium text-sm">当前周期统计</h4>
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   <div>
                     <span className="text-muted-foreground">已使用：</span>
-                    <span>{tokenStats.totalTokens.toLocaleString()}</span>
+                    <span>{(tokenStats.totalTokens || 0).toLocaleString()}</span>
                   </div>
                   <div>
                     <span className="text-muted-foreground">剩余：</span>
-                    <span>{tokenStats.remainingTokens.toLocaleString()}</span>
+                    <span>{(tokenStats.remainingTokens || 0).toLocaleString()}</span>
                   </div>
                   <div>
                     <span className="text-muted-foreground">使用率：</span>
-                    <span>{Math.round(100 - tokenStats.remainingPercent)}%</span>
+                    <span>{Math.round(100 - (tokenStats.remainingPercent || 0))}%</span>
                   </div>
                   <div>
                     <span className="text-muted-foreground">当前模型：</span>
-                    <span>{tokenSettings.models.split(",")[tokenSettings.currentModelIndex] || "未设置"}</span>
+                    <span>{tokenSettings.models.split(",").filter(Boolean)[tokenSettings.currentModelIndex] || "未设置"}</span>
                   </div>
                 </div>
               </div>

@@ -14,7 +14,10 @@ export async function GET() {
     const stats = await getTokenStats(session.user.id);
 
     return NextResponse.json({
-      settings,
+      settings: {
+        ...settings,
+        models: settings.models.join(","),
+      },
       stats,
     });
   } catch (error) {

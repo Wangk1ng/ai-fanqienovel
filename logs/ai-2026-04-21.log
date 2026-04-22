@@ -1618,3 +1618,333 @@
     "content"
   ]
 }
+[2026-04-21T17:21:20.466Z] [INFO] [generateObjectWithUsage] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1064
+}
+[2026-04-21T17:21:49.094Z] [INFO] [generateObjectWithUsage] AI 返回文本
+{
+  "textLength": 445,
+  "textHead": "{\n  \"titles\": [\n    {\n      \"title\": \"重生78：空间通未来超市\",\n      \"reason\": \"点明金手指，吸引年代文读者\"\n    },\n    {\n      \"title\": \"满级大佬回70年代搞钱\",\n      \"reason\": \"突出大佬身份，爽点直接\"\n    },\n    {\n      \"title\": \"我在70年代囤积百亿物资\",\n      \"reason\": \"强调囤货爽感，代入感强\"\n    }\n  ],\n  \"description\": \"重生回到1978年，商业巨鳄叶希看着家徒四壁和极品亲戚，嘴角勾起一抹冷笑。幸好"
+}
+[2026-04-21T17:21:49.096Z] [INFO] [generateObjectWithUsage] JSON 提取成功
+{
+  "keys": [
+    "titles",
+    "description"
+  ]
+}
+[2026-04-21T17:22:34.295Z] [INFO] [generateObjectWithUsage] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1221
+}
+[2026-04-21T17:23:06.759Z] [INFO] [generateObjectWithUsage] AI 返回文本
+{
+  "textLength": 1155,
+  "textHead": "{\n  \"worldView\": \"1978年的中国，处于改革开放前夜的至暗时刻。物资极度匮乏，凭票供应是生存铁律，计划经济禁锢着人们的思想。在这个为了一块肉、一尺布就能争得头破血流的年代，知青返城潮暗流涌动。重生而来的女主带着未来的记忆与超自然能力降临，誓要打破陈旧规则的枷锁，从黑市倒爷起步，利用时代红利与降维打击的手段，一步步构建起属于自己的隐形商业帝国。\",\n  \"coreConflict\": \"极度匮乏的生存环境与极品亲戚的贪婪算计，同女主利用空间物资进行降维打击、疯狂敛财的野心之间的激烈碰撞。微观上是对抗吸血亲戚的家庭伦理博弈，宏观上则是凭借未来商业思维抢占先机，暗中改写经济格局，与"
+}
+[2026-04-21T17:23:06.760Z] [INFO] [generateObjectWithUsage] JSON 提取成功
+{
+  "keys": [
+    "worldView",
+    "coreConflict",
+    "powerSystem",
+    "factions",
+    "specialRules"
+  ]
+}
+[2026-04-21T17:23:06.771Z] [INFO] [generateObjectWithUsage] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 541
+}
+[2026-04-21T17:24:14.022Z] [INFO] [generateObjectWithUsage] AI 返回文本
+{
+  "textLength": 3614,
+  "textHead": "{\n  \"characters\": [\n    {\n      \"name\": \"林渊\",\n      \"role\": \"protagonist\",\n      \"age\": 22,\n      \"gender\": \"男\",\n      \"appearance\": \"身材消瘦但肌肉线条紧实，穿着一件磨损严重的战术夹克。黑发凌乱，眼神锐利如鹰，右耳处植着廉价的旧型号义耳，常在暗处闪烁着微弱的蓝光。\",\n      \"personality\": [\"坚韧不拔\", \"重情重义\"],\n      \"background\": \"下城区的拾荒者，父母因反抗‘永生科技’而被处决。他在废墟中意外发现了一枚名为"
+}
+[2026-04-21T17:24:14.023Z] [INFO] [generateObjectWithUsage] JSON 提取成功
+{
+  "keys": [
+    "characters"
+  ]
+}
+[2026-04-21T17:24:14.040Z] [INFO] [generateObjectWithUsage] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1719
+}
+[2026-04-21T17:25:44.589Z] [INFO] [generateObjectWithUsage] AI 返回文本
+{
+  "textLength": 7758,
+  "textHead": "```json\n{\n  \"structure\": [\n    {\n      \"actNumber\": 1,\n      \"actName\": \"第一幕：重生觉醒与黑市初探\",\n      \"chapterRange\": \"第1-12章\",\n      \"summary\": \"叶希重生回1978年，面对家徒四壁与极品亲戚的逼迫，觉醒连接未来超市的无限空间。她利用空间物资解决生存危机，通过黑市倒卖赚取第一桶金，并成功与吸血鬼家族分家，摆脱了原生家庭的束缚。\",\n      \"plotPoints\": [\"重生觉醒空间\", \"反击极品亲戚\", \"黑市赚取首金\", \"成功分家\"]\n    },\n  "
+}
+[2026-04-21T17:25:44.591Z] [INFO] [generateObjectWithUsage] JSON 提取成功
+{
+  "keys": [
+    "structure",
+    "plotPoints"
+  ]
+}
+[2026-04-21T17:25:44.592Z] [INFO] [generateObjectWithUsage] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 404
+}
+[2026-04-21T17:27:08.162Z] [INFO] [generateObjectWithUsage] AI 返回文本
+{
+  "textLength": 6809,
+  "textHead": "```json\n{\n  \"plotPoints\": [\n    {\n      \"chapterNumber\": 35,\n      \"title\": \"第一桶金的规划\",\n      \"summary\": \"叶希决定利用空间里的电子表去县城倒卖，赚取第一桶金。陆野虽然担心但选择支持，两人连夜清点货物。\",\n      \"keyEvents\": [\"清点空间电子表库存\", \"制定县城售卖计划\"],\n      \"characters\": [\"叶希\", \"陆野\"]\n    },\n    {\n      \"chapterNumber\": 36,\n      \"title\": \"县城里的洋气货\",\n"
+}
+[2026-04-21T17:27:08.164Z] [INFO] [generateObjectWithUsage] JSON 提取成功
+{
+  "keys": [
+    "plotPoints"
+  ]
+}
+[2026-04-21T17:27:08.166Z] [INFO] [generateObjectWithUsage] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 394
+}
+[2026-04-21T17:28:31.432Z] [INFO] [generateObjectWithUsage] AI 返回文本
+{
+  "textLength": 6648,
+  "textHead": "```json\n{\n  \"plotPoints\": [\n    {\n      \"chapterNumber\": 69,\n      \"title\": \"双喜临门，告知父母\",\n      \"summary\": \"次日清晨，陆野与叶希分别回家告知父母订婚喜讯。双方父母对这门亲事都十分满意，开始商议婚期。\",\n      \"keyEvents\": [\"叶希回家报喜\", \"陆野向首长汇报\"],\n      \"characters\": [\"叶希\", \"陆野\", \"叶父\", \"叶母\", \"陆父\"]\n    },\n    {\n      \"chapterNumber\": 70,\n      \"title"
+}
+[2026-04-21T17:28:31.433Z] [INFO] [generateObjectWithUsage] JSON 提取成功
+{
+  "keys": [
+    "plotPoints"
+  ]
+}
+[2026-04-21T17:28:31.576Z] [INFO] [generateObjectWithUsage] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1297
+}
+[2026-04-21T17:29:38.511Z] [INFO] [generateObjectWithUsage] AI 返回文本
+{
+  "textLength": 1783,
+  "textHead": "{\n  \"title\": \"重回一九七八\",\n  \"content\": \"痛！像是脑袋被大卡车碾过一般，撕裂般的剧痛让叶希忍不住发出一声闷哼。\\n\\n她下意识地伸手去摸床头的呼叫铃，指尖触碰到的却不是医院冰冷的塑料按钮，而是一团粗糙、扎手的干草席。\\n\\n叶希猛地睁开眼，入目是一片昏暗发黑的土房顶，几缕灰尘混合着蜘蛛网在从破窗户纸透进来的微光中摇摇欲坠。空气中弥漫着一股陈旧的霉味、旱烟味和尿骚味混合在一起的怪味，呛得她喉咙发痒。\\n\\n“咳咳……”\\n\\n她挣扎着坐起身，身下的土炕硬得像石头，稍微一动就发出“咯吱咯吱”的声响。叶希低头看着自己的手——那是一双年轻、却布满冻疮和裂口的手，指甲缝里"
+}
+[2026-04-21T17:29:38.512Z] [INFO] [generateObjectWithUsage] JSON 提取成功
+{
+  "keys": [
+    "title",
+    "content"
+  ]
+}
+[2026-04-21T17:29:38.524Z] [INFO] [generateObjectWithUsage] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1800
+}
+[2026-04-21T17:30:50.229Z] [INFO] [generateObjectWithUsage] AI 返回文本
+{
+  "textLength": 2911,
+  "textHead": "{\n  \"title\": \"极品上门与绝地反击\",\n  \"content\": \"“吱呀——”\\n\\n伴随着令人牙酸的摩擦声，那扇摇摇欲坠的木门被叶希猛地拉开。\\n\\n寒风裹挟着院里的枯叶卷进屋内，门口站着的，正是那一对让她恨得牙痒痒的夫妻——大伯叶大海和二婶王翠花。王翠花那双倒三角眼正死死地盯着叶希，嘴角挂着唾沫星子，一脸的横肉随着呼吸颤抖，仿佛恨不得立刻扑上来撕咬一块肉。\\n\\n“哟，还敢开门呢？我还以为你吓死在屋里了！”王翠花见门开了，也不客气，像一股油腻的旋风般就要往屋里闯，“死丫头，鸡蛋呢？别跟老娘装聋作哑，昨晚我都听见鸡叫了！”\\n\\n叶希身形一闪，并未后退，反而冷冷地堵在了门口，那"
+}
+[2026-04-21T17:30:50.230Z] [INFO] [generateObjectWithUsage] JSON 提取成功
+{
+  "keys": [
+    "title",
+    "content"
+  ]
+}
+[2026-04-21T17:30:50.241Z] [INFO] [generateObjectWithUsage] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1802
+}
+[2026-04-21T17:32:07.461Z] [INFO] [generateObjectWithUsage] AI 返回文本
+{
+  "textLength": 2611,
+  "textHead": "{\n  \"title\": \"觉醒：连接2024年的无限超市\",\n  \"content\": \"叶希只觉得眼前一花，耳边那呼啸的北风和破旧窗棂的震动声瞬间消失无踪。\\n\\n取而代之的，是一股恒温的暖意，以及鼻尖萦绕着的、淡淡的烘焙香气和消毒水的清新味道。\\n\\n她猛地睁开眼，瞳孔骤然收缩。\\n\\n这里不是那个阴暗潮湿、四处漏风的破败土屋，也不是那个物资匮乏、人人自危的1978年冬天。\\n\\n映入眼帘的，是宽阔得令人眩晕的过道，头顶是明亮柔和的LED灯光，脚下是光洁如镜的水磨石地面。而在她面前，是一排排望不到顶、延伸至视线尽头的巨大货架。\\n\\n“这是……”叶希的声音有些干涩，心脏在胸腔里剧烈地跳动"
+}
+[2026-04-21T17:32:07.462Z] [INFO] [generateObjectWithUsage] JSON 提取成功
+{
+  "keys": [
+    "title",
+    "content"
+  ]
+}
+[2026-04-21T17:32:07.475Z] [INFO] [generateObjectWithUsage] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1798
+}
+[2026-04-21T17:33:24.555Z] [INFO] [generateObjectWithUsage] AI 返回文本
+{
+  "textLength": 2165,
+  "textHead": "{\n  \"title\": \"超市的馈赠\",\n  \"content\": \"胃里像是有火在烧，那种饥饿感是身体最原始的哀鸣，提醒着叶希这具身体已经多久没有正经吃过东西了。她深吸一口气，强行压下对食物的渴望，眼神在昏暗的房间里扫视了一圈，最后定格在那张破旧的木床上。\\n\\n她必须先解决温饱，然后才是囤货。\\n\\n叶希心念一动，意识瞬间沉入那片神秘的静止空间。\\n\\n眼前景象骤变。不再是1978年这间破败漏风的土屋，而是明亮宽敞、冷气充足的现代化超市。头顶是柔和的LED灯光，耳边播放着2024年轻快的流行音乐，货架上琳琅满目的商品整齐排列，散发着令人安心的秩序感。\\n\\n这种强烈的视觉冲击，哪怕已经不"
+}
+[2026-04-21T17:33:24.556Z] [INFO] [generateObjectWithUsage] JSON 提取成功
+{
+  "keys": [
+    "title",
+    "content"
+  ]
+}
+[2026-04-21T17:33:24.569Z] [INFO] [generateObjectWithUsage] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1801
+}
+[2026-04-21T17:34:45.085Z] [INFO] [generateObjectWithUsage] AI 返回文本
+{
+  "textLength": 3034,
+  "textHead": "{\n  \"title\": \"大伯母的算盘，一碗红糖水的暴击\",\n  \"content\": \"清晨的鸡鸣声刺破了薄雾，将叶希从沉睡中唤醒。她睁开眼，看着那布满灰尘的房梁，几秒钟的恍惚后，眼神重新变得清明锐利。重生后的第一觉，睡得意外踏实。\n\n    她翻身下床，并没有急着洗漱，而是先意念一动，进入了随身空间。\n\n    明亮宽敞的现代化超市里，冷气徐徐，货架上琳琅满目的商品整齐排列。叶希径直走向粮油区，看着那一排排洁白的大米和面粉，嘴角勾起一抹满足的笑。在这个连吃顿饱饭都是奢望的年代，这座超市就是她最大的底气，是她逆天改命的核武器。\n\n    她从空间里取出一碗热腾腾的小米粥，两个白面馒头，外加"
+}
+[2026-04-21T17:34:45.086Z] [INFO] [generateObjectWithUsage] JSON 提取成功
+{
+  "keys": [
+    "title",
+    "content"
+  ]
+}
+[2026-04-21T17:34:45.113Z] [INFO] [generateObjectWithUsage] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1801
+}
+[2026-04-21T17:36:12.434Z] [INFO] [generateObjectWithUsage] AI 返回文本
+{
+  "textLength": 2421,
+  "textHead": "{\n  \"title\": \"初探黑市与第一桶金\",\n  \"content\": \"叶希压低了头上的旧棉帽，将半张脸缩在竖起的衣领里，快步走在通往县城的土路上。初春的风依旧带着刺骨的寒意，刮在脸上像刀割一般，但她胸膛里却燃烧着一团火。那团火是对未来的野心，也是对摆脱极品亲戚的渴望。\\n\\n\\t\\t\\n\\t\\t为了这次出行，她特意在空间里挑拣了一番。除了那块肥瘦相间的五花肉，她还拿了一盒青霉素和几包“大前门”香烟。在这个年代，抗生素是救命药，比黄金还贵；而“大前门”是硬通货，能打通不少关节。至于那块肉，是用来开路的诱饵。\\n\\n\\t\\t\\n\\t\\t到了县城，叶希没有去人声鼎沸的供销社，而是熟门熟路地"
+}
+[2026-04-21T17:36:12.435Z] [INFO] [generateObjectWithUsage] JSON 提取成功
+{
+  "keys": [
+    "title",
+    "content"
+  ]
+}
+[2026-04-21T17:36:12.446Z] [INFO] [generateObjectWithUsage] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1799
+}
+[2026-04-21T17:37:48.796Z] [INFO] [generateObjectWithUsage] AI 返回文本
+{
+  "textLength": 2683,
+  "textHead": "{\n  \"title\": \"黑市里的降维打击\",\n  \"content\": \"离开老鬼的黑诊所，冷风像刀子一样刮在脸上，却怎么也吹不散叶希心头的火热。怀里的那一沓“大团结”沉甸甸的，那是她在这个时代立足的根本。但叶希很清楚，老鬼那里虽然路子野，但毕竟主营“偏门”，要想真正把生意做大，还得找那些专门倒卖紧俏日用物资的“大鳄”。\\n\\n在这个物资极度匮乏的年代，一块肥皂、一斤白糖，甚至一包火柴，都能成为硬通货。而她空间里那堆积如山、包装精美的2020年日化用品，在这里就是名副其实的“降维打击”。\\n\\n叶希紧了紧棉袄的领口，压低了帽檐，熟练地穿过几条阴暗狭窄的胡同，避开几处游荡的治安联防队员，来到"
+}
+[2026-04-21T17:37:48.796Z] [INFO] [generateObjectWithUsage] JSON 提取成功
+{
+  "keys": [
+    "title",
+    "content"
+  ]
+}
+[2026-04-21T17:37:48.811Z] [INFO] [generateObjectWithUsage] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1797
+}
+[2026-04-21T17:39:05.661Z] [INFO] [generateObjectWithUsage] AI 返回文本
+{
+  "textLength": 2699,
+  "textHead": "{\n  \"title\": \"权力的润滑剂\",\n  \"content\": \"夜色如墨，寒风裹挟着雪花呼啸而过，打在脸上生疼。叶希紧了紧棉袄的领口，将那一沓带着体温的钞票贴身放好，脚步匆匆地赶回了叶家大院。\\n\\n还没进院门，就听见二婶那尖锐的嗓音在破败的院子里回荡，夹杂着奶奶的咳嗽声和咒骂。叶希冷笑一声，没有理会，径直穿过喧闹的堂屋，回到了自己那间四处漏风的小偏房。\\n\\n在这个家里，多待一秒都是煎熬。想要彻底摆脱这群吸血鬼，光有钱还不够，必须得从根源上切断关系——分户。\\n\\n在这个年代，分户比登天还难。尤其是对于她这样一个还没出嫁的大姑娘来说，大队干部那一关就是鬼门关。没有大队书记的盖章，户"
+}
+[2026-04-21T17:39:05.661Z] [INFO] [generateObjectWithUsage] JSON 提取成功
+{
+  "keys": [
+    "title",
+    "content"
+  ]
+}
+[2026-04-21T17:39:05.675Z] [INFO] [generateObjectWithUsage] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1801
+}
+[2026-04-21T17:40:26.380Z] [INFO] [generateObjectWithUsage] AI 返回文本
+{
+  "textLength": 2391,
+  "textHead": "{\n  \"title\": \"搬离吸血窝\",\n  \"content\": \"刚踏进大伯家的院子，一股酸腐的泔水味便扑面而来。大伯母张翠花正端着个缺了口的搪瓷盆，在那几只瘦骨嶙峋的芦花鸡面前撒着糠，听见动静，她斜眼瞥了一下叶希，那张满是横肉的脸上堆起了一层幸灾乐祸的假笑。\\n\\n“哟，希丫头回来了？怎么着，大队部那门槛高，没把咱这穷亲戚给放进去吧？”张翠花故意提高了嗓门，正屋里，大伯张大强正吧嗒吧嗒抽着旱烟，听见动静，也透过满是油污的窗户纸往外看。\\n\\n叶希冷着脸，没接她的话茬，径直走到正屋门口，一把推开了那扇吱呀作响的木门。\\n\\n屋内光线昏暗，张大强坐在炕沿上，脚底下的泥地被踩得坑坑洼洼。见叶"
+}
+[2026-04-21T17:40:26.380Z] [INFO] [generateObjectWithUsage] JSON 提取成功
+{
+  "keys": [
+    "title",
+    "content"
+  ]
+}
+[2026-04-21T17:40:26.405Z] [INFO] [generateObjectWithUsage] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1805
+}
+[2026-04-21T17:41:32.827Z] [INFO] [generateObjectWithUsage] AI 返回文本
+{
+  "textLength": 2121,
+  "textHead": "{\n  \"title\": \"一夜之间，破屋换新颜\",\n  \"content\": \"天还没亮，寒风依旧在窗外呼啸，但屋内的叶希已经睁开了双眼。看着缩在被窝里睡得正香的叶瑶，她轻手轻脚地起身，神色一凝，心念一动，整个人瞬间消失在原地，进入了那座静止的随身空间。\\n\\n空间内灯火通明，2020年代的大型超市琳琅满目。叶希没有丝毫犹豫，直奔建材区。既然要在这个年代立足，首先得有个像样的“基地”。这破败的茅草屋四处漏风，根本无法抵御接下来的严冬，更别提藏匿她即将倒腾回来的巨额物资了。\\n\\n她动作极快，从货架上搬下了几桶高级外墙防水涂料、几卷强力防水卷材，还有那款号称“一刷白”的环保乳胶漆。工具区里，无"
+}
+[2026-04-21T17:41:32.827Z] [INFO] [generateObjectWithUsage] JSON 提取成功
+{
+  "keys": [
+    "title",
+    "content"
+  ]
+}
+[2026-04-21T17:41:32.838Z] [INFO] [generateObjectWithUsage] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1804
+}
+[2026-04-21T17:42:47.937Z] [INFO] [generateObjectWithUsage] AI 返回文本
+{
+  "textLength": 2520,
+  "textHead": "{\n  \"title\": \"草垛里的伤员\",\n  \"content\": \"“别碰，这玩意儿带电，不懂原理乱摸，小心电死你。”\\n\\n叶希冷冷地扫了一眼正蠢蠢欲动、伸手想去摸那“灯绳”的王翠花，语气里带着几分漫不经心的警告。\\n\\n王翠花的手像被烫了一样猛地缩了回来，脸色煞白。虽然她没见过这么亮的灯，但“电死”这两个字在这个年代可是极具威慑力的。大队部那个电工操作不当被电焦了半边眉毛的事，全村人都知道。\\n\\n“啪。”\\n\\n叶希再次按下开关，屋内瞬间回归黑暗，那种极致的落差让村民们发出一阵唏嘘。\\n\\n“行了，都散了吧。我要睡觉了。”叶希毫不客气地开始赶人，顺手将那扇破旧的木门关上，隔绝了门外"
+}
+[2026-04-21T17:42:47.937Z] [INFO] [generateObjectWithUsage] JSON 提取成功
+{
+  "keys": [
+    "title",
+    "content"
+  ]
+}
+[2026-04-21T17:42:47.949Z] [INFO] [generateObjectWithUsage] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1806
+}
+[2026-04-21T17:44:23.810Z] [INFO] [generateObjectWithUsage] AI 返回文本
+{
+  "textLength": 2574,
+  "textHead": "{\n  \"title\": \"黑市里的降维打击\",\n  \"content\": \"清晨的雾气带着湿冷的寒意，像一把钝刀子割着人的皮肤。叶希紧了紧身上的旧棉袄，脚步轻快地穿过几条错综复杂的胡同，直奔城西的“鬼市”。\\n\\n这里是1978年阳光照不到的角落，也是计划经济体制下最疯狂的漏洞。天还没亮透，昏暗的巷子里已经挤满了人。大家压低了嗓门，眼神却像饿狼一样四处逡巡，在这个凭票供应的年代，这里是唯一能买到“自由”的地方。\\n\\n叶希找了个不起眼的角落，将背上的布包放下。她没有像其他人那样把货物摆得满地都是，而是神色淡然地掏出一块手帕铺在地上，随后从袖口里摸出了五个玻璃瓶。\\n\\n那是五瓶“大白兔”奶糖"
+}
+[2026-04-21T17:44:23.811Z] [INFO] [generateObjectWithUsage] JSON 提取成功
+{
+  "keys": [
+    "title",
+    "content"
+  ]
+}
+[2026-04-21T17:44:23.836Z] [INFO] [generateObjectWithUsage] 开始调用
+{
+  "provider": "openai",
+  "model": "ep-20260410222903-lqcpr",
+  "promptLength": 1798
+}
